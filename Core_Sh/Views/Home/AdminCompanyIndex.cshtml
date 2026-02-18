@@ -1,0 +1,323 @@
+﻿@using Core.UI.Models
+
+
+
+
+
+
+<style>
+
+    .u-btn {
+        margin-top: 0px !important;
+        margin-bottom: 2px !important;
+    }
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+    @************************************************Tab****************************************************************@
+
+    <div id="" class="  u-expanded-width u-tab-links-align-left u-tabs u-tabs-1">
+        <ul class="u-border-2 u-border-palette-1-base u-spacing-10 u-tab-list u-unstyled" role="tablist">
+
+            <li id="CloseAdmin" class=" u-tab-item" role="presentation">
+                <a href="#CloseAdmin" onclick="location.reload();" role="tab" aria-controls="tab_View" class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-3" id="Close_Admin" aria-selected="false">@Res.CloseAdmin</a>
+            </li>
+
+            <li id="View_Transaction" class=" u-tab-item" role="presentation">
+                <a href="#tab_View" role="tab" aria-controls="tab_View" class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-3" id="Tap_All_Trans" aria-selected="false">@Res.View_All_Company</a>
+            </li>
+
+            <li id="Make_Trans" class=" u-tab-item" role="presentation">
+                <a href="#tab_MakeTrans" role="tab" aria-controls="tab_MakeTrans" class="active u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-1" id="Tap_Make_Trans" aria-selected="true">@Res.AddCompany</a>
+            </li>
+        
+
+        </ul>
+        <div class="u-tab-content" style=" ">
+            @******************************************************Invoic******************************@
+            <div id="tab_MakeTrans" class="  u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" role="tabpanel" aria-labelledby="Tap_Make_Trans">
+
+
+                <form id="" action="" class="  u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_COMP_CODE" class="u-label u-text-grey-40">كود  </label>
+                        <input type="text" id="Create_COMP_CODE" name="COMP_CODE" placeholder="كود الشركة" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+
+                    <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                        <label for="Create_NameA" class="u-label u-text-grey-40">@Res.The_Arabic_name_of_the_company</label>
+                        <input type="text" id="Create_NameA" name="NameA" placeholder="@Res.The_Arabic_name_of_the_company" class="u-input u-input-rectangle" required="">
+                    </div>
+                    <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                        <label for="Create_NameE" class="u-label u-text-grey-40"> الاسم الاجنبي للشركة  </label>
+                        <input type="text" id="Create_NameE" name="NameE" placeholder="الاسم الاجنبي للشركة" class="u-input u-input-rectangle" required="">
+                    </div>
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Tel" class="u-label u-text-grey-40">رقم الجوال</label>
+                        <input type="text" id="Create_Tel" name="Tel" placeholder="رقم الجوال" class="u-input u-input-rectangle" required="">
+
+                    </div>
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Email" class="u-label u-text-grey-40">@Res.Email</label>
+                        <input type="text" id="Create_Email" name="Email" placeholder="@Res.Email" class="u-input u-input-rectangle" required="">
+
+                    </div>
+
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_NationalityID" class="u-label u-text-grey-40">الدولة</label>
+                        <select id="Create_NationalityID" name="NationalityID" class="u-input u-input-rectangle">
+                            <option value="2">السعودية</option>
+                            <option value="1">@Res.Egypt</option>
+                        </select>
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Currencyid" class="u-label u-text-grey-40">العملة</label>
+                        <select id="Create_Currencyid" name="Currencyid" class="u-input u-input-rectangle">
+                            <option value="1">ريال</option>
+                            <option value="2">@Res.fairy</option>
+                        </select>
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_VatNo" class="u-label u-text-grey-40">@Res.The_tax_number</label>
+                        <input type="text" placeholder="لا يجب ان يتخطي 15 رقم" id="Create_VatNo" name="VatNo" class="u-input u-input-rectangle" required="">
+
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_District" class="u-label u-text-grey-40"> الحي </label>
+                        <input type="text" id="Create_Address_District" placeholder="مثال : الرياض" name="Address_District" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_Postal" class="u-label u-text-grey-40">@Res.Postal_address</label>
+                        <input type="text" id="Create_Address_Postal" placeholder="@Res.Postal_address" name="Address_Postal" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_City" class="u-label u-text-grey-40">المدينة</label>
+                        <input type="text" id="Create_Address_City" placeholder="المدينة" name="Address_City" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_Province" class="u-label u-text-grey-40"> المحافظة </label>
+                        <input type="text" id="Create_Address_Province" placeholder="مثال : الرياض" name="Address_Province" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_Street" class="u-label u-text-grey-40">عنوان الشارع</label>
+                        <input type="text" id="Create_Address_Street" placeholder="عنوان الشارع" name="Address_Street" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_BuildingNo" class="u-label u-text-grey-40">رقم المبني</label>
+                        <input type="text" id="Create_Address_BuildingNo" placeholder="رقم المبني" name="Address_BuildingNo" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_Str_Additional" class="u-label u-text-grey-40">عنوان اضافي </label>
+                        <input type="text" id="Create_Address_Str_Additional" placeholder="عنوان اضافي" name="Address_Str_Additional" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+
+                    <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                        <label for="Create_Address_Build_Additional" class="u-label u-text-grey-40">رقم المبني اضافي</label>
+                        <input type="text" id="Create_Address_Build_Additional" placeholder="رقم المبني اضافي" name="Address_Build_Additional" class="Clear_Header u-input u-input-rectangle" required="">
+                    </div>
+
+                        
+                    <div class="  u-form-group u-form-partition-factor-5 u-form-phone u-form-group-5 ">
+                        <label for="Create_Txt_AccCodeStartUsers" class="u-label u-text-grey-40">@Res.Like_Company</label>
+                        <select id="Create_drpCompany" style="width: 100%;height: 48px;"></select>
+                    </div>
+                    <div class="  u-form-group u-form-partition-factor-8 u-form-phone u-form-group-8 ">
+                        <label for="Create_Txt_AccCodeStartUsers" class="u-label u-text-grey-40">@Res.Transport_Def</label>
+                        <input type="checkbox" placeholder="@Res.AccCode_Start_Users" id="Create_checkDef" style="width: 100%;height: 48px; name=" text" class="Clear_Header u-input u-input-rectangle">
+                    </div>
+
+                    <div class="  u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                        <label for="btnCreateCompany" class="u-label u-text-grey-40">@Res.Create_Company</label>
+                        <input type="button" id="btnCreateCompany" value="@Res.Create_Company" class="Style_Add_Item u-input u-input-rectangle" required="" style="background-color: #14969a;">
+                    </div>
+          
+ 
+
+                  
+
+                </form>
+
+
+            </div> 
+            @******************************************************Retrun******************************@
+            <div id="tab_View" class="   u-container-style u-tab-pane u-white u-tab-pane-3" role="tabpanel" aria-labelledby="Tap_All_Trans">
+
+                <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                 
+                    <div class="u-form-group u-form-name u-form-partition-factor-1">
+
+
+                        <div class="inside-table my-4">
+                             
+                            <div id="JGrid">
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+
+
+
+
+
+            </div>
+
+            @******************************************************Edit Company******************************@
+
+            <div id="EditCompany" class="   u-container-style u-tab-pane u-white u-tab-pane-3" role="tabpanel" aria-labelledby="EditCompany">
+
+                <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="COMP_CODE" class="u-label u-text-grey-40">كود  </label>
+                            <input type="text" id="COMP_CODE" name="COMP_CODE" placeholder="كود الشركة" disabled="disabled" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                            <label for="NameA" class="u-label u-text-grey-40">@Res.The_Arabic_name_of_the_company</label>
+                            <input type="text" id="NameA" name="NameA" placeholder="@Res.The_Arabic_name_of_the_company" class="u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                            <label for="NameE" class="u-label u-text-grey-40"> الاسم الاجنبي للشركة  </label>
+                            <input type="text" id="NameE" name="NameE" placeholder="الاسم الاجنبي للشركة" class="u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Tel" class="u-label u-text-grey-40">رقم الجوال</label>
+                            <input type="text" id="Tel" name="Tel" placeholder="رقم الجوال" class="u-input u-input-rectangle" required="">
+
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Email" class="u-label u-text-grey-40">@Res.Email</label>
+                            <input type="text" id="Email" name="Email" placeholder="@Res.Email" class="u-input u-input-rectangle" required="">
+
+                        </div>
+
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="NationalityID" class="u-label u-text-grey-40">الدولة</label>
+                            <select id="NationalityID" name="NationalityID" class="u-input u-input-rectangle">
+                                <option value="2">السعودية</option>
+                                <option value="1">@Res.Egypt</option>
+                            </select>
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Currencyid" class="u-label u-text-grey-40">العملة</label>
+                            <select id="Currencyid" name="Currencyid" class="u-input u-input-rectangle">
+                                <option value="1">ريال</option>
+                                <option value="2">@Res.fairy</option>
+                            </select>
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="VatNo" class="u-label u-text-grey-40">@Res.The_tax_number</label>
+                            <input type="text" placeholder="لا يجب ان يتخطي 15 رقم" id="VatNo" name="VatNo" class="u-input u-input-rectangle" required="">
+
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_District" class="u-label u-text-grey-40"> الحي </label>
+                            <input type="text" id="Address_District" placeholder="مثال : الرياض" name="Address_District" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_Postal" class="u-label u-text-grey-40">@Res.Postal_address</label>
+                            <input type="text" id="Address_Postal" placeholder="@Res.Postal_address" name="Address_Postal" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_City" class="u-label u-text-grey-40">المدينة</label>
+                            <input type="text" id="Address_City" placeholder="المدينة" name="Address_City" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_Province" class="u-label u-text-grey-40"> المحافظة </label>
+                            <input type="text" id="Address_Province" placeholder="مثال : الرياض" name="Address_Province" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_Street" class="u-label u-text-grey-40">عنوان الشارع</label>
+                            <input type="text" id="Address_Street" placeholder="عنوان الشارع" name="Address_Street" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_BuildingNo" class="u-label u-text-grey-40">رقم المبني</label>
+                            <input type="text" id="Address_BuildingNo" placeholder="رقم المبني" name="Address_BuildingNo" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_Str_Additional" class="u-label u-text-grey-40">عنوان اضافي </label>
+                            <input type="text" id="Address_Str_Additional" placeholder="عنوان اضافي" name="Address_Str_Additional" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                            <label for="Address_Build_Additional" class="u-label u-text-grey-40">رقم المبني اضافي</label>
+                            <input type="text" id="Address_Build_Additional" placeholder="رقم المبني اضافي" name="Address_Build_Additional" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+
+                        <div class="u-form-group u-form-group-5">
+                            <input type="button" id="btnUpdate" value="@Res.Save" class="Style_Add_Item u-input u-input-rectangle" required="">
+                        </div>
+
+                    </form>
+
+                </form>
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+  
+<script src="~/ClientApp/App.js"></script>
+<script src="~/ClientApp/JsGrid.js"></script>
+<script src="~/Scripts/jsgrid/jsgrid.js"></script>
+<script src="~/ClientApp/AdminCompany/AdminCompany.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
+
+
+
+

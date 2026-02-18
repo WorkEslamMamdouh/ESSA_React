@@ -1,0 +1,86 @@
+@using Core.UI.Models
+<section class="u-align-left u-clearfix u-section-9 " id="carousel_c35d">
+	<div class="u-clearfix u-sheet u-sheet-1">
+		<div class="u-container-style u-group u-group-1">
+			<div class="u-container-layout u-container-layout-1">
+                <h2 class="u-align-center u-text u-text-1">@Res.Voucher</h2>
+			</div>
+		</div>
+		@************************************************Header****************************************************************@
+        <div id="Div_Header" class="u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                <div class="u-form-email u-form-group u-form-partition-factor-2">
+                    <label for="Txt_Ref_No" class="u-label u-text-grey-40">@Res.Ref_No</label>
+                    <input type="text" placeholder="@Res.Enter_a_Refrence_Number" id="Txt_Ref_No" name="email" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                    <label for="Txt_Receive_TrData" class="u-label u-text-grey-40">@Res.Date</label>
+                    <input type="date" placeholder="MM/DD/YYYY" id="Txt_TrData" name="date" class="u-input u-input-rectangle" required="" data-date-format="mm/dd/yyyy">
+                </div> 
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="db_Type" class="u-label u-text-grey-40">@Res._Type</label>
+                    <select id="db_Type" name="select" class="u-input u-input-rectangle">
+                        <option value="1">@Res.Cash</option>
+                        <option value="0">@Res.Transfer_Money</option>
+                    </select>
+                </div>
+                <div id="" class="  u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                    <label for="Txt_TransNO" class="u-label u-text-grey-40">@Res.Transfer_No</label>
+                    <input type="text" id="Txt_TransNO" disabled placeholder="@Res.Enter_Transfer_Number" name="phone" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+
+                <div class="u-form-group u-form-partition-factor-1 u-form-phone u-form-group-4">
+                    <label for="db_TypeFin" class="u-label u-text-grey-40">@Res._Type</label>
+                    <select id="db_TypeFin" name="select" class="u-input u-input-rectangle">
+                    </select>
+                </div>
+
+                <div class="  u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                    <label for="Txt_From_ACC_CODE" class="u-label u-text-grey-40">@Res.Select_From_Account</label>
+                    <input type="button" id="btnFrom_ACC_CODE" value="@Res.Search_Account" class="Style_Add_Item u-input u-input-rectangle" required="" style="background-color: #ff922f">
+                </div>
+                <div class="  u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                    <label for="Txt_From_ACC_DESCA" class="u-label u-text-grey-40">@Res.From_Transfer_Account</label>
+                    <input type="text" placeholder="@Res.AccName" disabled id="Txt_From_ACC_DESCA" name="text" class="Clear_Header u-input u-input-rectangle">
+                </div>
+
+                <div class="  u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                    <label for="btnTo_ACC_CODE" class="u-label u-text-grey-40">@Res.Select_To_Account</label>   
+                    <input type="button" id="btnTo_ACC_CODE" value="@Res.Search_Account" class="Style_Add_Item u-input u-input-rectangle" required="" style="background-color: #14969a;">
+                </div>
+                <div class="  u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                    <label for="Txt_To_ACC_DESCA" class="u-label u-text-grey-40">@Res.To_Transfer_Account</label>
+                    <input type="text" placeholder="@Res.AccName" disabled id="Txt_To_ACC_DESCA" name="text" class="Clear_Header u-input u-input-rectangle">
+                </div> 
+              
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Txt_Amount" class="u-label u-text-grey-40">@Res.Amount</label>
+                    <input type="number" id="Txt_Amount" placeholder="0" name="Amount" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="  u-form-group u-form-name u-form-partition-factor-2">
+                    <label for="IsPostDirectJournal" class="u-label u-text-grey-40">@Res.Is_Post_Direct_Journal</label>
+                    <input type="checkbox" id="IsPostDirectJournal" name="text" class="" checked style="width: 50px;height: 35px;">
+                </div>
+
+                <div class="u-form-group u-form-message u-form-group-7">
+                    <label for="Txt_Remarks" class="u-label u-text-grey-40">@Res.Remarks</label>
+                    <textarea placeholder="@Res.Remarks" rows="4" cols="50" id="Txt_Remarks" name="Remarks" class="Clear_Header u-input u-input-rectangle" required=""></textarea>
+                </div>
+
+
+                <div class="u-form-group u-form-group-5">
+                    <input type="button" id="btnAdd" value="@Res.Save" class="Style_Add_Item u-input u-input-rectangle" required="">
+                </div>
+
+            </form>
+        </div>
+	</div>
+	 
+</section>
+ 
+ 
+<script src="~/ClientApp/Voucher/Voucher.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

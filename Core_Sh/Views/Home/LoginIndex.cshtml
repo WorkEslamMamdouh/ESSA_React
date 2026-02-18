@@ -1,0 +1,245 @@
+@using Core.UI.Models
+
+@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer Localizer
+
+<link href="~/NewStyle/Login/Login_Style.css" rel="stylesheet">
+@*<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">*@
+
+<script src="~/NewStyle/Offline/jquery-3.1.1.min.js"></script>
+<script src="~/NewStyle/Offline/jquery-ui.min.js"></script>
+<link href="~/NewStyle/Offline/bootstrap.min.css" rel="stylesheet">
+
+<div id="bodyLogin" class="body hidden_Control">
+    <div class="veen">
+        <div class="login-btn splits">
+            <p>Already an user</p>
+            <input type="button" class=" __button active" id="login_button" value="@Res.Login">
+        </div>
+        <div class="rgstr-btn splits ">
+            <p class="_rgstr">Don't have an account</p>
+            <p class="_ready">Already an user</p>
+            <input type="button" class=" __button _rgstr " id="rgstr_button" value="@Res.Register">
+        </div>
+        <div class="wrapper">
+            <form id="DivCompany" class="display_none" tabindex="500">
+                <h3>@Res.Company</h3>
+                <div class="mail">
+                    <select class=" __button dark CompSelect" id="dbCompany">
+                     
+                    </select>  
+                </div> 
+                <select class="form-select  __button dark" aria-label="Default select example" style="margin-bottom: 1%;" id="dbyear">
+                    <option selected>Open this select year</option>
+                    
+                </select>
+               
+                <div class="submit">
+                    <input type="button" class=" __button dark" id="LoginOpenComp" value="@Res.Enter">
+                </div>
+                <div class="submit">
+                    <input type="button" class=" __button dark" id="LoginBack" value="@Res.Back" style="background-color: crimson;">
+                </div>
+
+            </form>
+            <form id="login" tabindex="500">
+                <h3>@Res.Login</h3>
+                <div class="mail"> 
+                 @*    <select id="languageSelector">
+                        <option value="en">@Res.English</option>
+                        <option value="ar">@Res.Arabic</option>
+                        <!-- Add other languages as needed -->
+                    </select>
+
+                    <button onclick="changeLanguage()">Change Language</button> *@
+                    <input id="txtUsername" type="email" name="">
+                    <label>@Res.User_Name </label>
+                </div>
+                <div class="passwd">
+                    <input id="txtPassword" type="password" name="">
+                    <label>@Res.Password</label>
+                </div>
+                <div class="submit">
+                    <input type="button" class=" __button dark" id="Submit_Login" value="@Res.Login">
+                </div>
+                <div class="submit"> 
+                        <a id="btnForgot_Password" style="cursor: pointer;font-size: 13px;">@Res.Forgot_Password_</a>
+                  
+                   
+                </div>
+
+            </form>
+            <form id="register" class="u-form u-form-1" tabindex="502" style="margin-top: 200px;">
+                <h3>@Res.Register</h3>
+
+                <div class="name">
+                    <select id="Reg_Comp_Name" name="select" class="" style="width: 100%;height: 40px;"> 
+                    </select>
+                    <label>@Res.Company</label>
+                </div>
+                <div class="name display_none">
+                    <select id="Reg_FamilyZone" name="select" class="" style="width: 100%;height: 40px;">
+                        <option value="null">@Res.Select_Family_Zone</option>
+                    </select>
+                    <label>@Res.Family_Zone</label>
+                </div>
+                <div class="name display_none">
+                    <select id="Reg_Work_Zone" name="select" class="" style="width: 100%;height: 40px;">
+                        <option value="null">@Res.Choose_zone</option>
+                    </select>
+                    <label>@Res.Work_Zone</label>
+                </div>
+                <div id="DlevType" class="display_none">
+                    <select id="Usr_DlevType" name="select" onselect="0" class="u-input u-input-rectangle">
+                        <option value="0">@Res.Walker</option>
+                        <option value="1">@Res.bicycle</option>
+                        <option value="2">@Res.Motorcycle</option>
+                        <option value="3">@Res.Car</option>
+                    </select>
+                    <label>@Res.Delivery_Type</label>
+                </div>
+
+
+                <div class="name">
+                    <input id="Reg_Full_Name" maxlength="50" class="_Clear_Reg" type="text" name="">
+                    <label>@Res.Full_Name</label>
+                </div>
+                <div class="name">
+                    <input id="Reg_Address" maxlength="100" class="_Clear_Reg" type="text" name="">
+                    <label>@Res.Address</label>
+                </div>
+                <div class="name">
+                    <input id="Reg_Mobile" maxlength="11" class="_Clear_Reg" type="text" name="">
+                    <label>@Res.Mobile_Number</label>
+                </div>
+                <div class="mail">
+                    <input id="Reg_Mail" class="_Clear_Reg" type="email" name="" required>
+                    <label>@Res.Mail_Gmail</label>
+                </div>
+              
+                <div class="name">
+                    <div class="name" style="width: 50%;">
+                        <input id="Reg_FrontID_Img" class="" value=" @Res.FrontIDImg" type="button" name="" style="background-color: bisque;">
+                        <input id="Reg_Txt_FrontID_Img" class="_Clear_Reg" type="hidden" name="">
+                    </div>
+                    <div class="name StylePhotoIDLog " style="">
+                        <input id="Reg_BackID_Img" class="" value="@Res.BackIDImg" type="button" name="" style="background-color: #e4a75e;">
+                        <input id="Reg_Txt_BackID_Img" class="_Clear_Reg" type="hidden" name="">
+                    </div>
+                </div> 
+                
+                <div class="display_none license">
+                    <div class="name" style="width: 50%;">
+                        <input id="Reg_FrontDLic_Img" class="" value="Front Delivery License" type="button" name="" style="background-color: bisque;">
+                        <input id="Reg_Txt_FrontDLic_Img" class="_Clear_Reg" type="hidden" name="">
+                    </div>
+                    <div class="name StylePhotoIDLog" style="">
+                        <input id="Reg_BackDLic_Img" class="" value="Back Delivery License" type="button" name="" style="background-color: #e4a75e;">
+                        <input id="Reg_Txt_Reg_BackCLic_Img" class="_Clear_Reg" type="hidden" name="">
+                    </div>
+                </div>
+
+                <div class="display_none license">
+                    <div class="name" style="width: 50%;">
+                        <input id="Reg_FrontCLic_Img" class="" value="Front Vehicle license" type="button" name="" style="background-color: bisque;">
+                        <input id="Reg_Txt_FrontDLic_Img" class="_Clear_Reg" type="hidden" name="">
+                    </div>
+                    <div class="name StylePhotoIDLog" style="">
+                        <input id="Reg_BackCLic_Img" class="" value="Back Vehicle license" type="button" name="" style="background-color: #e4a75e;">
+                        <input id="Reg_Txt_Reg_BackCLic_Img" class="_Clear_Reg" type="hidden" name="">
+                    </div>
+                </div>
+
+                <div class="uid">
+                    <input id="Reg_UserName" maxlength="20" class="_Clear_Reg" type="text" name="">
+                    <label>@Res.User_Name</label>
+                </div>
+                <div class="passwd">
+                    <input id="Reg_Password" maxlength="20" class="_Clear_Reg" type="password" name="">
+                    <label>@Res.Password</label>
+                </div>
+@*                 <div class="uid">
+                    <input id="Reg_Validation_Code" maxlength="20" class="_Clear_Reg" type="text" name="">
+                    <label>@Res.Valid_Code</label>
+                </div> *@
+                <div class="submit">
+                    <input type="button" class=" __button dark" id="Submit_Register" value="@Res.Register">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+    .site-link {
+        padding: 5px 15px;
+        position: fixed;
+        z-index: 99999;
+        background: #fff;
+        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        right: 30px;
+        bottom: 30px;
+        border-radius: 10px;
+    }
+
+        .site-link img {
+            width: 30px;
+            height: 30px;
+        }
+
+    .veen .wrapper > form > div {
+        position: relative;
+        margin-bottom: 7px !important;
+    }
+</style>
+<script>
+
+
+    function changeLanguage() {
+
+    //      var selectedLanguage = document.getElementById('languageSelector').value;
+
+    // // Store the selected language (for example, in a cookie)
+    // document.cookie = 'selectedLanguage=' + selectedLanguage + ';path=/';
+     
+    // location.reload();
+
+        var selectedLanguage = document.getElementById('languageSelector').value;
+
+        // Call a server-side endpoint to update the language
+        fetch(`/Home/ChangeLanguage?language=${selectedLanguage}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (response.ok) {
+                    // Reload the page to apply the new language
+                    location.reload();
+                }
+            });
+    }
+
+
+    $(document).ready(function () {
+        $("#rgstr_button").click(function () {
+            $('.veen .wrapper').addClass('move');
+            //$('.body').css('background', '#e0b722');
+            $('.body').css('background', '#ab6e6e');
+            $(".veen .login-btn button").removeClass('active');
+            $(this).addClass('active');
+        });
+        $("#login_button").click(function () {
+            $('.veen .wrapper').removeClass('move');
+            //$('.body').css('background', '#ff4931');
+            $('.body').css('background', '#c95b56');
+            $(".veen .rgstr-btn button").removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+
+</script>
+<script src="~/ClientApp/Login/Login.js"></script>

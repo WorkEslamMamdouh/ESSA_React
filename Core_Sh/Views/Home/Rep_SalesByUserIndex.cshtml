@@ -1,0 +1,111 @@
+@using Core.UI.Models
+
+
+<style>
+
+    .u-btn {
+        margin-top: 0px !important;
+        margin-bottom: 2px !important;
+    }
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.From_Date</label>
+            <input type="date" placeholder="0" id="Txt_From_Date" class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.To_Date</label>
+            <input type="date" placeholder="0" id="Txt_To_Date" class=" u-input u-input-rectangle">
+        </div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40"> </label> 
+            <input type="button" id="btnCustomer" style="width: 100%; border-radius:10px 10px 10px 10px ;  background-color: rgb(103 169 204)" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle" value="@Res.Search_Sales">
+            <input type="hidden" placeholder="0" id="CustomerID" class=""> 
+        </div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-4">
+            
+        </div>
+
+
+
+         
+
+        <div class="u-form-group u-form-name u-form-partition-factor-9"></div>
+        <div class="u-form-group u-form-name u-form-partition-factor-9"></div>
+
+
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="RepType" class="u-label u-text-grey-40">@Res.Report_Type</label>
+            <select id="RepType" name="select" class="u-input u-input-rectangle"> 
+                <option value="1">@Res.Summary</option>
+                <option value="2">@Res.Detail</option> 
+            </select>
+        </div>
+         
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="Sales_Type" class="u-label u-text-grey-40">@Res.Sales_Type</label>
+            <select id="Sales_Type" name="select" class="u-input u-input-rectangle"> 
+                <option value="0">@Res.Invoices</option>
+                <option value="1">@Res.Return</option>
+            </select>
+        </div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="Inv_Status" class="u-label u-text-grey-40">@Res.Invoice_Status</label>
+            <select id="Inv_Status" name="select" class="u-input u-input-rectangle">
+                <option value="null">@Res.All_Status</option> 
+                <option value="-1">@Res.New</option>
+                <option value="0">@Res.Waiting</option>
+                <option value="1">@Res.In_Progress</option>
+                <option value="2">@Res.Approved</option>
+                <option value="3">@Res.Cancelled</option>
+            </select>
+        </div>
+        
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="Cash_Type" class="u-label u-text-grey-40">@Res.Cash_Type</label>
+            <select id="Cash_Type" name="select" class="u-input u-input-rectangle">
+                <option value="null">@Res.All_Cash_Type</option>
+                <option value="0">@Res.Credit</option>
+                <option value="1">@Res.Cash</option> 
+            </select>
+        </div> 
+
+        <div class="u-form-group u-form-name u-form-partition-factor-9"></div> 
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+
+            <h6 id="btnDelete_Filter" class=" " style="cursor: pointer;">❌</h6>
+        </div>
+
+    </form>
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-5"></div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-5">
+            <a id="PrintPdf" style="width: 100%; border-radius:10px 10px 10px 10px ;cursor: pointer; background-color: #830202;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">
+                @Res.Print_Pdf  <i class="fa fa-file-pdf-o"></i>
+            </a>
+        </div>
+        
+         
+        <div class="u-form-group u-form-name u-form-partition-factor-5">
+            <a id="PrintExcel" style="width: 100%; border-radius:10px 10px 10px 10px ;cursor: pointer; " class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">
+                @Res.Print_Excel  <i class="fa fa-file-excel-o"></i>
+            </a>
+        </div> 
+
+
+    </form> 
+</div>
+
+<script src="~/ClientApp/Rep_Sales/Rep_SalesByUser.js"></script>
+
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

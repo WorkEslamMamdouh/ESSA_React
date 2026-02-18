@@ -1,0 +1,189 @@
+﻿@using Core.UI.Models
+
+
+
+
+
+
+<style>
+
+    .u-btn {
+        margin-top: 0px !important;
+        margin-bottom: 2px !important;
+    }
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+    @************************************************Tab****************************************************************@
+
+    <div id="" class="  u-expanded-width u-tab-links-align-left u-tabs u-tabs-1">
+        <ul class="u-border-2 u-border-palette-1-base u-spacing-10 u-tab-list u-unstyled" role="tablist">
+
+            <li id="Make_Trans" class=" u-tab-item" role="presentation">
+                <a href="#tab_MakeTrans" role="tab" aria-controls="tab_MakeTrans" class="active u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-1" id="Tap_Make_Trans" aria-selected="true">@Res.Transaction</a>
+            </li>
+            <li id="View_Transaction" class=" u-tab-item" role="presentation">
+                <a href="#tab_View" role="tab" aria-controls="tab_View" class="u-active-palette-1-base u-button-style u-grey-10 u-tab-link u-text-active-white u-text-black u-tab-link-3" id="Tap_All_Trans" aria-selected="false">@Res.Views</a>
+            </li>
+
+        </ul>
+        <div class="u-tab-content" style=" ">
+            @******************************************************Invoic******************************@
+            <div id="tab_MakeTrans" class="  u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" role="tabpanel" aria-labelledby="Tap_Make_Trans">
+
+
+                <form id="" action="" class="  u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+
+
+                    <div class="u-form-group u-form-name u-form-partition-factor-1">
+                        <label for="" class="u-label u-text-grey-40">@Res.TrDate</label>
+                        <input type="date" placeholder="0" id="txtTrDate" name="TrData" class=" _dis u-input u-input-rectangle">
+                    </div>
+
+
+                    @***************************Confirm*******************************@
+
+
+
+
+                    <div class="u-form-group u-form-name u-form-partition-factor-1">
+                        <label for="" class="u-label u-text-grey-40">@Res.Remarks</label>
+                        <textarea id="txtRemars" type="text" name="Remark" class="_copy _dis u-input u-input-rectangle " style="background-color: #e3f5f5;font-weight: bold;"></textarea>
+
+                    </div>
+
+
+                    @* ********************************************************************************** *@
+                    
+
+
+                    <div class="display_none _Acc u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                        <label for="btnTo_ACC_CODE" class="u-label u-text-grey-40">@Res.Select_Account</label>
+                        <input type="button" id="btnTo_ACC_CODE" value="Search To Account" class="Style_Add_Item u-input u-input-rectangle" required="" style="background-color: #14969a;">
+                    </div>
+                    <div class="display_none _Acc u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 ">
+                        <label for="Txt_To_ACC_DESCA" class="u-label u-text-grey-40">@Res.To_Transfer_Account</label>
+                        <input type="text" placeholder="@Res.Account_Name" disabled id="Txt_To_ACC_DESCA" name="text" class="Clear_Header u-input u-input-rectangle">
+                    </div>
+
+
+
+                    @* ********************************************************************************** *@
+
+
+                    <div class="  u-form-group u-form-name u-form-partition-factor-2">
+                        <label for="dbTypeTemp" class="u-label u-text-grey-40">@Res.Type_Temp</label>
+
+                        <select id="dbTypeTemp" class="Clear_Header u-input u-input-rectangle " style="">
+                        </select>
+
+                    </div>
+
+ 
+                    <div class="_Cash u-form-group u-form-name u-form-partition-factor-1">
+                        <label for="" class="u-label u-text-grey-40"> </label>
+                        <a id="btnChooseFileExcel" style="width: 100%; background-color:#46b8da;" class=" Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle btn-info">@Res.Choose_File_Excel 🔰</a>
+                        <a id="btnUploadFileExcel" style=" width: 100%; background-color:#46b8da;" class="display_none Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle btn-info">@Res.Upload_Excel_Data </a>
+                    </div>
+
+
+                    <div class="_Cash u-form-group u-form-name u-form-partition-factor-2">
+                        <a id="btnDownloadTemp" style="background-color: #999908;width: 100%;" class="  Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.DownloadExcel</a>
+                    </div>
+
+                    <div class="_Cash u-form-group u-form-name u-form-partition-factor-2">
+                        <a id="btnSave" style="width: 100%;background-color: #111156;" class="  Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle"> @Res.Upload_Excel_Data</a>
+                    </div>
+
+                    <div class="_Cash u-form-group u-form-name u-form-partition-factor-10 display_none">
+                        <label for="" class="u-label u-text-grey-40"> </label>
+
+                        <input type="file" id="ChooseFileExcel" class="display_none" onchange="onchangeFile()" accept=".xlsx, .xls">
+                        <input type="hidden" id="fileName">
+                        <textarea id="OutPutExcel" type="hidden" name="Remark" class="_copy _dis u-input u-input-rectangle " style="background-color: #e3f5f5;font-weight: bold;"></textarea>
+                    </div>
+
+                    <div class="_Cash u-form-group u-form-name u-form-partition-factor-1" style="overflow-x: scroll;">
+
+                        <div id="div_ExGrid">
+                        </div>
+
+                    </div> 
+                </form> 
+            </div>
+
+
+
+            @******************************************************Retrun******************************@
+            <div id="tab_View" class="   u-container-style u-tab-pane u-white u-tab-pane-3" role="tabpanel" aria-labelledby="Tap_All_Trans">
+
+                <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                    <div class="u-form-email u-form-group u-form-partition-factor-9">
+                    </div>
+                    <div class="u-form-email u-form-group u-form-partition-factor-6">
+                        <label for="" class="u-label u-text-grey-40">@Res.From_Date</label>
+                        <input type="date" placeholder="0" id="txtDateFrom" class=" u-input u-input-rectangle">
+                    </div>
+                    <div class="u-form-group u-form-name u-form-partition-factor-6">
+                        <label for="" class="u-label u-text-grey-40">@Res.To_Date</label>
+                        <input type="date" placeholder="0" id="txtDateTo" class=" u-input u-input-rectangle">
+                    </div>
+                    <div class="u-form-group u-form-name u-form-partition-factor-6">
+                        <label for="" class="u-label u-text-grey-40">@Res.Status</label>
+                        <select id="dbStatusF" class="u-input u-input-rectangle ">
+                            <option value="All">@Res.All</option>
+                            <option value="3">@Res.Waiting...</option>
+                            <option value="1">@Res.Success</option>
+                            @* <option value="2">@Res.Return</option> *@
+                            <option value="0">@Res.Failed</option>
+                        </select>
+                    </div>
+                    <div class="u-form-group u-form-name u-form-partition-factor-6">
+                        <label for="" class="u-label u-text-grey-40"> </label>
+                        <a id="btnShow" style="width: 100%;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.Filter</a>
+                    </div>
+
+                    <div class="u-form-group u-form-name u-form-partition-factor-1">
+
+
+                        <div class="inside-table my-4">
+
+
+                            
+                            <div id="JGrid">
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </form>
+
+
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+
+</div>
+
+
+<input type="hidden" id="SaveFile" onclick="SaveFile()">
+<script src="~/clientapp/upload_excel_file.js"></script>  
+<script src="~/ClientApp/excel_upload/Upload_Excel_Data.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script> 
+
+

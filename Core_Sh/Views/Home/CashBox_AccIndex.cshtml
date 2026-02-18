@@ -1,0 +1,94 @@
+@using Core.UI.Models
+
+
+<style>
+
+    .u-btn {
+        margin-top: 0px !important;
+        margin-bottom: 2px !important;
+    }
+
+    .highlight-row {
+        background: #027b3845 !important;
+        font-weight: bold !important;
+    }
+
+
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+      
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.From_Date</label>
+            <input type="date" placeholder="0" id="Txt_From_Date" class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.To_Date</label>
+            <input type="date" placeholder="0" id="Txt_To_Date" class=" u-input u-input-rectangle">
+            
+        </div>
+
+
+
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="Cash_Type" class="u-label u-text-grey-40">@Res.Cash_Type</label>
+            <select id="Cash_Type" name="select" class="u-input u-input-rectangle">
+            </select>
+        </div>
+
+
+        <div class="u-form-group u-form-name u-form-partition-factor-6">
+            <label for="" class="u-label u-text-grey-40"> </label>
+            <a id="Filter_Users" style="width: 100%;background-color: #00006e;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.User_Name</a>
+            <input type="hidden" placeholder="0" id="TxtUserId" class=" u-input u-input-rectangle">
+        </div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-6 _IDExcel">
+            <label for="" class="u-label u-text-grey-40"> </label>
+            <a id="Filter_Excel" style="width: 100%;background-color: #00006e;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.View_Closed_Day</a>
+            <input type="hidden" placeholder="0" id="IDExcel" class=" u-input u-input-rectangle">
+        </div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-9">
+            <label for="" class="u-label u-text-grey-40">@Res.IncludeOpeningBalance</label>
+            <input type="checkbox" checked placeholder="0" id="IncludeOpeningBalance" class=" u-input u-input-rectangle" style="width: 35px;height: 35px;margin-left: 100px;">
+        </div>
+
+    
+        <div class="u-form-group u-form-name u-form-partition-factor-6">
+            <label for="" class="u-label u-text-grey-40"> </label>
+            <a id="Filter_View" style="width: 100%;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.Filter</a>
+
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+
+            <h6 id="btnDelete_Filter" class=" " style="cursor: pointer;">❌</h6>
+        </div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-6">
+            <label for="HangingTrans" class="u-label u-text-grey-40"> </label>
+            <a id="HangingTrans" style="width: 100%;background-color: #c20b0b;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">الحركات المعلقة</a>
+             
+        </div> 
+        <div class="u-form-group u-form-name u-form-partition-factor-6">
+            <label for="PostTrans" class="u-label u-text-grey-40"> </label>
+            <a id="PostTrans" style="width: 100%;background-color: #078c34;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">ترحيل الحركات </a>
+             
+        </div>
+    </form>
+ 
+    <div class="inside-table my-4"> 
+   
+        <br> 
+        <div id="_Grid1">
+        </div>
+    </div>
+    
+    
+</div>
+ 
+<script src="~/ClientApp/CashBox_Acc/CashBox_Acc.js"></script>
+ 

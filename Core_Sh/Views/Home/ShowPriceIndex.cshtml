@@ -1,0 +1,366 @@
+@using Core.UI.Models
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعريف الأصناف وتعدد الوحدات</title>
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"> *@
+
+    <style>
+        ._Width {
+            width: 100% !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+
+        <!-- Filters Section -->
+        @*         <div class="card mb-4">
+        <div class="card-body">
+        <h5 class="card-title">الفلاتر</h5>
+        <form id="filterForm">
+        <div class="row">
+        <div class="col-md-4">
+        <label for="categoryFilter" class="form-label">الفئة</label>
+        <select id="categoryFilter" class="form-select">
+        <option value="">@Res.Choose_category</option>
+        <!-- Populate categories dynamically -->
+        </select>
+        </div>
+        <div class="col-md-4">
+        <label for="familyFilter" class="form-label">النوع</label>
+        <select id="familyFilter" class="form-select">
+        <option value="">@Res.Choose_the_type</option>
+        <!-- Populate item families dynamically -->
+        </select>
+        </div>
+        <div class="col-md-4 align-self-end">
+        <button type="button" class="btn btn-primary w-100" onclick="applyFilters()">تطبيق الفلاتر</button>
+        </div>
+        </div>
+        </form>
+        </div>
+        </div> *@
+
+        <!-- Item Definition Section -->
+        <div id="TapMaster" class="card mb-4 TapMaster">
+            <div class="card-body">
+                <h5 class="card-title">@Res.Sales</h5>
+                <form id="itemForm">
+
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label for="TrNo" class="form-label">@Res.QoutationNo</label>
+                            <input type="text" disabled id="Txt_TrNo" class="form-control _Clear" placeholder="@Res.QoutationNo">
+                        </div>
+                        <div class="col-md-3 ">
+                            <label for="ReNo" class="form-label">@Res.ReNo</label>
+                            <input type="text" id="ReNo" class="form-control _Clear" placeholder="@Res.ReNo">
+                            <input type="hidden" id="Status" class="form-control _Clear" placeholder="@Res.Status">
+                        </div>
+                        <div class="col-md-3 ">
+                            <label for="purchaseorderDesc" class="form-label">@Res.ReNo Desc</label>
+                            <input type="text" id="purchaseorderDesc" class="form-control _Clear" placeholder="@Res.ReNo Desc">
+                         </div>
+                        <div class="col-md-3">
+                            <label for="TrDate" class="form-label">@Res.TrDate</label>
+                            <input type="date" id="SaleDate" class="form-control _Clear" placeholder="@Res.TrDate">
+                        </div>
+                        
+                        <div class="col-md-4 display_none">
+                            <label for="AttachName" class="form-label">@Res.AttachName</label>
+                            <input type="text" id="AttachName" class="form-control _Clear _IsReturnDis" placeholder="@Res.AttachName">
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12 _Is_CarCenterNot display_none">
+                        <label for="SalesManID" class="form-label">@Res.Search_SalesMan</label>
+                        <input type="hidden" id="SalesManID" class="form-control _Clear" placeholder="@Res.Search_SalesMan">
+                        <input type="button" id="BtnSalesManID" style="background-color : #c95b56; color:aliceblue" value="@Res.Search_SalesMan" class="form-control _Clear _IsReturnDis" placeholder="@Res.Select">
+                    </div>
+
+                    <div class="row mb-3 _Is_CarCenterNot display_none">
+                        <div class="col-md-6">
+                            <label for="SalesManName" class="form-label">@Res.SalesMan_Name</label>
+                            <input type="text" id="SalesManName" disabled class="form-control _Clear _IsReturnDis" placeholder="@Res.SalesMan_Name">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="SalesManMobile" class="form-label">@Res.Mobile</label>
+                            <input type="text" maxlength="15" disabled id="SalesManMobile" class="form-control _Clear _IsReturnDis" placeholder="@Res.Mobile">
+                        </div>
+
+                        <div class="col-md-2 CancelSalesMan display_none">
+                            <label for="Cancel" class="form-label">@Res.CancelSalesMan</label>
+                            <input type="button" id="BtnCancelSalesMan" style="background-color : #d62a2a; color:aliceblue" value="@Res.CancelSalesMan" class="form-control _Clear _IsReturnDis" placeholder="@Res.Select">
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-10">
+                        <label for="Supplier" class="form-label">@Res.Search_Customer</label>
+                        <input type="hidden" id="CustomerID" class="form-control _Clear" placeholder="@Res.Search_Customer">
+                        <input type="button" id="BtnNameCustomer" style="background-color : #c95b56; color:aliceblue" value="@Res.Search_Customer" class="form-control _Clear _IsReturnDis" placeholder="@Res.Select">
+                    </div>
+
+                    <div class="col-md-2">
+                        <label for="Add_Cust" class="form-label">____</label>
+                        <input type="button" id="BtnAddCust" style="background-color : black; color:aliceblue" value="@Res.Add_Cust" class="form-control _Clear _IsReturnDis" placeholder="@Res.Select">
+                    </div>
+                    <div class="row mb-3 ">
+                        <div class="col-md-6">
+                            <label for="CustomerName" class="form-label">@Res.Customer_Name</label>
+                            <input type="text" id="CustomerName" class="form-control _Clear _IsReturnDis" placeholder="@Res.Customer_Name">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="Mobile" class="form-label">@Res.Mobile</label>
+                            <input type="text" maxlength="15" id="Mobile" class="form-control _Clear _IsReturnDis" placeholder="@Res.Mobile">
+                        </div>
+
+                        <div class="col-md-2 CancelCust display_none">
+                            <label for="Cancel" class="form-label">@Res.CancelCust</label>
+                            <input type="button" id="BtnCancelCustomer" style="background-color : #d62a2a; color:aliceblue" value="@Res.CancelCust" class="form-control _Clear _IsReturnDis" placeholder="@Res.Select">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3 IsCash display_none">
+
+                        <div class="col-md-6">
+                            <label for="Card_Type" class="form-label">@Res.Card_Type</label>
+                            <select id="Card_Type" name="select" class="u-input u-input-rectangle">
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Txt_CardPrc" class="form-label">@Res.Card_Prc_</label>
+                            <input type="number" id="Txt_CardPrc" placeholder="0" name="CardPrc" disabled="disabled" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-6">
+                            <label for="VatType" class="form-label">@Res.Vat_Type</label>
+                            <select id="VatType" name="select" class="u-input u-input-rectangle _IsReturnDis">
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="VatTypePrc" class="form-label">@Res.Vat_Prc_</label>
+                            <input type="number" id="VatTypePrc" placeholder="0" name="VatPrc" disabled="disabled" class="Clear_Header u-input u-input-rectangle" required="">
+                        </div>
+                    </div>
+                    <div class="row mb-3 display_none">
+                        <div class="col-md-6">
+                            <label for="txt_Discount" class="form-label">@Res.Discount</label>
+                            <input type="number" id="txt_Discount" placeholder="@Res.Discount" value="0" name="Discount" class="Clear_Header u-input u-input-rectangle" required="">
+
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+
+                        <div class="col-md-6">
+                            <label for="PaymentTerms" class="form-label">@Res.Payment_Terms</label>
+                            <input type="text" id="PaymentTerms" placeholder="@Res.Payment_Terms" name="PaymentTerms" class="Clear_Header u-input u-input-rectangle" required="">
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="TypePay" class="form-label">@Res.TypePay</label>
+                            <select id="IsCash" class="form-control _IsReturnDis">
+                                <option value="0">@Res.Credit</option>
+                                <option value="1">@Res.Cash</option>
+                                <!-- Populate item families dynamically -->
+                            </select>
+                        </div>
+                        <div class="col-md-6 display_none">
+                            <label for="ExpiryEnd" class="form-label">@Res.Expiry_End</label>
+                            <input type="date" id="ExpiryEnd" placeholder="@Res.Expiry_Date" name="ExpiryEnd" class="Clear_Header u-input u-input-rectangle" required="">
+
+                        </div>
+                        <div class="col-md-6 display_none">
+                            <label for="DeliveryTime" class="form-label">@Res.Delivery_Period</label>
+                            <input type="text" id="DeliveryTime" placeholder="@Res.Delivery_Period" name="DeliveryTime" class="Clear_Header u-input u-input-rectangle" required="">
+
+                        </div>
+                        <div class="col-md-6">
+                            <label for="Warrantyperiod" class="form-label">@Res.Warrantyperiod</label>
+                            <input type="text" id="Warrantyperiod" placeholder="@Res.Warrantyperiod" name="Warrantyperiod" class="Clear_Header u-input u-input-rectangle" required="">
+
+                        </div>
+
+                    </div>
+
+
+
+
+
+
+
+                    <div id="" class="card _CenterCar display_none">
+                        <div class="card-body">
+                            <form id="itemForm">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        <label for="CarBrand" class="form-label">@Res.CarBrand</label>
+                                        <input type="text" id="CarBrand" placeholder="@Res.CarBrand" name="CarBrand" class="Clear_Header u-input u-input-rectangle" required="">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="CarNo" class="form-label">@Res.CarNo</label>
+                                        <input type="text" id="CarNo" placeholder="@Res.CarNo" name="CarNo" class="Clear_Header u-input u-input-rectangle" required="">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="DestructionKm" class="form-label">@Res.DestructionKm</label>
+                                        <input type="text" id="DestructionKm" placeholder="@Res.DestructionKm" name="DestructionKm" class="Clear_Header u-input u-input-rectangle" required="">
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="EngineerName" class="form-label">@Res.EngineerName</label>
+                                        <input type="text" id="EngineerName" placeholder="@Res.EngineerName" name="EngineerName" class="Clear_Header u-input u-input-rectangle" required="">
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="ChassisNo" class="form-label">رقم الشاسيه</label>
+                                        <input type="text" id="ChassisNo" placeholder="رقم الشاسيه" name="ChassisNo" class="Clear_Header u-input u-input-rectangle" required="">
+
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="Remarks" class="form-label">@Res.Remarks</label>
+                            <textarea id="Remarks" class="form-control _Clear" rows="3" placeholder="@Res.Remarks"></textarea>
+                        </div>
+                    </div>
+
+
+
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Units Definition Section -->
+        <div id="TapDetails" class="TapDetails card display_none">
+            <div class="card-body">
+                <h5 class="card-title">@Res.Items</h5>
+                <!-- Units Table -->
+                <div class="mt-4" id="TableBody">
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="" class="TapDetails card mb-4 display_none">
+            <div class="card-body">
+                <form id="itemForm">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="ItemsTotal" class="form-label">@Res.Items_Total</label>
+                            <input type="number" disabled id="ItemsTotal" class="form-control _Clear" placeholder="@Res.Items_Total">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="TotalDiscount" class="form-label">@Res.TotalDiscount</label>
+                            <input type="number" disabled id="Discount" value="0" class="form-control _Clear" placeholder="@Res.TotalDiscount">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="TotalAmount" class="form-label">@Res.Total_Amount</label>
+                            <input type="number" disabled id="TotalAmount" class="form-control _Clear" placeholder="@Res.TotalAmount">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="TotalVat" class="form-label">@Res.Total_Vat</label>
+                            <input type="number" disabled id="VatAmount" class="form-control _Clear" placeholder="@Res.Total_Vat">
+                        </div>
+
+
+                        <div class="col-md-4">
+                            <label for="NetAmount" class="form-label">@Res.Net</label>
+                            <input type="number" disabled id="NetAmount" class="form-control _Clear" placeholder="@Res.NetAmount">
+                        </div>
+
+                    </div>
+
+                    <div class="row __IsCash display_none">
+                        <div class="col-md-6">
+                            <label for="PayAmount" class="form-label">@Res.Pay_Amount</label>
+                            <input type="number" id="PayAmount" class="form-control _Clear" placeholder="@Res.Pay_Amount">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="RemainAmount" class="form-label">@Res.RemainAmount</label>
+                            <input type="number" disabled id="RemainAmount" value="0" class="form-control _Clear" placeholder="@Res.RemainAmount">
+                        </div>
+
+
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+
+        <div id="" class="card ">
+            <div class="card-body">
+                <form id="itemForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success display_none" id="BackTap" style="width: 50%;margin-top: 7%; background-color: brown;">
+                                @Res.Back
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success" id="NextTap" style="width: 50%;margin-top: 7%;">
+                                @Res.Next
+                            </button>
+                            <button type="button" class="btn btn-success display_none " id="SaveUpdate" style="width: 50%;margin-top: 7%;">  @Res.Save </button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> *@
+</body>
+</html>
+
+
+
+<script src="~/ClientApp/ShowPrice/ShowPrice.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

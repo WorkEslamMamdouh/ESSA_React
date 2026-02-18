@@ -1,0 +1,193 @@
+@using Core.UI.Models
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعريف الأصناف وتعدد الوحدات</title>
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"> *@
+</head>
+<body>
+    <div class="container mt-5">
+        @* <h1 class="text-center mb-4">@Res.Item_definition</h1> *@
+
+        <!-- Filters Section -->
+        @*         <div class="card mb-4">
+        <div class="card-body">
+        <h5 class="card-title">الفلاتر</h5>
+        <form id="filterForm">
+        <div class="row">
+        <div class="col-md-4">
+        <label for="categoryFilter" class="form-label">الفئة</label>
+        <select id="categoryFilter" class="form-select">
+        <option value="">@Res.Choose_category</option>
+        <!-- Populate categories dynamically -->
+        </select>
+        </div>
+        <div class="col-md-4">
+        <label for="familyFilter" class="form-label">النوع</label>
+        <select id="familyFilter" class="form-select">
+        <option value="">@Res.Choose_the_type</option>
+        <!-- Populate item families dynamically -->
+        </select>
+        </div>
+        <div class="col-md-4 align-self-end">
+        <button type="button" class="btn btn-primary w-100" onclick="applyFilters()">تطبيق الفلاتر</button>
+        </div>
+        </div>
+        </form>
+        </div>
+        </div> *@
+
+        <!-- Item Definition Section -->
+        <div id="TapMaster" class="card mb-4 display_none">
+            <div class="card-body">
+                <h5 class="card-title">@Res.New_Item_definition</h5>
+                <form id="itemForm">
+                    <div class="row mb-3">
+                        <div class=" IsService col-md-6">
+                            <label for="Item" class="form-label">@Res.Item</label>
+                            <input type="radio" name="IsService" id="ISItem" class="form-control _Clear" placeholder=" ">
+                        </div>
+                        <div class="IsService col-md-6">
+                            <label for="Item" class="form-label">@Res.Service</label>
+                            <input type="radio" name="IsService" id="IsService" class="form-control _Clear" placeholder=" ">
+                        </div>
+                        <div class=" IsService ISItem col-md-6">
+                            <label for="ItemFamilyID" class="form-label">@Res.Item_Family</label>
+                            <select id="ItemFamilyID" class="form-control">
+                                <option value="">@Res.Item_Family</option>
+                                <!-- Populate item families dynamically -->
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="ItemCode" class="form-label">@Res.Item_Code</label>
+                            <input type="text" disabled id="ItemCode" class="form-control _Clear" placeholder="@Res.Item_Code">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="ItemName" class="form-label">@Res.Item_Name</label>
+                            <input type="text" id="ItemName" class="form-control _Clear" placeholder="@Res.Item_Name">
+                            <input type="hidden" id="ISActive" class="form-control _Clear" placeholder="@Res.Item_Name">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="CostPrice" class="form-label">@Res.Cost_Price</label>
+                            <input type="number" id="CostPrice" class="form-control _Clear" placeholder="@Res.Cost_Price">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="UnitPrice" class="form-label">@Res.UnitPrice</label>
+                            <input type="number" id="UnitPrice" class="form-control _Clear" placeholder="@Res.Unit_Price">
+                        </div>
+                        <div class="col-md-6 _Quantity">
+                            <label for="QtyOpenBalances" class="form-label">@Res.Start_Quantity</label>
+                            <input type="number" id="QtyOpenBalances" disabled="disabled" class="form-control _Clear" placeholder="@Res.Start_Quantity">
+                        </div>
+                        <div class="col-md-6 _Quantity">
+                            <label for="OneHandQuantity" class="form-label">@Res.Quantity</label>
+                            <input type="number" id="OneHandQuantity" class="form-control _Clear" disabled placeholder="@Res.Quantity">
+                        </div>
+
+                    </div>
+
+                    <div class="row TaxCode display_none" >
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <label for="TaxCode" class="form-label">CodeName</label>
+                                <input type="hidden" id="ItemTaxID" class="form-control _Clear" placeholder="ItemTaxID">
+                                <input type="text" id="codeName" disabled="disabled"  class="form-control _Clear " placeholder="CodeName">
+                             </div>
+                            <div class="col-md-4">
+                                <label for="TaxCode" class="form-label">TaxCode</label>
+                                <input type="text" id="itemCode" disabled="disabled" class="form-control _Clear " placeholder="TaxCode">
+
+                            </div>
+                            <div class="col-md-2">
+                                <label for="Add_Cust" class="form-label">____</label>
+                                <input type="button" id="btnItemTaxEG"   value="TaxCode" class="form-control btn-info _Clear " placeholder="TaxCode">
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label for="Remarks" class="form-label">@Res.Remarks</label>
+                            <textarea id="Remarks" class="form-control _Clear" rows="3" placeholder="@Res.Remarks"></textarea>
+                        </div>
+                        <div class="col-md-3 u-align-center u-container-style u-layout-cell u-size-20 u-layout-cell-1" style="background-image: linear-gradient(#c95b5600, #c95b5600);">
+                            <div class="u-container-layout u-valign-middle u-container-layout-1">
+                                <div alt="" class="u-image u-image-circle u-image-1" data-image-width="626" data-image-height="417" style="width: 108px;">
+                                    <img loading="lazy" id="ItemImage" class="u-expanded-width u-image u-image-round u-radius-50 u-image-2" src="/NewStyle/images/AddImage.png" style="border: 7px solid white; cursor: cell; height: 100%; width: 100%; " alt="" data-image-width="444" data-image-height="444">
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                    </div>
+
+                    <div class="POS col-md-6">
+                        <label for="backgroundColor" class="form-label">@Res.Background_Color</label>
+                        <input type="color" id="backgroundColor" class="form-control _Clear" placeholder="@Res.Background_Color">
+                    </div>
+                    <div class="POS col-md-6">
+                        <label for="FontColor" class="form-label">@Res.Font_Color</label>
+                        <input type="color" id="FontColor" class="form-control _Clear" placeholder="@Res.Font_Color">
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Units Definition Section -->
+        <div id="TapDetails" class="card display_none">
+            <div class="card-body">
+                <h5 class="card-title">@Res.Item_related_units</h5>
+                <!-- Units Table -->
+                <div class="mt-4" id="unitsTableBody">
+                </div>
+         
+            </div>
+        </div>
+
+
+
+        <div id="" class="card ">
+            <div class="card-body">
+                <form id="itemForm">
+                    <div class="row">
+                        <div class="col-md-6"> 
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success display_none" id="BackTap" style="width: 50%;margin-top: 7%; background-color: brown;">
+                                @Res.Back
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success" id="NextTap" style="width: 50%;margin-top: 7%;">
+                                @Res.Next
+                            </button>
+                            <button type="button" class="btn btn-success display_none " id="SaveUpdate" style="width: 50%;margin-top: 7%;"> @Res.Save </button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> *@
+</body>
+</html>
+
+
+<script src="~/ClientApp/Items/Items.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

@@ -1,0 +1,350 @@
+@using Core.UI.Models
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Include JsBarcode library -->
+    <script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        #invoice {
+            width: 400px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* شعار الشركة */
+        #company-logo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+            #company-logo img {
+                max-width: 80px;
+                border-radius: 8px;
+            }
+
+        /* عنوان الفاتورة */
+        #invoice-title {
+            text-align: center;
+            color: #007BFF;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        /* معلومات الفاتورة */
+        #invoice-details {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* العناصر */
+        .invoice-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+            .invoice-item span {
+                font-weight: bold;
+            }
+
+        /* تحسين عرض السعر والكمية */
+        .item-details {
+            font-size: 15px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+            .item-details span {
+                /*     display: inline-block;
+                                    margin-left: 5px;
+                                    color: #000;
+                                    font-weight: bold;
+                                    font-size: 18px; /* تكبير السعر والكمية */
+                color: #000;
+                font-weight: bold;
+                font-size: 18px;
+            }
+
+        .total-per-item {
+            font-size: 16px;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        /* الإجماليات */
+        .invoice-item.total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        #invoice-cart-total, #invoice-total {
+            color: #007BFF;
+            font-size: 18px; /* تكبير الإجمالي */
+        }
+
+        /* ترحيب بالعميل */
+        #customer-greeting {
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* اسم المنشئ */
+        #creator-name {
+            font-size: 12px;
+            color: #555;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        /* أرقام الشركة */
+        #company-contact {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 15px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        /* QR Code */
+        #qr-code {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            #qr-code img {
+                width: 100px;
+                height: 100px;
+            }
+    </style>
+
+</head>
+<body>
+
+    <section class="u-align-left u-clearfix u-section-9 " id="carousel_c35d">
+        <div class="u-clearfix u-sheet u-sheet-1">
+            <div class="u-container-style u-group u-group-1">
+                <div class="u-container-layout u-container-layout-1">
+                    <h2 class=" Type_Invoice u-align-center u-text u-text-1">@Res.Print_Invoice</h2>
+                </div>
+            </div>
+            @************************************************Review invoice****************************************************************@
+            <!-- الفاتورة -->
+            <div id="invoice" class="invoice">
+
+                <!-- شعار الشركة -->
+                @*    <div id="company-logo">
+        <img src="~/newstyle/images/pngegginvprint.png" alt="شعار الشركة">
+        </div>
+
+        *@
+
+                <h6><br></h6>
+
+                <div class="invoice-item  ">
+                    <span id="company-logo">      <img src="~/newstyle/images/pngegginvprint.png" alt="شعار الشركة">  </span>
+                    <span id="qrcode">    </span>
+                </div>
+
+                <div class="invoice-item company-info">
+                    <div style="width: 100%;">
+                        <p id="InvCompName"> </p>
+                  @*       <p id="InvVatNo"></p>
+                        <p id="InvMobile"></p>
+                        <p id="InvAdress"></p> *@
+                    </div>
+                </div>
+
+                <div class="invoice-item Customer-info display_none">
+                    <div style="width: 100%;">
+                        <p style="width: 27%;background-color: #e3e3e3;font-size: 1.125rem;margin-top: 20px;margin-bottom: 20px;font-weight: bold;line-height: 2.6;padding-right: 2%;border-radius: 16px;">بيانات العميل   </p>
+                        <p id="CustomerName"> </p>
+                        <p id="CustomerVatNo"> </p>
+                        <p id="CustomerMobile"> </p>
+                        <p id="CustomerAddress"> </p>
+                    </div>
+                </div>
+                <!-- عنوان الفاتورة -->
+                <h2 id="invoice-title">@Res.Sales_bill</h2>
+
+                <!-- تفاصيل الفاتورة -->
+                <div id="invoice-details">
+                    <p id="TrNo"><strong>@Res.Bill_number</strong> 12345</p>
+                    <p id="CreateAt"><strong>تاريخ الإصدار:</strong> 2025-01-08</p>
+                    <p id="CreateBy"><strong>@Res.The_name_of_the_originator</strong>@Res.Ahmed_Mohamed</p>
+                    <p id="invoice-SalesMan"><strong>@Res.The_name_of_the_originator</strong>@Res.Ahmed_Mohamed</p>
+                    <p id="invoice-Assistant"><strong>@Res.The_name_of_the_originator</strong>@Res.Ahmed_Mohamed</p>
+                </div>
+
+                <!-- العناصر -->
+                <div id="invoice-items">
+                    <div class="invoice-item">
+                        <div>
+                            <span>منتج 1</span>
+                            <div class="item-details">
+                                <span>سعر:</span> ر.س 3
+                                <span>كمية:</span> 2
+                            </div>
+                        </div>
+                        <div class="total-per-item">الإجمالي: ر.س 6</div>
+                    </div>
+                    <div class="invoice-item">
+                        <div>
+                            <span>منتج 2</span>
+                            <div class="item-details">
+                                <span>سعر:</span> ر.س 5
+                                <span>كمية:</span> 1
+                            </div>
+                        </div>
+                        <div class="total-per-item">الإجمالي: ر.س 5</div>
+                    </div>
+                </div>
+
+                <!-- الإجماليات -->
+                <div class="invoice-item">
+                    <span>الاجمالي  :</span>
+                    <span id="invoice-cart-total">11.00</span>
+                </div>
+                <div class="invoice-item Desc">
+                    <span> الخصم </span>
+                    <span id="invoice-Desc" style=" color: #df0000;">11.00</span>
+                </div>
+                <div class="invoice-item Tax">
+                    <span> الضريبه </span>
+                    <span id="invoice-Tax">11.00</span>
+                </div>
+                <div class="invoice-item Tax">
+                    <span> الصافي </span>
+                    <span id="invoice-Net">0.00</span>
+                </div>
+                <div class="invoice-item TypePay">
+                    <span>نوع الدفع : </span>
+                    <span id="invoice-TypePay" style="color: #880000;/* font-weight: bold; */font-size: 12px;">11.00</span>
+                </div>
+
+                <div class="invoice-item total">
+                    <span>إجمالي المستحق:</span>
+                    <span id="invoice-total" style="color: #06aa0f;font-weight: bold;">11.00</span>
+                </div>
+
+
+
+
+                <!-- ترحيب بالعميل -->
+                <div id="customer-greeting">
+                    ....شكرًا لتعاملكم معنا! 💙
+                </div>
+
+                <!-- أرقام الشركة -->
+                <div id="company-contact">
+                    للاستفسار: 0237201172
+                </div>
+                <div id="company-contact">
+                    Powered by : Engineering System For Smart Applications
+                </div>
+
+            </div>
+            @************************************************Buttons****************************************************************@
+            <div class="u-form u-form-2">
+                <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                    <div class="u-align-left u-form-group-4 u-form-submit" style="visibility: hidden;">
+                        <a class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">@Res.Submit</a>
+                    </div>
+                    <div id="Id_Div_Back" class="u-align-left u-form-group-3 u-form-submit display_none">
+                        <a id="Id_Back" class=" u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2  " style="color: #ffffff !important; background-color: #d8b315 !important; ">@Res.Back</a>
+                        <input type="submit" value="@Res.Back" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-align-left u-form-group-4 u-form-submit" style="visibility: hidden;">
+                        <a class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">@Res.Submit</a>
+
+                    </div>
+                    <div id="Id_Div_Next" class="u-align-left u-form-group-3 u-form-submit" style="visibility: hidden;">
+                        <a id="Id_Next" class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">@Res.Next</a>
+                        <input type="submit" value="@Res.Next" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-align-left u-form-group-4 u-form-submit">
+                        <a id="_Print_Invoice" class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">@Res.Print</a>
+
+                    </div>
+                    <div id="Id_Div_Next_Step2" class="u-align-left u-form-group-3 u-form-submit display_none">
+                        <a id="Id_Next_Step2" class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">@Res.Next</a>
+                        <input type="submit" value="@Res.Next" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-align-left u-form-group-4 u-form-submit" style="visibility: hidden;">
+                        <a class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">@Res.Submit</a>
+
+                    </div>
+                    <div id="Id_Div_Back_Step2" class="u-align-left u-form-group-3 u-form-submit display_none">
+                        <a id="Id_Back_Step2" class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2  " style="color: #ffffff !important; background-color: #d8b315 !important;">@Res.Back</a>
+                        <input type="submit" value="@Res.Back" class="u-form-control-hidden">
+                    </div>
+                    <div class="u-align-left u-form-group-4 u-form-submit" style="visibility: hidden;">
+                        <a class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2">@Res.Submit</a>
+
+                    </div>
+                    <div id="Id_Div_Finish" class="u-align-left u-form-group-7 u-form-submit display_none">
+                        <a id="Id_Finish" class="u-btn u-btn-submit u-button-style u-hover-palette-1-dark-1 u-palette-1-base u-btn-2" style="color: #ffffff !important;background-color: #049e35 !important;">@Res.Done_Invoice</a>
+                        <input type="submit" value="Finish" class="u-form-control-hidden">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        @*   <input type="hidden" id="numberInput">
+        <button class="display_none" id="btnBarcode" onclick="convertToBarcode()">Convert</button>
+        *@
+    </section>
+
+
+
+    <input class="display_none" type="text" id="numberInput">
+    <button class="display_none" id="btnBarcode" onclick="convertToBarcode()">Convert</button>
+    <br>
+
+
+    <script>
+        function convertToBarcode() {
+            var numberInput = document.getElementById("numberInput").value;
+            // Clear the previous barcode
+            document.getElementById("barcode").innerHTML = "";
+            // Generate the barcode
+            JsBarcode("#barcode", numberInput, {
+                format: "CODE128", // You can choose the barcode format you prefer
+                displayValue: true // Display the value below the barcode
+            });
+        }
+
+        // var modal = document.getElementById("myModalLoder");
+        // modal.style.display = "none";
+    </script>
+</body>
+
+
+
+
+<script src="~/ClientApp/Print/PrintInvPos.js"></script>
+</html>

@@ -1,0 +1,118 @@
+﻿@using Core.UI.Models
+<section class="u-align-left u-clearfix u-section-9 " id="carousel_c35d">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-group u-group-1">
+            <div class="u-container-layout u-container-layout-1"> 
+            </div>
+        </div>
+        @************************************************Header****************************************************************@
+        <div id="Div_Header" class="u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2">
+                    <label for="EmpCode" class="u-label u-text-grey-40">@Res.EmpCode</label>
+                    <input disabled="disabled" type="text" id="EmpCode" name="EmpCode" placeholder="@Res.EmpCode" class="Clear_Header u-input u-input-rectangle" required="">
+                    <input type="hidden" id="EmpID" name="EmpID" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2"> 
+                    <label for=" Re " class="u-label u-text-grey-40">@Res.Active</label> 
+                    <select id="drpIsStatus" name="select" class="u-input u-input-rectangle"> 
+                        <option value="1" data-calc="">@Res.Active ✅</option>
+                        <option value="0" data-calc="">@Res.Not_Active ❌</option>
+                    </select>                    
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2 display_none">
+                    <label for="UserLogin" class="u-label u-text-grey-40">@Res.User_Name</label>
+                    <input type="text" id="UserLogin" name="UserLogin" placeholder="@Res.User_Name" class="u-input u-input-rectangle" required="">
+
+                </div>  
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2 display_none">
+                    <label for="Password" class="u-label u-text-grey-40">@Res.Password</label>
+                    <input type="password" id="Password" name="Password" placeholder="@Res.Password" class="u-input u-input-rectangle" required=""> 
+                </div>
+
+
+
+      
+                <div class="u-form-date u-form-group u-form-partition-factor-1 u-form-group-1">
+                    <label for="Txt_Receive_TrData" class="u-label u-text-grey-40">@Res.Full_Name</label>
+                    <input type="text" id="Emp_Name" name="SalesManName" placeholder="@Res.Full_Name" class="u-input u-input-rectangle" required="">
+                </div>
+                
+                <div class="u-form-date u-form-group u-form-partition-factor-1 u-form-group-1">
+                    <label for="Email" class="u-label u-text-grey-40">@Res.Email</label>
+                    <input type="email" id="Email" name="Email" placeholder="@Res.Email" class="u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2">
+                    <label for="EmpType" class="u-label u-text-grey-40">@Res.Type</label> 
+                    <select id="drpEmpType" name="select" class="u-input u-input-rectangle"> 
+                    </select>
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2 display_none">
+                    <input type="hidden" id="Glop_ManagerID" name="Mobile" placeholder="Manager" class="u-input u-input-rectangle" required="">
+                    <label for="SerchManager" class="u-label u-text-grey-40">Manager</label>
+                    <a id="SerchManager" style="width: 100%;" class="   Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">Manager</a>
+
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2 display_none">
+                    <label for="Role" class="u-label u-text-grey-40">@Res.Privilage</label>
+                    <select id="drpRole" name="select" class="u-input u-input-rectangle">
+                    </select>
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2">
+                    <label for="Mobile" class="u-label u-text-grey-40">@Res.Mobile</label>
+                    <input type="text" id="Mobile" name="Mobile" placeholder="@Res.Mobile" class="u-input u-input-rectangle" required="">
+
+                </div>
+
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-3">
+                    <label for="Salary" class="u-label u-text-grey-40">@Res.Salary</label>
+                    <input type="text" id="Salary" name="Salary" placeholder="@Res.Salary" class="u-input u-input-rectangle" required="">
+
+                </div>
+
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-2">
+                    <label for=" Re " class="u-label u-text-grey-40">@Res.Gender</label>
+                    <select id="Gender" name="select" class="u-input u-input-rectangle">
+                        <option value="1" data-calc="">@Res.Male_ 👨‍🦱</option>
+                        <option value="0" data-calc="">@Res.Female_ 👩‍🦰</option>
+                    </select>
+                </div>
+                 
+                <div class="u-form-group u-form-partition-factor-3 u-form-phone u-form-group-3 display_none">
+                    <label for="Custody" class="u-label u-text-grey-40">@Res.Custody</label>
+                    <input type="text" disabled id="Custody" name="Custody" placeholder="@Res.Custody" class="u-input u-input-rectangle" required="">
+
+                </div>
+                 
+                <div class="u-form-group u-form-partition-factor-3 u-form-phone u-form-group-3 display_none">
+                    <label for="Loan" class="u-label u-text-grey-40">@Res.Loan</label>
+                    <input type="text" disabled id="Loan" name="Loan" placeholder="@Res.Loan" class="u-input u-input-rectangle" required="">
+
+                </div>
+
+                <div class="u-form-group u-form-message u-form-group-7">
+                    <label for="Remarks" class="u-label u-text-grey-40">@Res.Remarks</label>
+                    <textarea placeholder="@Res.Remarks" rows="4" cols="50" id="Remarks" name="Remarks" class="Clear_Header u-input u-input-rectangle" required=""></textarea>
+                </div>
+
+                <div class="u-form-group u-form-group-5">
+                    <input type="button" id="btnAdd" value="@Res.Save" class="Style_Add_Item u-input u-input-rectangle" required="">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="~/ClientApp/Employees/Employees.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

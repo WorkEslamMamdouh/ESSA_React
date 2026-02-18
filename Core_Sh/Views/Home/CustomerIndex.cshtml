@@ -1,0 +1,174 @@
+@using Core.UI.Models
+<section class="u-align-left u-clearfix u-section-9 " id="carousel_c35d">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-group u-group-1">
+            <div class="u-container-layout u-container-layout-1">
+                <h2 class="u-align-center u-text u-text-1">@Res.Customer_data</h2>
+            </div>
+        </div>
+        @************************************************Header****************************************************************@
+        <div id="Div_Header" class="u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="CustomerCODE" class="u-label u-text-grey-40"> @Res.Customer_code  </label>
+                    <input type="text" id="Cust_CustomerCODE" name="CustomerCODE" disabled placeholder=" @Res.Customer_code" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                    <label for="Txt_Receive_TrData" class="u-label u-text-grey-40">@Res.Customer_Name</label>
+                    <input type="text" id="Cust_NAMEA" name="NAMEA" placeholder="@Res.Customer_Name" class="u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="MOBILE" class="u-label u-text-grey-40">@Res.Mobile</label>
+                    <input type="text" id="Cust_MOBILE" name="MOBILE" placeholder="   @Res.Mobile" class="u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="IsCreditCustomer" class="u-label u-text-grey-40"> @Res.TypePay   </label>
+                    <select id="IsCreditCustomer" name="IsCreditCustomer" class="u-input u-input-rectangle">
+                        <option value="0">@Res.Cash</option>
+                        <option value="1">@Res.Credit</option>
+                    </select>
+                </div>
+
+                <div class="_CenterCar u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="CarBrand" class="u-label u-text-grey-40"> @Res.CarBrand   </label>
+                    <input type="text" id="Cust_CarBrand" placeholder="@Res.CarBrand" name="CarBrand" class="Clear_Header u-input u-input-rectangle" required="">
+
+                </div>
+
+                <div class="_CenterCar u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="CarNo" class="u-label u-text-grey-40"> @Res.CarNo   </label>
+                    <input type="text" id="Cust_CarNo" placeholder="@Res.CarNo" name="CarNo" class="Clear_Header u-input u-input-rectangle" required="">
+
+                </div>
+
+                <div class="_CenterCar u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="DestructionKm" class="u-label u-text-grey-40"> @Res.DestructionKm   </label>
+                    <input type="text" id="Cust_DestructionKm" placeholder="@Res.DestructionKm" name="DestructionKm" class="Clear_Header u-input u-input-rectangle" required="">
+
+                </div>
+
+                <div class="_CenterCar u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="DrivingNum" class="u-label u-text-grey-40"> @Res.DrivingNum   </label>
+                    <input type="text" id="Cust_DrivingNum" placeholder="@Res.DrivingNum" name="DrivingNum" class="Clear_Header u-input u-input-rectangle" required="">
+
+                </div>
+
+
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Cus_ISPersonal" class="u-label u-text-grey-40"> @Res._Type   </label>
+                    <select id="Cus_ISPersonal" name="Cus_ISPersonal" class="u-input u-input-rectangle">
+                        <option value="1">@Res.subjective</option>
+                        <option value="0">@Res.Company</option>
+                    </select>
+                </div>
+
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="VatNo" class="u-label u-text-grey-40">@Res.The_tax_number</label>
+                    <input type="text" placeholder="@Res.The_tax_number" id="Cust_VatNo" name="VatNo" class="u-input u-input-rectangle" required="">
+
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_District" class="u-label u-text-grey-40"> @Res.Address_District </label>
+                    <input type="text" id="Cust_Address_District" placeholder=" @Res.Address_District" name="Address_District" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_postal" class="u-label u-text-grey-40">@Res.Postal_address</label>
+                    <input type="text" id="Cust_Address_postal" placeholder="@Res.Postal_address" name="Address_postal" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_City" class="u-label u-text-grey-40">@Res.City</label>
+                    <input type="text" id="Cust_Address_City" placeholder="@Res.City" name="Address_City" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_Province" class="u-label u-text-grey-40"> @Res.Address_Province </label>
+                    <input type="text" id="Cust_Address_Province" placeholder=" @Res.Address_Province" name="Address_Province" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_Street" class="u-label u-text-grey-40">  @Res.Street_address</label>
+                    <input type="text" id="Cust_Address_Street" placeholder="   @Res.Street_address" name="Address_Street" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_BuildingNo" class="u-label u-text-grey-40"> @Res.Building_number</label>
+                    <input type="text" id="Cust_Address_BuildingNo" placeholder="   @Res.Building_number" name="Address_BuildingNo" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_Str_Additional" class="u-label u-text-grey-40"> @Res.Additional_address   </label>
+                    <input type="text" id="Cust_Address_Str_Additional" placeholder="  @Res.Additional_address" name="Address_Str_Additional" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_Build_Additional" class="u-label u-text-grey-40"> @Res.Address_Build_Additional    </label>
+                    <input type="text" id="Cust_Address_Build_Additional" placeholder=" @Res.Address_Build_Additional    " name="Address_Build_Additional" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+
+
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="NationalityID" class="u-label u-text-grey-40"> @Res.Nationality   </label>
+                    <select id="NationalityID" name="NationalityID" class="u-input u-input-rectangle">
+                    </select>
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_Floor" class="u-label u-text-grey-40"> @Res.Address_Floor    </label>
+                    <input type="text" id="Address_Floor" placeholder=" @Res.Address_Floor    " name="Address_Floor" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="_CenterCarNot u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4 TaxCode">
+                    <label for="Address_Room" class="u-label u-text-grey-40"> @Res.Address_Room    </label>
+                    <input type="text" id="Address_Room" placeholder=" @Res.Address_Room    " name="Address_Room" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+
+
+                <div class="  u-form-group u-form-partition-factor-1 u-form-phone u-form-group-4">
+                    <label for="Address_Build_Additional" class="u-label u-text-grey-40"> @Res.Remarks    </label>
+                    <textarea id="Cust_Remarks" class="form-control _Clear" rows="3" placeholder="@Res.Remarks"></textarea>
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Open_Balance" class="u-label u-text-grey-40">@Res.Open_Balance</label>
+                    <input type="text" id="Cust_Open_Balance" name="Open_Balance" disabled placeholder="   @Res.Open_Balance" class="u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Balance" class="u-label u-text-grey-40">@Res.Open_BalanceDate</label>
+                    <input type="date" id="Open_BalanceDate" name="Balance" placeholder="@Res.Open_BalanceDate" class="u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Credit" class="u-label u-text-grey-40">@Res.CreditCut</label>
+                    <input type="text" id="Cust_Credit" name="Credit" disabled placeholder="   @Res.CreditCut" class="u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Debit" class="u-label u-text-grey-40">@Res.Debit</label>
+                    <input type="text" id="Cust_Debit" name="Debit" placeholder="   @Res.Debit" disabled class="u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Balance" class="u-label u-text-grey-40">@Res.Balance</label>
+                    <input type="text" id="Cust_Balance" name="Balance" placeholder="@Res.Balance" disabled class="u-input u-input-rectangle" required="">
+                </div>
+
+
+                <div class="u-form-group u-form-group-5">
+                    <input type="button" id="Cust_btnAdd" value="@Res.Save" class="Style_Add_Item u-input u-input-rectangle" required="">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="~/ClientApp/Customer/Customer.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

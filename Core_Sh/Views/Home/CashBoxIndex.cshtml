@@ -1,0 +1,118 @@
+@using Core.UI.Models
+
+
+<style>
+
+    .u-btn {
+        margin-top: 0px !important;
+        margin-bottom: 2px !important;
+    }
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.From_Date</label>
+            <input type="date" placeholder="0" id="Txt_From_Date" class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.To_Date</label>
+            <input type="date" placeholder="0" id="Txt_To_Date" class=" u-input u-input-rectangle">
+        </div>
+              
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="Fin_Type" class="u-label u-text-grey-40">@Res.Type</label>
+            <select id="Fin_Type" name="select" class="u-input u-input-rectangle"> 
+            </select>
+        </div>
+         
+
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="Cash_Type" class="u-label u-text-grey-40">@Res.Cash_Type</label>
+            <select id="Cash_Type" name="select" class="u-input u-input-rectangle"> 
+            </select>
+        </div>
+         
+        <div class="u-form-group u-form-name u-form-partition-factor-6">
+            <label for="" class="u-label u-text-grey-40"> </label>
+            <a id="Filter_View" style="width: 100%;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.Filter</a>
+
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+
+            <h6 id="btnDelete_Filter" class=" " style="cursor: pointer;">❌</h6>
+        </div>
+
+    </form>
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-5"></div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-5">
+            <a id="PrintPdf" style="width: 100%; border-radius:10px 10px 10px 10px ;cursor: pointer; background-color: #830202;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">
+                @Res.Print_Pdf  <i class="fa fa-file-pdf-o"></i>
+            </a>
+        </div>
+
+
+        <div class="u-form-group u-form-name u-form-partition-factor-5">
+            <a id="PrintExcel" style="width: 100%; border-radius:10px 10px 10px 10px ;cursor: pointer; " class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">
+                @Res.Print_Excel  <i class="fa fa-file-excel-o"></i>
+            </a>
+        </div>
+
+
+    </form>
+
+    <div class="inside-table my-4"> 
+        <div class="u-form-email u-form-group u-form-partition-factor-2" style="border-color: black;margin-left: 5%;width: 90%;margin-bottom: 1%;">
+            <label for="Txt_Ref_No" class="u-label u-text-grey-40">@Res._____Search_</label>
+            <input type="text" placeholder="@Res.Search" id="txtSearch" name="email" class="Clear_Header u-input u-input-rectangle" required="">
+        </div>
+        <br>
+        <br>
+        <div id="_Grid1">
+        </div>
+    </div>
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-1" style="width: 54%;"></div>
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.TotalDebit</label>
+            <input type="text" placeholder="0" id="txtTotalDebit" disabled class=" u-input u-input-rectangle">
+        </div> 
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.TotalCredit</label>
+            <input type="text" placeholder="0" id="txtTotalCredit" disabled class=" u-input u-input-rectangle">
+        </div> 
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.Balance</label>
+            <input type="text" placeholder="0" id="txtBalance" disabled class=" u-input u-input-rectangle">
+        </div>
+
+    </form>
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-1"></div>
+        <div class="u-form-email u-form-group u-form-partition-factor-2" style="margin-right:4%;">
+            <label for="" class="u-label u-text-grey-40" style="margin-right: 81%;width: 100%;">الاجمالي بدون الرصيد السابق</label>
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.TotalDebit</label>
+            <input type="text" placeholder="0" id="txtDayTotalDebit" disabled class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.TotalCredit</label>
+            <input type="text" placeholder="0" id="txtDayTotalCredit" disabled class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.Balance</label>
+            <input type="text" placeholder="0" id="txtDayBalance" disabled class=" u-input u-input-rectangle">
+        </div>
+
+    </form>
+</div>
+ 
+<script src="~/ClientApp/CashBox/CashBox.js"></script>
+ 

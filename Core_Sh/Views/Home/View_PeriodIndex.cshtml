@@ -1,0 +1,92 @@
+@using Core.UI.Models
+
+<style>
+
+    .u-btn {
+        margin-top: 0px !important;
+        margin-bottom: 2px !important;
+    }
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+        </div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-1  ">
+            <label for="" class="u-label u-text-grey-40">@Res.Close_Day</label>
+            <input type="button" value="You Need Close New Day 💵" id="butCloseDay" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle" style="background-color: #054258;">
+        </div>
+
+        <div class="u-form-group u-form-message u-form-partition-factor-1">
+            <label for="Remarks" class="u-label u-text-grey-40">@Res.Remarks</label>
+            <textarea placeholder="@Res.Remarks" rows="4" cols="50" id="Remarks" name="Remarks" class="Clear_Header u-input u-input-rectangle" required=""></textarea>
+        </div>
+
+        <div class="u-form-email u-form-group u-form-partition-factor-7 display_none">
+            <label for="" class="u-label u-text-grey-40">@Res.From_Date</label>
+            <input type="date" placeholder="0" id="Txt_From_DateSal" class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-group u-form-name u-form-partition-factor-7 display_none">
+            <label for="" class="u-label u-text-grey-40">@Res.To_Date</label>
+            <input type="date" placeholder="0" id="Txt_To_DateSal" class=" u-input u-input-rectangle">
+        </div>
+
+
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.Month</label>
+            <select id="db_Month" name="select" class="u-input u-input-rectangle">
+                <option value="01">1</option>
+                <option value="02">2</option>
+                <option value="03">3</option>
+                <option value="04">4</option>
+                <option value="05">5</option>
+                <option value="06">6</option>
+                <option value="07">7</option>
+                <option value="08">8</option>
+                <option value="09">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select> 
+        </div>
+
+
+
+
+    </form>
+
+    <div class="inside-table my-4">
+
+        <div class="u-form-email u-form-group u-form-partition-factor-2  display_none" style="text-align: center; border-color: black;margin-left: 5%;width: 90%;margin-bottom: 1%;">
+
+            <a id="Filter_ViewSal" style="width: 100%;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle display_none">@Res.Filter</a>
+            <h6 id="btnDelete_FilterSal" class="display_none" style="  cursor: pointer; display:none;">❌</h6>
+
+        </div>
+         
+        <div class="u-form-email u-form-group u-form-partition-factor-2 display_none" style="border-color: black;margin-left: 5%;width: 90%;margin-bottom: 1%;">
+            <label for="txtSearchSal" class="u-label u-text-grey-40">@Res._____Search_</label>
+            <input type="text" placeholder="@Res.Search" id="txtSearchSal" name="email" class="Clear_Header u-input u-input-rectangle" required="">
+        </div>
+
+        <div id="_GridSal">
+        </div>
+ 
+        <div class="u-form-group u-form-name u-form-partition-factor-1  ">
+            <label for="" class="u-label u-text-grey-40">@Res.Total_Balances</label>
+            <input type="text" placeholder="0" id="TotalBalances" disabled class=" u-input u-input-rectangle">
+        </div>
+
+
+    </div>
+
+ 
+</div>
+
+
+   
+<script src="~/ClientApp/View_Period/View_Period.js"></script> 
+

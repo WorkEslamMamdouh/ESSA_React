@@ -1,0 +1,53 @@
+@using Core.UI.Models
+<section class="u-align-left u-clearfix u-section-9 " id="carousel_c35d">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-group u-group-1">
+            <div class="u-container-layout u-container-layout-1">
+                <h2 class="u-align-center u-text u-text-1">   @Res.Supplier_data    </h2>
+            </div>
+        </div>
+        @************************************************Header****************************************************************@
+        <div id="Div_Header" class="u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="SupplierCODE" class="u-label u-text-grey-40"> @Res.Supplier_code  </label>
+                    <input disabled="disabled" type="text" id="Supp_SupplierCODE" name="SupplierCODE" placeholder=" @Res.Supplier_code" class="Clear_Header u-input u-input-rectangle" required="">
+                    <input type="hidden" id="Supp_TextSupplierID" name="SupplierID" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                    <label for="Txt_Receive_TrData" class="u-label u-text-grey-40">@Res.Supplier_Name</label>
+                    <input type="text" id="Supp_SupplierName" name="SupplierName" placeholder="@Res.Supplier_Name" class="u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Mobile" class="u-label u-text-grey-40">   @Res.Mobile</label>
+                    <input type="text" id="Supp_Mobile" name="Mobile" placeholder="   @Res.Mobile" class="u-input u-input-rectangle" required="">
+
+                </div>
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="IsCash" class="u-label u-text-grey-40">  @Res.TypePay </label>
+                    <select id="Supp_IsCash" name="IsCash" class="u-input u-input-rectangle">
+                        <option value="1">@Res.Cash</option>
+                        <option value="0">@Res.Credit</option>
+                    </select>
+                </div>
+
+                <div class="u-form-group u-form-message u-form-group-7">
+                    <label for="Remarks" class="u-label u-text-grey-40">@Res.Remarks</label>
+                    <textarea placeholder="@Res.Remarks" rows="4" cols="50" id="Supp_Remarks" name="Remarks" class="Clear_Header u-input u-input-rectangle" required=""></textarea>
+                </div>
+
+                <div class="u-form-group u-form-group-5">
+                    <input type="button" id="Supp_btnAdd" value="@Res.Save" class="Style_Add_Item u-input u-input-rectangle" required="">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</section>
+
+ 
+	<script src="~/ClientApp/suppliers/suppliers.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

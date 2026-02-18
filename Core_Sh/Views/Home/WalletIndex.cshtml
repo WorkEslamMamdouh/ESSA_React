@@ -1,0 +1,363 @@
+@using Core.UI.Models
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="Hello!">
+    <meta name="description" content="">
+    <link rel="stylesheet" href="~/styleprofile/nicepage.css" media="screen">
+    <link rel="stylesheet" href="~/styleprofile/Home.css" media="screen">
+    <script class="u-script" type="text/javascript" src="~/styleprofile/jquery.js" defer=""></script>
+    <script class="u-script" type="text/javascript" src="~/styleprofile/nicepage.js" defer=""></script>
+    <meta name="generator" content="~/styleprofile/nicepage 6.9.2, ~/styleprofile/nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i|Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+
+
+
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="~/styleprofile/Home">
+    <meta property="og:type" content="website">
+    <meta data-intl-tel-input-cdn-path="~/styleprofile/intlTelInput/">
+</head>
+
+<body data-~ styleprofile home-page="~/styleprofile/Home.html" data-~ styleprofile home-page-title="~/styleprofile/Home" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
+
+    <section class="u-align-center u-clearfix u-white u-section-1" id="carousel_9de4">
+        <div class="u-clearfix u-sheet u-valign-middle-lg u-valign-middle-md u-valign-middle-sm u-valign-middle-xs  ">
+            @* <h1 class="u-custom-font u-font-raleway u-text u-text-default u-text-palette-1-base u-text-1">@Res.Hello</h1>  *@
+            <div class="u-align-left u-container-style u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-group u-palette-1-base u-radius-20 u-shape-round u-group-1">
+                <div class="u-container-layout u-valign-middle-md u-valign-middle-sm u-valign-middle-xs u-container-layout-1">
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.User_ID</h6>
+                    <p class="u-custom-font u-text u-text-15" id="_Prof_User_ID">--------</p>
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.Name</h6>
+                    <p class="u-custom-font u-text u-text-15" id="_Prof_Full_Name">--------</p>
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.Address</h6>
+                    <p class="u-custom-font u-text u-text-15" id="_Prof_Address">--------</p>
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.Mail</h6>
+                    <p class="u-custom-font u-text u-text-15  " id="_Prof_Email">--------</p>
+
+                    @* <a href="#" class="u-border-1 u-border-active-palette-1-light-2 u-border-hover-palette-1-light-2 u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-active-palette-1-light-2 u-text-body-alt-color u-text-hover-palette-1-light-2 u-btn-1" id="_Prof_Email">--------</a> *@
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.Phone</h6>
+                    <p class="u-custom-font u-text u-text-15  " id="_Prof_Mobile">--------</p>
+
+                    @* <a href="tel:+987987654321" class="u-border-1 u-border-active-palette-2-base u-border-hover-palette-2-base u-border-no-left u-border-no-right u-border-no-top u-btn u-button-style u-none u-text-active-palette-2-base u-text-body-alt-color u-text-hover-palette-2-base u-btn-2" id="">--------</a> *@
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12 display_none">@Res.ID_Number</h6>
+                    <p class="u-custom-font u-text u-text-15 display_none" id="_Prof_ID_Number">--------</p>
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.Gender</h6>
+                    <p class="u-custom-font u-text u-text-15" id="_Prof_Gender">--------</p>
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.Job_Title</h6>
+                    <p class="u-custom-font u-text u-text-15" id="_Prof_Job_Title">--------</p>
+                    <h6 class="u-custom-font u-font-open-sans u-text u-text-12">@Res.Zone_Work</h6>
+                    <p class="u-custom-font u-text u-text-15" id="_Prof_Zone_Work">--------</p>
+                    <p class="u-custom-font u-text u-text-17" id="_Prof_Status">
+                        --------
+                    </p>
+
+                </div>
+            </div>
+            <img class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-image u-image-round u-radius-20 u-image-1" id="ID_img_Profile" alt="" data-image-width="997" data-image-height="700" src="/NewStyle/images/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg">
+            <div class="u-expanded-width-md u-expanded-width-sm u-expanded-width-xs u-list u-list-1">
+                <div class="u-repeater ">
+
+
+
+
+                    @* **************************************************************************** *@
+
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label id="_IdAccount_" class="Style_Lab">@Res.Account</label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Debit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="AccDebit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label class="Style_Labpad"> </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Credit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="AccCredit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class="  ">
+                            <label class="Style_Labpad"> </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Balance</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="AccBalance" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label id="_IdCustody_" class="Style_Lab">@Res.Custody</label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Debit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="CustDebit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label class="Style_Labpad"> </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Credit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="CustCredit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class="  ">
+                            <label class="Style_Labpad"> </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Balance</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="CustBalance" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label id="_IdLoan_" class="Style_Lab">@Res.Loan</label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Debit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="LoanDebit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label class="Style_Labpad"> </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Credit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="LoanCredit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class="  ">
+                            <label class="Style_Labpad">  </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Balance</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="LoanBalance" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label class="Style_Lab">@Res.Net</label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Debit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="NetDebit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                            <label class="Style_Labpad"> </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Credit</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="NetCredit" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class="  ">
+                            <label class="Style_Labpad">  </label>
+                            <p class="u-text u-text-default u-text-palette-1-dark-2 u-text-Labmargin _lablBalProif" style="">@Res.Balance</p>
+                            <h6 class="u-custom-font u-font-montserrat u-text u-text-default u-text-palette-1-base u-text-Custom" style=" " id="NetBalance" data-animation-name="counter" data-animation-event="scroll" data-animation-duration="3000">
+                                ---
+                            </h6>
+                        </div>
+                    </div>
+
+
+                    @* **************************************************************************** *@
+
+
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                        </div>
+                    </div>
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                        </div>
+                    </div>
+
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                        </div>
+                    </div>
+
+
+
+                    <div class="u-align-left u-container-style u-list-item u-repeater-item u-shape-rectangle">
+                        <div class=" ">
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+           
+
+
+            <a id=" " class="u-active-palette-1-light-2 u-border-none u-btn u-btn-round u-button-style u-hover-palette-1-light-2 u-palette-1-base u-radius-8 u-text-active-white u-text-body-alt-color u-text-hover-white u-btn-5" style="background-color: #00b82600 !important;">
+                &nbsp;&nbsp;
+            </a>
+
+
+
+
+        </div>
+    </section>
+
+    <div class=" u-sheet-1 ClassDivProfile">
+        <br>
+    </div>
+    <section class="u-align-center u-clearfix u-palette-1-base u-section-2" id="carousel_8d1d" style="background-image:linear-gradient(#c95b56, #fae4e4)">
+        <div class="u-clearfix u-sheet " style="padding-bottom: 45px;">
+
+            <div class="u-form-email u-form-group u-form-partition-factor-2">
+                &nbsp;&nbsp;
+            </div>
+
+            <div class="u-form-email u-form-group u-form-partition-factor-2">
+
+                <a id="But_Prof_RefrashData" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle" style="width: 100%;background-color: #008cff;width: 100%;color: white;background-color: #c95b56;padding: 5px 12px 5px 8px;border-radius: 10px 10px 0px 10px;">
+                    @Res.Refresh<i class="fa fa-refresh"></i>
+                </a>
+                <a id="But_Show_Detail_Covenant" class="But_Show_Detail_Covenant display_none" style="">@Res.Detail_Covenant_</a>
+
+
+            </div>
+
+
+            <div class="u-form-email u-form-group u-form-partition-factor-2">
+
+
+                <a id="But_Show_Detail_Salar" class="display_none Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle" style="width: 100%;background-color: #00b826;width: 100%;color: white;background-color: #1baf93;padding: 5px 12px 5px 8px;border-radius: 10px 10px 0px 10px;">
+                    @Res.Detail_Salary<i class="fa fa-money"></i>
+                </a>
+
+
+            </div>
+
+
+
+            <h5 class="u-text u-text-default u-text-1"> @Res.Account_Statment</h5>
+
+            <div class="u-expanded-width u-list u-list-1">
+                <div class=" " id=" ">
+
+                    <div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+                        <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+
+                            <div class="u-form-email u-form-group u-form-partition-factor-2">
+                                <label for="" class="u-label u-text-grey-40">@Res.From_Date</label>
+                                <input type="date" placeholder="0" id="Txt_From_Date" class=" u-input u-input-rectangle" style="border-radius: 10px 10px 10px 10px;">
+                            </div>
+                            <div class="u-form-group u-form-name u-form-partition-factor-2">
+                                <label for="" class="u-label u-text-grey-40">@Res.To_Date</label>
+                                <input type="date" placeholder="0" id="Txt_To_Date" class=" u-input u-input-rectangle" style="border-radius: 10px 10px 10px 10px;">
+                            </div>
+
+                            <div class="u-form-email u-form-group u-form-partition-factor-2  " style="text-align: center; border-color: black; ">
+                                <a id="Print_Pdf" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle" style="width: 100%;background-color: #830202;width: 100%;color: white;background-color: #830202;padding: 5px 12px 5px 8px;border-radius: 10px 10px 0px 10px;">
+                                    @Res.Print_Pdf<i class="fa fa-file-pdf-o"></i>
+                                </a>
+                            </div>
+                            <div class="u-form-email u-form-group u-form-partition-factor-2  " style="text-align: center; border-color: black; ">
+                                <a id="Print_Excel" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle" style="width: 100%;background-color: #00b826;width: 100%;color: white;background-color: #0a8002;padding: 5px 12px 5px 8px;border-radius: 10px 10px 0px 10px;">
+                                    @Res.Print_Excel<i class="fa fa-file-excel-o"></i>
+                                </a>
+
+                            </div>
+
+
+                        </form>
+
+
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class=" ">
+        <br>
+    </div>
+ 
+
+
+</body>
+</html>
+
+ 
+<script src="~/ClientApp/Wallet/Wallet.js"></script>

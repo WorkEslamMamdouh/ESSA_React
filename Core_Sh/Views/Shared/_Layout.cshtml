@@ -1,0 +1,934 @@
+@using Core.UI.Models
+
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="AlSarunah​​, Home​​, ​Welcome">
+    <meta name="description" content="">
+    <title>ESSA ERP</title>
+
+    <link href="~/NewStyle/nicepage.css" rel="stylesheet">
+    <script src="~/NewStyle/jquery.js"></script>
+    <script src="~/NewStyle/nicepage.js"></script>
+    <meta name="generator" content="Nicepage 5.20.7, nicepage.com">
+    <link href="~/NewStyle/css.css" rel="stylesheet">
+    <link href="~/NewStyle/css1.css" rel="stylesheet">
+
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Home">
+    <meta property="og:type" content="website">
+    <meta data-intl-tel-input-cdn-path="intlTelInput/">
+
+
+    <link href="~/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/NewStyle/css/adminpro-custon-icon.css">
+    <link rel="stylesheet" href="~/NewStyle/css/meanmenu.min.css">
+    <link rel="stylesheet" href="~/NewStyle/css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="~/NewStyle/css/animate.css">
+    <link rel="stylesheet" href="~/NewStyle/css/summernote.css">
+    <link rel="stylesheet" href="~/NewStyle/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="~/NewStyle/css/data-table/bootstrap-editable.css">
+    <link rel="stylesheet" href="~/NewStyle/css/c3.min.css">
+    <link rel="stylesheet" href="~/NewStyle/css/responsive.css">
+
+    <!--=============== Js Geid Style ===============-->
+    <link href="~/Scripts/IgGrid/infragistics.css" rel="stylesheet">
+    <link href="~/Scripts/IgGrid/theme.css" rel="stylesheet">
+    <link href="~/Scripts/jsgrid/jsgrid-theme.css" rel="stylesheet">
+    <link href="~/Scripts/jsgrid/jsgrid-theme.min.css" rel="stylesheet">
+    <link href="~/Scripts/jsgrid/jsgrid.css" rel="stylesheet">
+    <link href="~/Scripts/jsgrid/jsgrid.min.css" rel="stylesheet">
+
+
+    <link href="~/NewStyle/animate.min.css" rel="stylesheet">
+
+    <link href="~/NewStyle/Loder/Loder.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="~/NewStyle/images/ElSarona.png">
+
+    @* <link href="~/newstyle/font-awesome.min.css" rel="stylesheet"> *@
+
+
+
+
+
+
+
+    <script src="~/NewStyle/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <script src="~/newstyle/js/vendor/jquery-3.6.4.min.js"></script>
+    @* <script src="~/newstyle/js/vendor/jquery-3.4.1.js"></script> *@
+
+    <script src="~/NewStyle/js/data-table/bootstrap-table.js"></script>
+
+    <script src="~/NewStyle/js/data-table/data-table-active.js"></script>
+
+    <script src="~/NewStyle/js/data-table/bootstrap-table-resizable.js"></script>
+
+    <script src="~/NewStyle/js/data-table/colResizable-1.5.source.js"></script>
+
+    <script src="~/NewStyle/js/data-table/bootstrap-table-export.js"></script>
+
+
+     
+
+   @*  <script src="~/Scripts/DataTables/dataTables.bootstrap.js"></script> *@
+
+
+
+     
+
+
+    <script src="~/scripts/convert_xlsx.full.min.js"></script>
+
+    <link href="~/clientapp/stgrid/stylestgrid.css" rel="stylesheet" />
+
+
+    <style>
+        .toast {
+            background-color: #413f3fde !important;
+        }
+
+        .jsgrid-grid-body {
+            max-height: 600px; /* أو أي ارتفاع يناسب تصميمك */
+            overflow-y: auto !important;
+        }
+
+/*         .st-copy-button {
+            background-color: transparent !important;
+            border: none !important;
+            cursor: pointer !important;
+            font-size: 16px !important;
+        }
+
+            .st-copy-button:hover {
+                color: green !important;
+            }
+ */
+
+
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            /* padding: 10px 12px; */
+            border-bottom: 1px solid #e5e7eb;
+            transition: background 0.2s;
+        }
+
+            .file-item:hover {
+                background: #f9fafb;
+            }
+
+        .file-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .file-icon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .file-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .file-name {
+            font-weight: 600;
+            color: #111827;
+            max-width: 195px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .file-type {
+            font-size: 12px;
+            color: #6b7280;
+        }
+
+        .file-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download {
+            font-size: 18px;
+            text-decoration: none;
+            color: #2563eb;
+        }
+
+            .download:hover {
+                transform: scale(1.1);
+            }
+
+        .delete {
+            border: none;
+            background: transparent;
+            color: #ef4444;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+            .delete:hover {
+                transform: scale(1.1);
+            }
+
+
+        .archive-overlay {
+            /* position: fixed; */
+         /*    inset: 0;
+            background: rgba(0,0,0,.4); */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .archive-modal {
+            width: 95%;
+            max-width: 600px;
+            max-height: 90vh;
+        }
+
+        .archive-card {
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* BODY SCROLL */
+        .archive-body {
+            flex: 1 1 auto;
+            overflow-y: auto;
+            padding: 15px;
+        }
+
+        /* FILE LIST */
+        .archive-file-list {
+            border: 2px outset;
+            padding: 18px;
+            max-height: 250px;
+            overflow-y: auto;
+            margin-bottom: 15px;
+        }
+
+        /* FOOTER ثابت */
+        .archive-footer {
+            flex-shrink: 0;
+            padding: 12px;
+            border-top: 1px solid #ddd;
+            background: #fff;
+        }
+
+
+
+    </style> 
+
+</head>
+<body id="Appbody" data-home-page="Home.html" data-home-page-title="Home" data-path-to-root="./" data-include-products="false" class="u-body u-xl-mode" data-lang="en">
+    <div id="StylesheetLangEn">
+        <link href="~/NewStyle/HomeEn.css" rel="stylesheet">
+        <link rel="stylesheet" href="~/NewStyle/css/bootstrapEn.min.css">
+
+        <link href="~/NewStyle/StyleEn.css" rel="stylesheet">
+    </div>
+    <div id="StylesheetLangAr">
+    </div>
+    <input type="hidden" id="CompCode" name="name" value="1">
+    <input type="hidden" id="BranchCode" name="name" value="1">
+    <header class="u-clearfix u-header u-header Layout_Home display_none " id="sec-06f8">
+        <div class="u-clearfix u-sheet u-valign-top-md u-sheet-1">
+            <a id="Photo_Logo_" style="z-index:999999" class="  u-image u-logo u-image-1" data-image-width="1600" data-image-height="960" data-animation-name="lightSpeedIn" data-animation-duration="1000" data-animation-direction="">
+                <img src="~/NewStyle/images/ElSarona.png" class="u-logo-image u-logo-image-1">
+            </a>
+            @*    <h2 id="Lab_AlSarunah" class="u-align-center u-custom-font u-font-lobster u-text u-text-1">@Res.AlSarunah<span style="font-weight: 700;">
+            <span style="font-weight: 400;"></span>
+            </span>
+            </h2> *@
+            <div id="_Btn_Back">
+                <a id="Display_Back_Page" style="z-index:9999" class="display_none">
+
+                </a>
+                <a id="Display_Back_Page2" style="z-index:9999" class="display_none">
+                </a>
+            </div>
+            <a id="Back_Page" title="Back Page" class="u-hover-feature u-image u-logo u-image-2" data-image-width="1307" data-image-height="980" data-animation-name="customAnimationIn" data-animation-duration="1000">
+                <img src="~/NewStyle/images/curved-back-arrow-left-pointer-icon-curve-cursor-symbol-vector.jpg" class="BackCss u-logo-image u-logo-image-2">
+            </a>
+            <a id="Back_PageTap" style="" title="Back Page" class=" display_none u-hover-feature u-image u-logo u-image-2" data-image-width="1307" data-image-height="980" data-animation-name="customAnimationIn" data-animation-duration="1000">
+                <img src="~/NewStyle/images/curved-back-arrow-left-pointer-icon-curve-cursor-symbol-vector.jpg" class="BackCss u-logo-image u-logo-image-2">
+            </a>
+            <h6 id="Lab_NamePage" class="screen-title">
+                @Res.Home<span style="font-weight: 700;">
+                    <span style="font-weight: 400;"></span>
+                </span>
+            </h6>
+        </div>
+
+    </header>
+
+    @* ************************************Search *@
+    <div id="DivLang" class="   search-button-container hidden_Control " style="opacity: 0.8;top: 15px !important;position: absolute; ">
+        <button id="GnrLang" class=" search-button" title="Change Lang" style="    background-color: #d27f7f;"><i class="fa fa-language" aria-hidden="true"></i></button>
+    </div>
+    <div id="DivSearchID" class="   search-button-container display_none">
+        <button id="SearchIDGnr" class="Divsearch-TextID">
+        </button>
+    </div>
+    <div id="DivSearchBtnID" class="   search-button-container display_none" style="opacity: 0.8;">
+        <button id="IconSearchID" title="Search User by UserID" class=" search-button">🔎</button>
+        <button id="IconSearchDeleteID" class=" search-button display_none">❌</button>
+    </div>
+
+    @* ************************************Download Excel*@
+    <div id="DivDownload_Excel" class="   search-button-container display_none" style="opacity: 0.8;     top: 160px !important; ">
+        <button id="GnrGridDownloadExcelID" class=" search-button" title="Download Grid To Excel ⏬" style="    background-color: rgb(2 141 31);"><i class="fa fa-file-excel-o"></i></button>
+    </div>
+
+    @*******************************************************uploadImg**********************************************************@
+    <form id="myForm" method="post" class="display_none" enctype="multipart/form-data">
+        <div class="col-xs-3 col-lg-3 col-sm-3">
+            <input type="file" name="fileUpload" id="fileUploadInput" class="_dis" onchange="onchangeFile()" style="background: #0051a3;color: aliceblue;font-weight: bold;" accept=".jpg">
+            <input type="file" name="fileUpload" id="fileUploadInputArchive" class="_dis" onchange="onchangeFileArchive()" style="background: #0051a3;color: aliceblue;font-weight: bold;" accept=".jpg">
+
+            <input type="hidden" id="fileName">
+            <input type="hidden" id="Name_Folder">
+            <input type="hidden" id="UrlImg">
+            <input type="hidden" id="IdName_View_Img">
+            <input type="hidden" id="Path_Save">
+        </div>
+        <div class="col-xs-8 col-lg-4 col-sm-8">
+            <button type="button" class="btn btn-success  BtnHide display_none" id="Btn_fileUpload">
+                uploadImg
+            </button>
+            <input type="hidden" value="D:\Ahmed_Work\Kids4\WebUI\Upload_Img\" id="Path_Img" class="display_none ">
+            <input type="button" value="رفع ملف الاكسيل" id="BtnUpload" class="display_none btn btn-custon-four btn-success" onclick="uploadImg()">
+            <input type="button" value="رفع ملف الاكسيل" id="BtnUploadFileArchive" class="display_none btn btn-custon-four btn-success" onclick="uploadFileArchive()">
+        </div>
+    </form>
+
+    <script>
+        $('#Path_Save').val('/Images_Setting/')
+    </script>
+
+
+
+    <script src="~/ClientApp/uploadFile.js"></script>
+
+
+    <div class="u-align-center u-clearfix u-container-align-center u-gradient u-section-1" id="carousel_47a3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @RenderBody()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+
+    <div id="Div_Refresh" class="display_none">
+    </div>
+
+
+    @*//<footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer Layout_Home display_none" id="sec-2b29">*@
+    <footer class="u-align-center u-clearfix u-grey-5 u-section-4  Layout_Home display_none " style="display : none !important" id="sec-6f69">
+        <div class="u-clearfix u-sheet u-valign-middle  ">
+            <div class=" ">
+                <div class="u-gutter-0 u-layout">
+                    <div class="u-layout-row">
+
+                        <div class="u-align-center u-container-style u-layout-cell u-right-cell u-size-30 u-layout-cell-2">
+                            <div class="u-container-layout u-valign-middle u-container-layout-2">
+                                <div class="u-social-icons u-spacing-10 u-social-icons-1">
+                                    <a class="u-social-url" title="facebook" target="_blank" href="https://facebook.com/name">
+                                        <span class="u-icon u-social-facebook u-social-icon u-icon-1">
+                                            <svg class="u-svg-link" preserveaspectratio="xMidYMin slice" viewbox="0 0 112.196 112.196" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-194c"></use></svg>
+                                            <svg class="u-svg-content" viewbox="0 0 112.196 112.196" x="0px" y="0px" id="svg-194c" style="enable-background:new 0 0 112.196 112.196;">
+                                                <g>
+                                                    <circle style="fill:currentColor;" cx="56.098" cy="56.098" r="56.098"></circle>
+                                                    <path style="fill:#FFFFFF;" d="M70.201,58.294h-10.01v36.672H45.025V58.294h-7.213V45.406h7.213v-8.34   c0-5.964,2.833-15.303,15.301-15.303L71.56,21.81v12.51h-8.151c-1.337,0-3.217,0.668-3.217,3.513v7.585h11.334L70.201,58.294z"></path>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a class="u-social-url" title="twitter" target="_blank" href="https://twitter.com/name">
+                                        <span class="u-icon u-social-icon u-social-twitter u-icon-2">
+                                            <svg class="u-svg-link" preserveaspectratio="xMidYMin slice" viewbox="0 0 112.197 112.197" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-037f"></use></svg>
+                                            <svg class="u-svg-content" viewbox="0 0 112.197 112.197" x="0px" y="0px" id="svg-037f" style="enable-background:new 0 0 112.197 112.197;">
+                                                <g>
+                                                    <circle style="fill:#55ACEE;" cx="56.099" cy="56.098" r="56.098"></circle>
+                                                    <g>
+                                                        <path style="fill:#F1F2F2;" d="M90.461,40.316c-2.404,1.066-4.99,1.787-7.702,2.109c2.769-1.659,4.894-4.284,5.897-7.417    c-2.591,1.537-5.462,2.652-8.515,3.253c-2.446-2.605-5.931-4.233-9.79-4.233c-7.404,0-13.409,6.005-13.409,13.409    c0,1.051,0.119,2.074,0.349,3.056c-11.144-0.559-21.025-5.897-27.639-14.012c-1.154,1.98-1.816,4.285-1.816,6.742    c0,4.651,2.369,8.757,5.965,11.161c-2.197-0.069-4.266-0.672-6.073-1.679c-0.001,0.057-0.001,0.114-0.001,0.17    c0,6.497,4.624,11.916,10.757,13.147c-1.124,0.308-2.311,0.471-3.532,0.471c-0.866,0-1.705-0.083-2.523-0.239    c1.706,5.326,6.657,9.203,12.526,9.312c-4.59,3.597-10.371,5.74-16.655,5.74c-1.08,0-2.15-0.063-3.197-0.188    c5.931,3.806,12.981,6.025,20.553,6.025c24.664,0,38.152-20.432,38.152-38.153c0-0.581-0.013-1.16-0.039-1.734    C86.391,45.366,88.664,43.005,90.461,40.316L90.461,40.316z"></path>
+                                                    </g>
+                                                </g>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a class="u-social-url" target="_blank" data-type="Instagram" title="Instagram" href="">
+                                        <span class="u-icon u-social-icon u-social-instagram u-icon-3">
+                                            <svg class="u-svg-link" preserveaspectratio="xMidYMin slice" viewbox="0 0 112 112" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-7eb4"></use></svg>
+                                            <svg class="u-svg-content" viewbox="0 0 112 112" x="0" y="0" id="svg-7eb4">
+                                                <circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle>
+                                                <path fill="#FFFFFF" d="M55.9,38.2c-9.9,0-17.9,8-17.9,17.9C38,66,46,74,55.9,74c9.9,0,17.9-8,17.9-17.9C73.8,46.2,65.8,38.2,55.9,38.2
+            z M55.9,66.4c-5.7,0-10.3-4.6-10.3-10.3c-0.1-5.7,4.6-10.3,10.3-10.3c5.7,0,10.3,4.6,10.3,10.3C66.2,61.8,61.6,66.4,55.9,66.4z"></path>
+                                                <path fill="#FFFFFF" d="M74.3,33.5c-2.3,0-4.2,1.9-4.2,4.2s1.9,4.2,4.2,4.2s4.2-1.9,4.2-4.2S76.6,33.5,74.3,33.5z"></path>
+                                                <path fill="#FFFFFF" d="M73.1,21.3H38.6c-9.7,0-17.5,7.9-17.5,17.5v34.5c0,9.7,7.9,17.6,17.5,17.6h34.5c9.7,0,17.5-7.9,17.5-17.5V38.8
+            C90.6,29.1,82.7,21.3,73.1,21.3z M83,73.3c0,5.5-4.5,9.9-9.9,9.9H38.6c-5.5,0-9.9-4.5-9.9-9.9V38.8c0-5.5,4.5-9.9,9.9-9.9h34.5
+            c5.5,0,9.9,4.5,9.9,9.9V73.3z"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                    <a class="u-social-url" target="_blank" data-type="LinkedIn" title="LinkedIn" href="">
+                                        <span class="u-icon u-social-icon u-social-linkedin u-icon-4">
+                                            <svg class="u-svg-link" preserveaspectratio="xMidYMin slice" viewbox="0 0 112 112" style=""><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#svg-0e51"></use></svg>
+                                            <svg class="u-svg-content" viewbox="0 0 112 112" x="0" y="0" id="svg-0e51">
+                                                <circle fill="currentColor" cx="56.1" cy="56.1" r="55"></circle>
+                                                <path fill="#FFFFFF" d="M41.3,83.7H27.9V43.4h13.4V83.7z M34.6,37.9L34.6,37.9c-4.6,0-7.5-3.1-7.5-7c0-4,3-7,7.6-7s7.4,3,7.5,7
+            C42.2,34.8,39.2,37.9,34.6,37.9z M89.6,83.7H76.2V62.2c0-5.4-1.9-9.1-6.8-9.1c-3.7,0-5.9,2.5-6.9,4.9c-0.4,0.9-0.4,2.1-0.4,3.3v22.5
+            H48.7c0,0,0.2-36.5,0-40.3h13.4v5.7c1.8-2.7,5-6.7,12.1-6.7c8.8,0,15.4,5.8,15.4,18.1V83.7z"></path>
+                                            </svg>
+                                        </span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- Search Box Modal-->
+    <div id="Div_SearchBox" class="modal">
+    </div>
+    <div id="SearchBox" class="display_none   search-box">
+        <div class="search-content">
+            <input type="button" onclick="$('#SearchBox').removeClass('show');" class="close close-search-box" data-dismiss="modal" aria-label="Close" id="btnCloseSearch" name="name" value="x">
+            <h4 id="searchTitle" class="search-title"></h4>
+        </div>
+        <div class="table-serach-container">
+            <div id="tableDiv" class="table table-bordered table-hover w-100"></div>
+        </div>
+    </div>
+
+
+    <div class="toast-container" id="toastContainer"></div>
+
+
+
+
+    @* ************************************************************ *@
+
+
+
+
+    <div id="Model_SearchBox_Pagination" class="modal"> 
+    </div>
+    <div id="NewSearch_Box_Pagination" class="display_none   search-box">
+        <div class="search-content">
+            <input type="button" onclick="$('#NewSearch_Box_Pagination').removeClass('show');" class="close close-search-box" data-dismiss="modal" aria-label="Close" id="btnClose_SearchPagination" name="name" value="x">
+            <h4 id="searchTitle" class="search-title"></h4>
+        </div>
+        <div class="table-serach-container">
+            <div id="_Grid_Pagination" class="table table-bordered table-hover w-100"></div>
+        </div>
+    </div>
+
+
+
+    <!-- Loder Modal -->
+    <!-- The Modal -->
+    <div id="myModalLoder" class="modal">
+
+        <!-- Modal content -->
+        <span class="loader">...</span>
+
+    </div>
+
+
+    <div id="ModelForgot_Password" class="modal">
+        <link href="~/newstyle/bootstrap.min.css" rel="stylesheet">
+        <!-- Modal content -->
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4>@Res.Forgot_Password</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div id="DivEmail">
+                                    <div class="form-group">
+                                        <label for="email">@Res.Email_Address</label>
+                                        <input type="email" class="form-control" id="txtForgotEmail" name="email" placeholder="@Res.Enter_your_email">
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-block" id="Send_Reset_Link">Send Reset Link</button>
+                                </div>
+
+                                <div id="DivValidCode" class="display_none">
+                                    <div class="form-group">
+                                        <label for="text">@Res.Send_Valid_Code_to_Email_Address</label>
+                                        <input type="text" class="form-control" id="txtValidCode" name="Code" placeholder="@Res.Please_Enter_Valid_Code">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="text">@Res.New_Password</label>
+                                        <input type="text" class="form-control" id="txtNewPassword" name="NewPassword" placeholder="@Res.Please_Enter_New_Password">
+                                    </div>
+                                    <button type="button" class="btn btn-primary btn-block" id="btnUpdatePassword">Update Password</button>
+                                </div>
+
+                                <div class="form-group">
+                                    <br>
+                                    <button type="button" class="btn btn-primary btn-block" id="Close_Email" style="background-color: #800000;">
+                                        Close ❌
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <input type="hidden" id="SendModelExcel">
+    <input type="hidden" id="NameFileSaveExcel">
+    <input type="hidden" id="TxtDeviceType">
+    <button id="GenDownloadExcel" class="display_none">Download Excel File</button>
+
+    <div id="StylesheetLangLogin">
+    </div>
+
+
+
+    <div id="archiveModal" class="modal">
+        <link href="~/newstyle/bootstrap.min.css" rel="stylesheet">
+
+        <div class="archive-overlay">
+            <div class="archive-modal">
+
+                <div class="card archive-card">
+
+                    <div class="card-header text-center">
+                        <h4>Archive Files</h4>
+                    </div>
+
+                    <!-- BODY -->
+                    <div class="card-body archive-body">
+                        <form>
+
+                            <input type="hidden" id="Arch_IDUserCreate">
+                            <input type="hidden" id="Arch_CompCode">
+                            <input type="hidden" id="Arch_MODULE_CODE">
+                            <input type="hidden" id="Arch_FinYear">
+                            <input type="hidden" id="Arch_TransID">
+                            <input type="hidden" id="Arch_NameIDBtn">
+                            <input type="hidden" id="Arch_extension">
+
+                            <button type="button"
+                                    class="btn btn-primary btn-block display_none"
+                                    id="Arch_IsSuccess">
+                                Arch_IsSuccess
+                            </button>
+
+                            <!-- FILE LIST -->
+                            <div id="fileList" class="archive-file-list"></div>
+
+                            <div id="DivValidCode">
+                                <div class="form-group">
+                                    <label>NameFile</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           id="Arch_NameFile"
+                                           placeholder="NameFile">
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Remarks</label>
+                                    <textarea class="form-control"
+                                              id="Arch_Remarks"
+                                              placeholder="Remarks"></textarea>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+
+                    <!-- FOOTER -->
+                    <div class="archive-footer">
+
+                        <button type="button"
+                                class="btn btn-primary btn-block"
+                                id="Arch_AddFile">
+                            AddFile
+                        </button>
+                        <button type="button"
+                                class="btn btn-danger btn-block"
+                                id="Close_archive">
+                            Close ❌
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+     
+
+
+
+    <p id="WriteInsertLogUser" style="display:none"></p>
+
+    <script> 
+        var modalSearchPagination = document.getElementById("Model_SearchBox_Pagination");
+        var modalPass = document.getElementById("ModelForgot_Password");
+        var archiveModal = document.getElementById("archiveModal");
+        var Close_Email = document.getElementById("Close_Email");
+        var Close_archive = document.getElementById("Close_archive");
+        modalPass.style.display = "none";
+        archiveModal.style.display = "none";
+        modalSearchPagination.style.display = "none";
+
+        var modal = document.getElementById("myModalLoder");
+        modal.style.display = "block";
+
+        var Div_SearchBox = document.getElementById("Div_SearchBox");
+
+        Div_SearchBox.onclick = () => {
+            Div_SearchBox.style.display = "none";
+            $("#SearchBox").addClass("display_none")
+        };
+
+
+        Close_Email.onclick = () => {
+            modalPass.style.display = "none";
+        };
+        
+        Close_archive.onclick = () => { 
+            archiveModal.style.display = "none";
+        };
+        
+
+        modalSearchPagination.onclick = () => {
+            modalSearchPagination.style.display = "none";
+            $("#NewSearch_Box_Pagination").addClass("display_none")
+
+        };
+
+
+             
+
+    </script>
+
+
+
+
+    <script src="~/js/select2.min.js"></script>
+    @* <script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script> *@
+
+    <script src="~/ClientApp/SystemResources.js"></script>
+    <script src="~/ClientApp/Entities.js"></script>
+    <script src="~/ClientApp/Entities_DataBase.js"></script>
+    <script src="~/ClientApp/Shared.js"></script>
+    <script src="~/ClientApp/App.js"></script>
+@*     <script src="~/ClientApp/JsGrid.js"></script>
+    <script src="~/Scripts/jsgrid/jsgrid.js"></script> *@
+    <script src="~/ClientApp/SystemTools.js"></script>
+    <script src="~/ClientApp/CustomEntities.js"></script>
+    <script src="~/ClientApp/MessageBox.js"></script>
+    <script src="~/ClientApp/Layout.js"></script>
+
+    <script src="~/clientapp/EsGrid.js"></script>
+
+
+    <script src="~/ClientApp/DataTable.js"></script>
+    <script src="~/js/select2.min.js"></script>
+
+
+    @RenderSection("Script", required: false)
+
+    <script src="~/js/select2.min.js"></script> 
+    <script src="~/NewStyle/nicepage.js"></script>
+    <script src="~/scripts/xlsx.full.min.js"></script>
+
+    @* *************************************************************Speed Search***************************************************** *@
+    <script>
+        $("#IconSearchID").on('click', function () {
+            $("#IconSearchID").addClass('display_none');
+            $("#IconSearchDeleteID").removeClass('display_none');
+            $("#DivSearchID").removeClass('display_none');
+            $("#DivSearchID").animate({ width: '247px', opacity: '0.8', "display": "block" }, "slow");
+            $("#txtSearchIDGnr").val('');
+            $("#txtSearchIDGnr").focus();
+        });
+
+        //    width: 247px;
+        $("#IconSearchDeleteID").on('click', function () {
+
+            $("#DivSearchID").animate({ width: '0px', opacity: '0' }, "slow", function () {
+                $("#IconSearchID").removeClass('display_none');
+                $("#IconSearchDeleteID").addClass('display_none');
+                $("#DivSearchID").addClass('display_none');
+            });
+
+        });      
+
+        document.addEventListener("keydown", function (event) {
+             
+            if (event.ctrlKey && event.shiftKey && event.key === "F") {
+                event.preventDefault();
+                var NameBtnEvent = "IconSearchID"; // Replace "yourButtonId" with the ID of your button
+                var button = document.getElementById(NameBtnEvent);
+                if ($("#" + NameBtnEvent).is(":visible") == false) {
+                    return
+                }
+                if (button) {
+                    button.click();
+                } else {
+                    console.error("Button with ID " + NameBtnEvent + " not found.");
+                }
+            }
+        });
+
+
+    </script>
+
+    @* *************************************************************GenDownloadExcel***************************************************** *@
+    <script>
+        document.getElementById('GenDownloadExcel').addEventListener('click', function () {
+            // Data array
+            // var G_DefTempExcel = [
+            //     { ID: 1, NameTitle: "Ser" },
+            //     { ID: 2, NameTitle: "Name" },
+            //     { ID: 3, NameTitle: "Age" }
+            // ];
+
+            let ReptModel = $('#SendModelExcel').val()
+            var ListdataExcel = JSON.parse(ReptModel);
+
+            // Create a new workbook
+            var workbook = XLSX.utils.book_new();
+
+            // Convert the data array to a worksheet
+            var worksheet = XLSX.utils.json_to_sheet(ListdataExcel);
+
+            // Append the worksheet to the workbook
+            XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+            // Convert the workbook to a binary string
+            var wbout = XLSX.write(workbook, { bookType: 'xlsx', type: 'binary' });
+
+            // Function to trigger download
+            function s2ab(s) {
+                var buf = new ArrayBuffer(s.length);
+                var view = new Uint8Array(buf);
+                for (var i = 0; i < s.length; i++) view[i] = s.charCodeAt(i) & 0xFF;
+                return buf;
+            }
+
+            // Create a Blob from the binary string and trigger download
+            var blob = new Blob([s2ab(wbout)], { type: "application/octet-stream" });
+            var link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = $("#NameFileSaveExcel").val() + ".xlsx";
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+    <script>
+
+
+        function getDeviceType() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            // Check for Android
+            if (/android/i.test(userAgent)) {
+                return "Android";
+            }
+
+            // Check for iPhone/iPad/iPod
+            if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+                return "iOS";
+            }
+
+            // Check for Windows
+            if (/windows phone/i.test(userAgent)) {
+                return "Windows Phone";
+            }
+
+            if (/windows/i.test(userAgent)) {
+                return "Windows";
+            }
+
+            // Check for MacOS
+            if (/macintosh/i.test(userAgent)) {
+                return "MacOS";
+            }
+
+            // Check for Linux
+            if (/linux/i.test(userAgent)) {
+                return "Linux";
+            }
+
+            // Default to unknown
+            return "Unknown";
+        }
+
+
+        $('#TxtDeviceType').val(getDeviceType())
+
+
+    </script>
+
+    <script src="~/scripts/jsbarcode.all.min.js"></script>
+    <script src="~/scripts/qrcode.min.js"></script> 
+
+    <input class="display_none" type="text" id="IDUtf8Text">
+    <input class="display_none" type="text" id="numberInput">
+    <button class="display_none" id="btnBarcode" onclick="convertToBarcode()">Convert</button>
+    <button class="display_none" id="btnQRCode" onclick="generateQRCode()">Convert</button> 
+
+
+    <input class="display_none" type="text" id="IDExtract">
+    <button class="display_none" id="btnExtractText" onclick="extractInvoiceText()">Extract</button>
+    <textarea id="OutPutExtract"   class="display_none" placeholder="النصوص ستظهر هنا..."></textarea>
+
+
+
+
+
+ 
+
+
+    <script>
+        function convertToBarcode() {
+            var numberInput = document.getElementById("numberInput").value;
+            // Clear the previous barcode
+            document.getElementById("barcode").innerHTML = "";
+            // Generate the barcode
+            JsBarcode("#barcode", numberInput, {
+                format: "CODE128", // You can choose the barcode format you prefer
+                displayValue: true // Display the value below the barcode
+            });
+        } 
+    </script>
+
+    <script>
+        function generateQRCode() {
+            const text = document.getElementById("numberInput").value;
+
+            if (!text) {
+                alert("يرجى إدخال نص لإنشاء رمز QR!");
+                return;
+            }
+
+            // مسح رمز QR السابق
+            const qrContainer = document.getElementById("qrcode");
+            const IDUtf8Text = document.getElementById("IDUtf8Text");
+            qrContainer.innerHTML = "";
+
+            // ترميز النص باستخدام UTF-8 لدعم اللغة العربية
+            const utf8Text = unescape(encodeURIComponent(text));
+            IDUtf8Text.value = encodeURIComponent(text)
+            // إنشاء رمز QR باستخدام مكتبة qrcode-generator
+            const qr = qrcode(0, 'L'); // مستوى تصحيح الخطأ L
+            qr.addData(utf8Text);
+            qr.make();
+
+            // إدخال الكود في العنصر
+            qrContainer.innerHTML = qr.createImgTag(4); // حجم صغير مناسب للطباعة
+
+            // ضبط عرض وارتفاع الصورة
+            const qrImage = qrContainer.querySelector('img'); // حدد عنصر <img>
+            qrImage.style.width = "100px";
+            qrImage.style.height = "100px";
+        }
+    </script>
+
+    <script>
+ 
+
+        function extractInvoiceText() {
+            const IDExtract = document.getElementById("IDExtract");
+            const invoiceDiv = document.getElementById(IDExtract.value);
+
+            if (!invoiceDiv) {
+                // alert("عنصر الفاتورة غير موجود!");
+                return;
+            }
+
+            // استخراج النصوص من جميع العناصر داخل div
+
+            let extractedText = invoiceDiv.innerText;
+            extractedText = extractedText.replace("❌","")
+            // إزالة الأسطر الجديدة لكن الحفاظ على المسافات بين الكلمات
+            extractedText = extractedText.replace(/\n+/g, ' ').replace(/\s+/g, ' ').trim();
+
+            // عرض النصوص المستخرجة في مربع النص
+            document.getElementById("OutPutExtract").value = extractedText;
+
+        }
+
+    </script>
+
+    <script src="~/ClientApp/JsGrid.js"></script>
+    <script src="~/ClientApp/StGrid/StGrid.js"></script>
+
+    <div id="div_jsgrid_Script">
+
+    </div>
+
+
+
+
+     </body>
+
+
+</html>

@@ -1,0 +1,931 @@
+@using Core.UI.Models
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Res.Sales_basket_system</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+            direction: rtl;
+        }
+
+        .buttons-container {
+            margin: 20px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+            .button:hover {
+                background-color: #45a049;
+            }
+
+        .items-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .item-box {
+            background-color: #f2f2f2;
+            margin: 10px;
+            padding: 20px;
+            width: 150px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s;
+        }
+
+            .item-box:hover {
+                background-color: #ddd;
+            }
+
+        /* تصميم السلة */
+        #cart-icon {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 60px;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            box-shadow: 5px 0px 12px #6b6b6b;
+        }
+
+            #cart-icon .cart-count {
+                position: relative;
+                top: -90px;
+                right: -15px;
+                background-color: red;
+                color: white;
+                border-radius: 50%;
+                padding: 6px 9px;
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+        #cart {
+            position: fixed;
+            bottom: 0;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            transition: right 0.3s ease;
+            padding: 20px;
+        }
+
+            #cart.open {
+                right: 0;
+            }
+
+            #cart h2 {
+                text-align: center;
+                color: #007bff;
+            }
+
+        .cart-item {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: flex;
+            justify-content: space-between;
+        }
+
+            .cart-item button {
+                padding: 5px;
+                background-color: #ff33334a;
+                color: white;
+                border: none;
+                cursor: pointer;
+            }
+
+                .cart-item button:hover {
+                    background-color: #cc0000;
+                }
+
+        /* تصميم زر إنشاء الفاتورة داخل السلة */
+        #generate-invoice {
+            background-color: #0d7200;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+            #generate-invoice:hover {
+                background-color: #f57c00;
+            }
+
+        #BtnNameCustomer {
+            background-color: #2a9ed6;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+            #BtnNameCustomer:hover {
+                background-color: #ffc2e3;
+            }
+
+        #invoiceCancel {
+            background-color: #720000;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+            #invoiceCancel:hover {
+                background-color: #f57c00;
+            }
+
+        #invoicePrint {
+            background-color: #ff9800;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1.2em;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+            #invoicePrint:hover {
+                background-color: #f57c00;
+            }
+
+        .invoice {
+            position: fixed;
+            bottom: 0;
+            left: -400px;
+            width: 300px;
+            height: 100%;
+            background-color: white;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+            overflow-y: auto;
+            transition: left 0.3s ease;
+            padding: 20px;
+        }
+
+            .invoice.open {
+                left: 0;
+            }
+
+            .invoice h2 {
+                text-align: center;
+                color: #007bff;
+            }
+
+        .invoice-item {
+            display: flex;
+            justify-content: space-between;
+            margin: -3px 0;
+            border-bottom: 2px solid black;
+            margin-bottom: 0px;
+            padding: 10px;
+        }
+
+            .invoice-item span {
+                width: 40%;
+            }
+
+            .invoice-item .total {
+                font-weight: bold;
+            }
+
+        #cart-total {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+    </style>
+
+    <style>
+
+        .categories {
+            border-radius: 8px;
+            width: 20%;
+            background-color: #dcdcdc;
+            color: white;
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+        }
+
+            .categories .title {
+                font-size: 20px;
+                font-weight: bold;
+                margin-bottom: 10px;
+            }
+
+            .categories button {
+                display: block;
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 5px;
+                background: #1362b7;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                text-align: center;
+                transition: background 0.3s, transform 0.2s;
+                font-weight: bold;
+                border-radius: 15px 50px 30px;
+                box-shadow: -11px 0px 12px #6b6b6b;
+            }
+
+                .categories button:hover {
+                    background: #004494; /* Darker shade for hover effect */
+                    transform: scale(1.02); /* Slightly increase size on hover */
+                }
+
+                .categories button:active {
+                    background: #003370 !important; /* Even darker shade for active effect */
+                    transform: scale(0.98) !important; /* Slightly reduce size on active/click */
+                }
+
+
+        .ActiveCat {
+            background: #ffffff !important;
+            transform: scale(0.98) !important;
+            color: black !important;
+            font-weight: bold;
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .families {
+            border-radius: 8px;
+            background: #000000;
+            padding: 22px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+            .families button {
+                background: #368bbf;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                transition: background 0.3s;
+                border-radius: 25px 25px 300px 300px;
+                font-weight: bold;
+                box-shadow: 7px 0px 12px #6b6b6b;
+            }
+
+                .families button:hover {
+                    background: #c69500; /* Darker shade for hover effect */
+                    transform: scale(1.02); /* Slightly increase size on hover */
+                }
+
+                .families button:active {
+                    background: #c69500 !important; /* Even darker shade for active effect */
+                    transform: scale(0.98) !important; /* Slightly reduce size on active/click */
+                }
+
+
+        .ActiveFamil {
+            background: #97d5dd !important;
+            transform: scale(0.98) !important;
+            color: black !important;
+            font-weight: bold;
+        }
+
+        .items {
+            flex-wrap: wrap;
+            justify-content: center;
+            overflow-y: auto;
+            background: #97d5dd;
+            padding: 10px;
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+            .items button {
+                width: 150px;
+                height: 90px;
+                padding: 10px;
+                background: #28a745;
+                border: none;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                transition: background 0.3s;
+                /* radius: 50px 10px; */
+                border-radius: 10px 50px;
+                box-shadow: 10px 10px 5px #757575;
+                font-weight: bold;
+            }
+
+                .items button:hover {
+                    background: #218838;
+                }
+
+        .units-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .units-popup {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 300px;
+        }
+
+            .units-popup h3 {
+                margin-bottom: 20px;
+                font-size: 18px;
+                color: #333;
+            }
+
+            .units-popup button {
+                background: #ffc107;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+                color: white;
+                cursor: pointer;
+                margin: 5px;
+                transition: background 0.3s;
+            }
+
+                .units-popup button:hover {
+                    background: #e0a800;
+                }
+
+            .units-popup .close {
+                background: #dc3545;
+                margin-top: 15px;
+            }
+
+                .units-popup .close:hover {
+                    background: #c82333;
+                }
+    </style>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+        }
+
+        #invoice {
+            width: 400px;
+            margin: 30px auto;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            direction: rtl;
+            text-align: right;
+        }
+
+        /* شعار الشركة */
+        #company-logo {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+            #company-logo img {
+                max-width: 80px;
+                border-radius: 8px;
+            }
+
+        /* عنوان الفاتورة */
+        #invoice-title {
+            text-align: center;
+            color: #007BFF;
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        /* معلومات الفاتورة */
+        #invoice-details {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        /* العناصر */
+        .invoice-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0px 0;
+            border-bottom: 1px solid #ddd;
+            font-size: 16px;
+        }
+
+            .invoice-item span {
+                font-weight: bold;
+            }
+
+        /* تحسين عرض السعر والكمية */
+        .item-details {
+            font-size: 15px;
+            color: #555;
+            margin-top: 4px;
+        }
+
+            .item-details span {
+                /*     display: inline-block;
+                                                                                    margin-left: 5px;
+                                                                                    color: #000;
+                                                                                    font-weight: bold;
+                                                                                    font-size: 18px; /* تكبير السعر والكمية */
+                color: #000;
+                font-weight: bold;
+                font-size: 18px;
+            }
+
+        .total-per-item {
+            font-size: 16px;
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        /* الإجماليات */
+        .invoice-item.total {
+            font-size: 18px;
+            font-weight: bold;
+            color: #000;
+        }
+
+        #invoice-cart-total, #invoice-total {
+            color: #007BFF;
+            font-size: 18px; /* تكبير الإجمالي */
+        }
+
+        /* ترحيب بالعميل */
+        #customer-greeting {
+            font-size: 14px;
+            color: #333;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        /* اسم المنشئ */
+        #creator-name {
+            font-size: 12px;
+            color: #555;
+            text-align: left;
+            margin-top: 10px;
+        }
+
+        /* أرقام الشركة */
+        #company-contact {
+            font-size: 12px;
+            color: #999;
+            text-align: center;
+            margin-top: 15px;
+            border-top: 1px solid #ddd;
+            padding-top: 10px;
+        }
+
+        /* QR Code */
+        #qr-code {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            #qr-code img {
+                width: 100px;
+                height: 100px;
+            }
+
+
+        .Ordcount {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            background: #13b72c;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, transform 0.2s;
+            font-weight: bold;
+            border-radius: 15px 50px 30px;
+            box-shadow: -11px 0px 12px #6b6b6b;
+        }
+
+        .OrdcountZero {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 5px;
+            background: Red;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+            text-align: center;
+            transition: background 0.3s, transform 0.2s;
+            font-weight: bold;
+            border-radius: 15px 50px 30px;
+            box-shadow: -11px 0px 12px #6b6b6b;
+        }
+    </style>
+
+    <link href="~/newstyle/stylepos.css" rel="stylesheet" />
+</head>
+<body>
+    @* ************************************************************************************************************************************************ *@
+
+
+    <div id="TapMaster" class="card mb-4 TapMaster">
+        <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-3">
+                </div>
+                <div class="col-md-2">
+                    <button id="GetOrder" class="Cat animate__animated animate__fadeInRightBig ActiveCat Ordcount"> حجز دور </button>
+                </div>
+                <div class="col-md-2">
+                    <button id="ZeroCount" class="Cat animate__animated animate__lightSpeedInLeft OrdcountZero"> تصفير الحجز </button>
+                </div>
+                <div class="col-md-2">
+
+                    <h5 class="card-title">@Res.Sales_Box</h5>
+                </div>
+            </div>
+            <div id="itemForm">
+
+
+
+                <div class="row">
+
+                    <div class="col-md-2 categories" id="DivCategory">
+                    </div>
+                    <div class="col-md-10">
+
+                        <div class="col-md-12 families" id="family-buttons">
+                        </div>
+
+                        <div class="col-md-12 items" id="items-list">
+                        </div>
+
+
+                        <div class="col-md-12" id="final-price">
+                        </div>
+
+
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <!-- نافذة وحدات الصنف -->
+    <div class="units-overlay" id="units-overlay">
+        <div class="units-popup">
+            <h3>وحدات الصنف</h3>
+            <div id="units-buttons">
+                <!-- يتم تعبئة الأزرار ديناميكيًا -->
+            </div>
+            <button class="close" onclick="closeUnits()">@Res.closing</button>
+        </div>
+    </div>
+
+
+    @* ************************************************************************************************************************************************ *@
+
+
+    <!-- سلة المبيعات -->
+    <div id="cart">
+        <h2>@Res.Sales_basket</h2>
+        <div id="cart-items"></div>
+
+        <h3>@Res.Total_basket<span id="cart-total">0.00</span> </h3>
+        <h4>عدد الأصناف: <span id="cart-item-count">0</span></h4>
+
+        <!-- حقل للخصم -->
+        <label for="DiscountPrc">نسبة الخصم % </label>
+        <input type="number" id="DiscountPrc" value="0">
+
+        <label for="discount">الخصم (قيمة):</label>
+        <input type="number" id="discount" value="0" disabled onchange="updateFinalPrice()">
+
+        <!-- حقل للضريبة -->
+        <label for="tax">الضريبة (%):</label>
+        <select id="VatType" name="select" class="u-input u-input-rectangle _IsReturnDis">
+        </select>
+        <input type="hidden" id="tax" value="0" onchange="updateFinalPrice()"> %
+
+        <h3>الصافي: <span id="cart-totalNet">0.00</span> </h3>
+
+
+        <!-- حقل للضريبة -->
+        <label for="db_TypeFin" class="u-label u-text-grey-40 display_none">@Res.Cash_Type</label>
+        <select id="db_TypeFin" name="select" class="u-input display_none u-input-rectangle">
+            <option value="1">@Res.Cash</option>
+            <option value="0">@Res.Card</option>
+        </select>
+
+
+        <label for="Card_Type" class="u-label u-text-grey-40  _Card_Type">@Res.Pay_Type</label>
+        <select id="Card_Type" name="select" class=" _Card_Type   u-input u-input-rectangle">
+        </select>
+
+        <h3>المستحق: <span id="cart-totalDue">0.00</span> </h3>
+
+
+        <!-- حقل للضريبة -->
+        <label id="labelSalesManID" for="tax">الدلفري</label>
+        <select id="SalesManID" name="select" class="u-input u-input-rectangle _IsReturnDis">
+        </select>
+
+        <!-- حقل للضريبة -->
+        <label for="tax" class="display_none" >المساعد</label>
+        <select id="Assistant" name="select" class="display_none u-input u-input-rectangle _IsReturnDis">
+        </select>ٍ
+
+        <label for="AmountPaid">  ( المبلغ المدفوع):</label>
+        <input type="number" id="AmountPaid" value="0">
+
+
+        <label for="RemainingAmount">  ( البلغ المتبقي):</label>
+        <input type="number" id="RemainingAmount" value="0" disabled>
+
+
+        <input id="txtCustomerID" type="hidden" />
+        <button id="BtnNameCustomer">@Res.Search_Customer</button>
+        <button id="generate-invoice">@Res.Create_the_bill</button>
+        <button id="invoicePrint">إنشاء و طباعه</button>
+        <button id="invoiceCancel"> الغاء</button>
+    </div>
+
+    <!-- الفاتورة -->
+    <div id="invoice" class="invoice">
+        <h6 id="CloseInv" style="margin-top: 5%;">
+            ❌
+        </h6>
+        <!-- شعار الشركة -->
+        @*    <div id="company-logo">
+        <img src="~/newstyle/images/pngegginvprint.png" alt="شعار الشركة">
+        </div>
+
+        *@
+
+        <div class="invoice-item  ">
+            <span id="company-logo">      <img src="~/newstyle/images/pngegginvprint.png" alt="شعار الشركة">  </span>
+            <span id="qrcode">    </span>
+        </div>
+
+        <div class="invoice-item company-info">
+            <div style="width: 100%;">
+                <p id="InvCompName"> </p>
+                @*      <p id="InvVatNo"></p>
+                <p id="InvMobile"></p>
+                <p id="InvAdress"></p> *@
+            </div>
+        </div>
+        <div class="invoice-item Customer-info display_none">
+            <div style="width: 100%;">
+                <p style="width: 27%;background-color: #e3e3e3;font-size: 1.125rem;margin-top: 20px;margin-bottom: 20px;font-weight: bold;line-height: 2.6;padding-right: 2%;border-radius: 16px;">بيانات العميل   </p>
+                <p id="CustomerName"> </p>
+                <p id="CustomerVatNo"> </p>
+                <p id="CustomerMobile"> </p>
+                <p id="CustomerAddress"> </p>
+            </div>
+        </div>
+
+        <!-- عنوان الفاتورة -->
+        <h2 id="invoice-title">@Res.Sales_bill</h2>
+
+        <!-- تفاصيل الفاتورة -->
+        <div id="invoice-details">
+            <p id="TrNo"><strong>@Res.Bill_number</strong> 12345</p>
+            <p id="CreateAt"><strong>تاريخ الإصدار:</strong> 2025-01-08</p>
+            <p id="CreateBy"><strong>@Res.The_name_of_the_originator</strong>@Res.Ahmed_Mohamed</p>
+            <p id="invoice-SalesMan"><strong>@Res.The_name_of_the_originator</strong>@Res.Ahmed_Mohamed</p>
+            <p id="invoice-Assistant"><strong>@Res.The_name_of_the_originator</strong>@Res.Ahmed_Mohamed</p>
+        </div>
+
+        <!-- العناصر -->
+        <div id="invoice-items">
+            <div class="invoice-item">
+                <div>
+                    <span>منتج 1</span>
+                    <div class="item-details">
+                        <span>سعر:</span> ر.س 3
+                        <span>كمية:</span> 2
+                    </div>
+                </div>
+                <div class="total-per-item">الإجمالي: ر.س 6</div>
+            </div>
+            <div class="invoice-item">
+                <div>
+                    <span>منتج 2</span>
+                    <div class="item-details">
+                        <span>سعر:</span> ر.س 5
+                        <span>كمية:</span> 1
+                    </div>
+                </div>
+                <div class="total-per-item">الإجمالي: ر.س 5</div>
+            </div>
+        </div>
+
+        <!-- الإجماليات -->
+        <div class="invoice-item">
+            <span>الاجمالي  :</span>
+            <span id="invoice-cart-total">11.00</span>
+        </div>
+        <div class="invoice-item Desc">
+            <span> الخصم </span>
+            <span id="invoice-Desc" style=" color: #df0000;">11.00</span>
+        </div>
+        <div class="invoice-item Tax">
+            <span> الضريبه </span>
+            <span id="invoice-Tax">11.00</span>
+        </div>
+        <div class="invoice-item Tax">
+            <span> الصافي </span>
+            <span id="invoice-Net">0.00</span>
+        </div>
+        <div class="invoice-item TypePay">
+            <span>نوع الدفع : </span>
+            <span id="invoice-TypePay" style="color: #880000;/* font-weight: bold; */font-size: 12px;">11.00</span>
+        </div>
+
+        <div class="invoice-item total">
+            <span>إجمالي المستحق:</span>
+            <span id="invoice-total" style="color: #06aa0f;font-weight: bold;">11.00</span>
+        </div>
+
+
+
+
+        <!-- ترحيب بالعميل -->
+        <div id="customer-greeting">
+            ....شكرًا لتعاملكم معنا! 💙
+        </div>
+
+        <!-- أرقام الشركة -->
+        <div id="company-contact">
+            للاستفسار: 0237201172
+        </div>
+
+
+    </div>
+
+    @* ----------Counter---------- *@
+    <div id="invoiceCNT" class="invoice">
+        <h6 id="CloseInvCNT" style="margin-top: 5%;">
+            ❌
+        </h6>
+        <!-- شعار الشركة -->
+        @*    <div id="company-logo">
+        <img src="~/newstyle/images/pngegginvprint.png" alt="شعار الشركة">
+        </div>
+
+        *@
+        @* 
+        <div class="invoice-item">
+            <span id="company-logoCNT">      <img src="~/newstyle/images/pngegginvprint.png" alt="شعار الشركة">  </span>
+        </div>
+ *@
+        <div class="invoice-item company-info">
+            <div style="width: 100%;">
+                <p id="InvCompName"> </p>
+            </div>
+        </div>
+
+        <!-- عنوان الفاتورة -->
+        <h2 id="invoice-titleTrNO">رقم الدور</h2>
+        <!-- تفاصيل الفاتورة -->
+        <div id="invoice-details" style="text-align:center">
+            <h1 id="TrNoCNT">TrNoCNT</h1>
+        </div>
+
+        <!-- العناصر -->
+        <!-- الإجماليات -->
+        <!-- ترحيب بالعميل -->
+        <div id="customer-greeting">
+            ....شكرًا لتعاملكم معنا! 💙
+        </div>
+
+        <!-- أرقام الشركة -->
+        <div id="company-contact">
+            للاستفسار: 0237201172
+        </div>
+
+
+    </div>
+
+    @* -------------------- *@
+
+    <!-- أيقونة السلة -->
+    <div id="cart-icon">
+        🛒
+        <span class="cart-count" id="cart-icon-count">0</span>
+    </div>
+
+
+    <div id="myModalItemUnites" class="modal">
+
+        <!-- Modal content -->
+        <div class="col-md-12" id="">
+            <br>
+            <br>
+        </div>
+        <div class="col-md-12" id="">
+            <br>
+            <br>
+        </div>
+        <div class="col-md-5" id="">
+        </div>
+        <div class="col-md-2 categories" id="DivUnits">
+        </div>
+
+    </div>
+
+    <script>
+
+        $("#myModalItemUnites").on('click', function () {
+
+            var modal = document.getElementById("myModalItemUnites");
+            modal.style.display = "none";
+        });
+
+
+    </script>
+</body>
+</html>
+
+
+<script src="~/ClientApp/Sales/TR_Sales.js"></script>
+

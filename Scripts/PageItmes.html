@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مبيعات الأصناف</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      direction: rtl;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .categories {
+      width: 20%;
+      background-color: #007bff;
+      color: white;
+      padding: 15px;
+      box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+      overflow-y: auto;
+    }
+
+    .categories .title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .categories button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 5px;
+      background: #0056b3;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .categories button:hover {
+      background: #004085;
+    }
+
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .families {
+      background: #ffc107;
+      padding: 10px;
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .families button {
+      background: #e0a800;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .families button:hover {
+      background: #c69500;
+    }
+
+    .items {
+      flex: 1;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 20px;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    .items button {
+      width: 150px;
+	      height: 90px;
+      padding: 10px;
+      background: #28a745;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .items button:hover {
+      background: #218838;
+    }
+
+    .units-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      display: none;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .units-popup {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 300px;
+    }
+
+    .units-popup h3 {
+      margin-bottom: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .units-popup button {
+      background: #ffc107;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      margin: 5px;
+      transition: background 0.3s;
+    }
+
+    .units-popup button:hover {
+      background: #e0a800;
+    }
+
+    .units-popup .close {
+      background: #dc3545;
+      margin-top: 15px;
+    }
+
+    .units-popup .close:hover {
+      background: #c82333;
+    }
+  </style>
+</head>
+<body>
+  <!-- قائمة الفئات -->
+  <div class="categories">
+    <div class="title">الفئات</div>
+    <button onclick="filterFamilies(1)">فئة 1</button>
+    <button onclick="filterFamilies(2)">فئة 2</button>
+  </div>
+
+  <!-- المحتوى الرئيسي -->
+  <div class="main-content">
+    <!-- أنواع الصنف -->
+    <div class="families" id="families-buttons">
+      <!-- يتم تعبئة الأزرار ديناميكيًا -->
+    </div>
+
+    <!-- الأصناف -->
+    <div class="items" id="items-buttons">
+      <!-- يتم تعبئة الأزرار ديناميكيًا -->
+    </div>
+  </div>
+
+  <!-- نافذة وحدات الصنف -->
+  <div class="units-overlay" id="units-overlay">
+    <div class="units-popup">
+      <h3>وحدات الصنف</h3>
+      <div id="units-buttons">
+        <!-- يتم تعبئة الأزرار ديناميكيًا -->
+      </div>
+      <button class="close" onclick="closeUnits()">إغلاق</button>
+    </div>
+  </div>
+
+  <script>
+    const families = {
+      1: [{ id: 1, name: "عائلة 1-1" }, { id: 2, name: "عائلة 1-2" }],
+      2: [{ id: 3, name: "عائلة 2-1" }]
+    };
+
+    const items = {
+      1: [{ id: 1, name: "صنف 1-1-1" }, { id: 2, name: "صنف 1-1-2" }],
+      2: [{ id: 3, name: "صنف 1-2-1" }],
+      3: [{ id: 4, name: "صنف 2-1-1" }],
+      4: [{ id: 5, name: "صنف 2-1-1" }],
+      5: [{ id: 6, name: "صنف 2-1-1" }],
+      6: [{ id: 7, name: "صنف 2-1-1" }],
+      7: [{ id: 8, name: "صنف 2-1-1" }],
+      8: [{ id: 9, name: "صنف 2-1-1" }],
+      9: [{ id: 10, name: "صنف 2-1-1" }],
+      10: [{ id: 11, name: "صنف 2-1-1" }],
+      11: [{ id: 12, name: "صنف 2-1-1" }],
+      12: [{ id: 13, name: "صنف 2-1-1" }],
+      13: [{ id: 14, name: "صنف 2-1-1" }],
+      14: [{ id: 15, name: "صنف 2-1-1" }],
+      15: [{ id: 16, name: "صنف 2-1-1" }],
+      16: [{ id: 17, name: "صنف 2-1-1" }],
+      17: [{ id: 18, name: "صنف 2-1-1" }],
+      18: [{ id: 19, name: "صنف 2-1-1" }],
+      19: [{ id: 20, name: "صنف 2-1-1" }] 
+    };
+
+    const units = {
+      1: ["وحدة 1", "وحدة 2"],
+      2: ["وحدة 3"],
+      3: ["وحدة 4"]
+    };
+
+    function filterFamilies(catId) {
+      const familiesButtons = document.getElementById("families-buttons");
+      familiesButtons.innerHTML = "";
+
+      if (families[catId]) {
+        families[catId].forEach(family => {
+          const button = document.createElement("button");
+          button.innerText = family.name;
+          button.onclick = () => filterItems(family.id);
+          familiesButtons.appendChild(button);
+        });
+      }
+    }
+
+    function filterItems(familyId) {
+      const itemsButtons = document.getElementById("items-buttons");
+      itemsButtons.innerHTML = "";
+
+      if (items[familyId]) {
+        items[familyId].forEach(item => {
+          const button = document.createElement("button");
+          button.innerText = item.name;
+          button.onclick = () => showUnits(item.id);
+          itemsButtons.appendChild(button);
+        });
+      }
+    }
+
+    function showUnits(itemId) {
+      const unitsOverlay = document.getElementById("units-overlay");
+      const unitsButtons = document.getElementById("units-buttons");
+      unitsButtons.innerHTML = "";
+
+      if (units[itemId]) {
+        units[itemId].forEach(unit => {
+          const button = document.createElement("button");
+          button.innerText = unit;
+          unitsButtons.appendChild(button);
+        });
+      }
+
+      unitsOverlay.style.display = "flex";
+    }
+
+    function closeUnits() {
+      const unitsOverlay = document.getElementById("units-overlay");
+      unitsOverlay.style.display = "none";
+    }
+  </script>
+</body>
+</html>

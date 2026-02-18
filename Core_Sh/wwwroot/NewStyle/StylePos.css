@@ -1,0 +1,218 @@
+﻿/* الشبكة الرئيسية */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+    direction: rtl;
+}
+
+/* بطاقة المنتج */
+.product-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    cursor: pointer;
+}
+
+    .product-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+    }
+
+/* صورة المنتج */
+.product-image {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+}
+
+    .product-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+/* كمية المنتج */
+.product-quantity {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: white;
+    color: #333;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 2px solid white;
+}
+
+/* معلومات المنتج */
+.product-info {
+    padding: 20px;
+}
+
+.product-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+}
+
+.product-desc {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* تذييل المنتج */
+.product-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid #eef2f6;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2ecc71;
+}
+
+/* زر الإضافة */
+.btn-add-product {
+    background: #4361ee;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(67, 97, 238, 0.2);
+}
+
+    .btn-add-product:hover {
+        background: #3651d4;
+        transform: scale(1.02);
+        box-shadow: 0 6px 16px rgba(67, 97, 238, 0.3);
+    }
+
+    .btn-add-product:active {
+        transform: scale(0.98);
+    }
+
+    .btn-add-product.clicked {
+        animation: buttonPop 0.2s ease;
+    }
+
+.btn-icon {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+@keyframes buttonPop {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* حالة عدم وجود منتجات */
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 60px 20px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.empty-state h3 {
+    font-size: 1.5rem;
+    color: #1e293b;
+    margin-bottom: 10px;
+}
+
+.empty-state p {
+    color: #64748b;
+    font-size: 1rem;
+}
+
+/* تصميم متجاوب */
+@media (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .product-image {
+        height: 160px;
+    }
+
+    .product-name {
+        font-size: 1rem;
+    }
+
+    .product-price {
+        font-size: 1.1rem;
+    }
+
+    .btn-add-product {
+        padding: 8px 16px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        max-width: 100%;
+    }
+}

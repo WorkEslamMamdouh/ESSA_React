@@ -1,0 +1,79 @@
+@using Core.UI.Models
+
+
+
+<style>
+    ul {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+
+    .node {
+        margin: 5px 0;
+    }
+
+    .expand-btn {
+        font-weight: bold;
+        cursor: pointer;
+        color: blue;
+        margin-right: 5px;
+    }
+
+        .Text-btn {
+        font-weight: bold;
+        cursor: pointer;
+        color: #00b706;
+        margin-right: 5px;
+    }
+
+    .Text_PARENT-btn {
+        font-weight: bold;
+        cursor: pointer;
+        color: #ff0000;
+        margin-right: 5px;
+    }
+
+
+    .loading {
+        font-weight: bold;
+        color: gray;
+        font-size: 18px;
+    }
+
+    .highlight {
+        background-color: yellow; 
+        padding: 10px;
+        color: black;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+
+
+    .highlightFoucs {
+        padding: 10px;
+        color: white;
+        background-color: #62cc00;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+    }
+
+
+</style>
+
+
+<link href="~/newstyle/tree.css" rel="stylesheet" />
+
+<input id="txtSearch" type="text" placeholder="ابحث بالاسم أو الكود..." />
+<button id="btnSearch">بحث</button>
+
+<h4>🌳 شجرة الحسابات</h4>
+<div id="tree-container" style="direction: rtl;text-align: left;">
+    <ul id="1-null"></ul> <!-- 👈 هذا السطر ضروري لعرض الجذر -->
+</div>
+<script>
+
+</script>
+
+
+<script src="~/ClientApp/AccountTree/AccountTree.js"></script>

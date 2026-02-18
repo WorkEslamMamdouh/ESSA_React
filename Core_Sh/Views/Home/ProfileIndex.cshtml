@@ -1,0 +1,112 @@
+@using Core.UI.Models
+
+<link href="~/NewStyle/Login/Login_Style.css" rel="stylesheet">
+<div class="u-align-center u-clearfix u-white u-section-5" id="carousel_fd81">
+    <div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 id="Profile_UserName" class="u-text u-text-1" style="margin: 0px auto 0;">@Res.User_Definition</h1>
+        <p id="Profile_JobTitle" class="u-large-text u-text u-text-variant u-text-2">I'm a creative graphic designer</p>
+        <div class="data-layout-selected u-clearfix u-layout-wrap u-layout-wrap-1">
+            <div class="u-gutter-0 u-layout">
+                <div class="u-layout-col">
+                    <div class="u-align-center u-container-style u-layout-cell u-size-20 u-layout-cell-1">
+                        <div class="u-container-layout u-valign-middle u-container-layout-1">
+                            <div alt="" class="u-image u-image-circle u-image-1" data-image-width="626" data-image-height="417">
+                                <img id="img_Profile" class="u-expanded-width u-image u-image-round u-radius-50 u-image-2" src="/NewStyle/images/profile-user-icon-isolated-on-white-background-eps10-free-vector.jpg" style="border: 7px solid white; cursor: cell; height: 100%; width: 100%; " alt="" data-image-width="444" data-image-height="444">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="u-align-center u-container-style u-layout-cell u-palette-4-base u-size-20 u-layout-cell-2">
+
+
+                        <div class="veen">
+                            <div id="DivContainer" class="wrapper move" style="position: static;">
+
+                                <form id=" " tabindex="502" style=" ">
+                                    <div class="name">
+                                        <input id="Usr_USERID" maxlength="20" class="_Clear_Reg" type="number" name="" placeholder="🆔">
+                                        <label>@Res.User_ID</label>
+                                    </div>
+                                    <div class="name">
+                                        <input id="Usr_EmpCode" maxlength="11" class="_Clear_Reg" disabled type="text" name="" placeholder="📱">
+                                        <label>@Res.EmpCode</label>
+                                    </div>
+
+                                    <div class="name">
+                                        <input id="Usr_Full_Name" maxlength="50" class="_Clear_Reg" disabled="disabled" type="text" name="" placeholder="✏">
+                                        <label>@Res.Full_Name</label>
+                                    </div>
+
+                                    <div class="mail">
+                                        <input id="Reg_Mail" class="_Clear_Reg" type="email" name="" required placeholder="@Res.Email_Gmail">
+                                        <label>@Res.Mail_Gmail</label>
+                                    </div>
+
+                                    <div class="UserName">
+                                        <input id="Usr_UserCode" maxlength="20" class="_Clear_Reg" type="Text" name="" placeholder="👤">
+                                        <label>@Res.User_Name</label>
+                                    </div>
+                                    <div class="passwd">
+                                        <input id="Usr_Password" maxlength="20" class="_Clear_Reg" type="password" name="" placeholder="🔑">
+                                        <label>@Res.Password</label>
+
+                                    </div>
+                                    <div class="submit">
+                                        <input type="button" class=" __button dark" id="Submit_Update_Profile" value="@Res.Add">
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                 
+
+                </div>
+                <div id="Grid_Settings_Device">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<style type="text/css">
+    .site-link {
+        padding: 5px 15px;
+        position: fixed;
+        z-index: 99999;
+        background: #fff;
+        box-shadow: 0 0 4px rgba(0,0,0,.14), 0 4px 8px rgba(0,0,0,.28);
+        right: 30px;
+        bottom: 30px;
+        border-radius: 10px;
+    }
+
+        .site-link img {
+            width: 30px;
+            height: 30px;
+        }
+</style>
+<script>
+
+    $(document).ready(function () {
+        $("#rgstr_button").click(function () {
+            $('.veen .wrapper').addClass('move');
+            //$('.body').css('background', '#e0b722');
+            $('.body').css('background', '#ab6e6e');
+            $(".veen .login-btn button").removeClass('active');
+            $(this).addClass('active');
+        });
+        $("#login_button").click(function () {
+            $('.veen .wrapper').removeClass('move');
+            //$('.body').css('background', '#ff4931');
+            $('.body').css('background', '#c95b56');
+            $(".veen .rgstr-btn button").removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+
+</script>
+<script src="~/ClientApp/Profile/Profile.js"></script>

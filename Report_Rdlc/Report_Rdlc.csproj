@@ -1,0 +1,474 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6D35CAD3-7EF4-4640-AC07-01A742A9F1E2}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Report_Rdlc</RootNamespace>
+    <AssemblyName>Report_Rdlc</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Ahmed.cs" />
+    <Compile Include="Model\IProc_Prnt_ExternalLabor.cs" />
+    <Compile Include="Model\IProc_Prnt_Financial.cs" />
+    <Compile Include="Model\IProc_Prnt_ItemPurDet.cs" />
+    <Compile Include="Model\IProc_Prnt_ItemPurSum.cs" />
+    <Compile Include="Model\IProc_Prnt_ItemSalesDet.cs" />
+    <Compile Include="Model\IProc_Prnt_ItemSalesSum.cs" />
+    <Compile Include="Model\IProc_Prnt_ItemStock.cs" />
+    <Compile Include="Model\IProc_Prnt_Purchases.cs" />
+    <Compile Include="Model\IProc_Prnt_Quotation.cs" />
+    <Compile Include="Model\IProc_Prnt_SlsInvoice.cs" />
+    <Compile Include="Model\Iproc_Prnt_Voucher.cs" />
+    <Compile Include="Model\IProc_Rpt_AccStatmentCustomer.cs" />
+    <Compile Include="Model\IProc_Rpt_AccStatmentSuppliers.cs" />
+    <Compile Include="Model\IProc_Rpt_Annual_Income_Statement.cs" />
+    <Compile Include="Model\IProc_Rpt_CashBox.cs" />
+    <Compile Include="Model\IProc_Rpt_CustomerSalesDet.cs" />
+    <Compile Include="Model\IProc_Rpt_CustomerSalesSum.cs" />
+    <Compile Include="Model\IProc_Rpt_Expences.cs" />
+    <Compile Include="Model\IProc_Rpt_FollowUpCustomers.cs" />
+    <Compile Include="Model\IProc_Rpt_ItemBestSales.cs" />
+    <Compile Include="Model\IProc_Rpt_Reciept.cs" />
+    <Compile Include="Model\IProc_Rpt_SalesSum.cs" />
+    <Compile Include="Model\IProc_Rpt_StockItem.cs" />
+    <Compile Include="Model\IProc_Rpt_StockItemMovement.cs" />
+    <Compile Include="Model\IProc_Rpt_StockItemMovementDet.cs" />
+    <Compile Include="Model\IProc_Rpt_StockItemMovementSum.cs" />
+    <Compile Include="Model\IProc_Rpt_SupplierPurDet.cs" />
+    <Compile Include="Model\IProc_Rpt_SupplierPurSum.cs" />
+    <Compile Include="Model\IProc_Rpt_TaxReport.cs" />
+    <Compile Include="Model\IProc_Rpt_TecnicalSum.cs" />
+    <Compile Include="Model\IProc_Rpt_Tecnical_Det.cs" />
+    <Compile Include="Model\IProc_Z_A_AccountStatment.cs" />
+    <Compile Include="Model\IProc_Z_A_AccountStatment_ByCustomerOrSupplier.cs" />
+    <Compile Include="Model\IProc_Z_A_AccountStatment_CachBox.cs" />
+    <Compile Include="Model\IProc_Z_A_AccountStatment_C_Or_S.cs" />
+    <Compile Include="Model\IProc_Z_A_AccountStatment_CachBox_Sum.cs" />
+    <Compile Include="Model\IProc_Z_A_AccountStatment_Employees.cs" />
+    <Compile Include="Model\IProc_Z_A_AccountStatment_Pay_Recpt.cs" />
+    <Compile Include="Model\IProc_Z_A_TrialBalance.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="Reports\AccountStatmentAr.rdlc" />
+    <EmbeddedResource Include="Reports\AccountStatmentEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp100\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp12\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp14\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp2\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp3\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp4\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp6\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintDeliveryOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintDeliveryOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintInvoiceSimpleAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintInvoiceSimpleEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintInvoiceStanderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintInvoiceStanderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintJobOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintJobOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintQuotatinAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\PrintQuotatinEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_FinancialExpenseAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_FinancialExpenseEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_FinancialRecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_FinancialRecieptEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_PurchasesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_PurchasesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_PurOrderAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Prnt_PurOrderEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_ExpencesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_FollowUpCustomersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_FollowUpCustomersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_RecieptAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_TecnicalSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_TecnicalSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_Tecnical_DetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Comp7\Rpt_Tecnical_DetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Prnt_ExternalLaborAr.rdlc" />
+    <EmbeddedResource Include="Reports\Prnt_VoucherAr.rdlc" />
+    <EmbeddedResource Include="Reports\Prnt_VoucherEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_AccStatmentCustomerAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_AccStatmentCustomerEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_AccStatmentSuppliersAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_AccStatmentSuppliersEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_Annual_Income_StatementAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_Annual_Income_StatementEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_A_AccountStatment_EmployeeAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_A_AccountStatment_EmployeeEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CashBoxAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CashBoxEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CashBox_AccAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CashBox_AccEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesSumAr1.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesSumAr20.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesSumEn1.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_CustomerSalesSumEn20.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_ExpencesAr5.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_FollowUpCustomersAr1.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_FollowUpCustomersEn1.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_ItemBestSalesAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_ItemBestSalesEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_RecieptAr5.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_StockItemAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_StockItemEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_StockItemMovementAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_StockItemMovementDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_StockItemMovementEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_StockItemMovementSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_SupplierPurDetAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_SupplierPurDetEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_SupplierPurSumAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_SupplierPurSumEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_TaxReportAr.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_TaxReportEn.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_TecnicalSumAr1.rdlc" />
+    <EmbeddedResource Include="Reports\Rpt_Tecnical_DetAr1.rdlc" />
+    <EmbeddedResource Include="Reports\TrialBalanceAr.rdlc" />
+    <EmbeddedResource Include="Reports\TrialBalanceEn.rdlc" />
+    <None Include="Properties\DataSources\Form1.datasource" />
+    <None Include="Properties\DataSources\IProc_Prnt_ExternalLabor.datasource" />
+    <None Include="Properties\DataSources\IProc_Prnt_ItemStock.datasource" />
+    <None Include="Properties\DataSources\IProc_Prnt_Purchases.datasource" />
+    <None Include="Properties\DataSources\IProc_Prnt_Quotation.datasource" />
+    <None Include="Properties\DataSources\IProc_Prnt_SlsInvoice.datasource" />
+    <None Include="Properties\DataSources\Iproc_Prnt_Voucher.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_Annual_Income_Statement.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_CashBox.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_CustomerSalesDet.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_CustomerSalesSum.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_Expences.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_FollowUpCustomers.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_ItemBestSales.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_Reciept.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_SalesSum.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_StockItem.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_StockItemMovement.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_StockItemMovementDet.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_StockItemMovementSum.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_SupplierPurDet.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_SupplierPurSum.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_TaxReport.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_TecnicalSum.datasource" />
+    <None Include="Properties\DataSources\IProc_Rpt_Tecnical_Det.datasource" />
+    <None Include="Properties\DataSources\IProc_Z_A_AccountStatment.datasource" />
+    <None Include="Properties\DataSources\IProc_Z_A_AccountStatment_ByCustomerOrSupplier.datasource" />
+    <None Include="Properties\DataSources\IProc_Z_A_AccountStatment_CachBox.datasource" />
+    <None Include="Properties\DataSources\IProc_Z_A_AccountStatment_C_Or_S.datasource" />
+    <None Include="Properties\DataSources\IProc_Z_A_AccountStatment_Employees.datasource" />
+    <None Include="Properties\DataSources\IProc_Z_A_AccountStatment_Pay_Recpt.datasource" />
+    <None Include="Properties\DataSources\IProc_Z_A_TrialBalance.datasource" />
+    <None Include="Properties\DataSources\Program.datasource" />
+    <None Include="Properties\DataSources\Report_Rdlc.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\Report_Rdlc.Properties.Settings.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

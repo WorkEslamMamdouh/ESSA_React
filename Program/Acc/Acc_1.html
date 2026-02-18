@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>شجرة الحسابات</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        .node {
+            margin: 5px 0;
+        }
+
+        .expand-btn {
+            cursor: pointer;
+            color: blue;
+            margin-right: 5px;
+        }
+
+        .loading {
+            color: gray;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>🌳 شجرة الحسابات</h2>
+    <div id="tree-container">
+        <ul id="1-null"></ul> <!-- 👈 هذا السطر ضروري لعرض الجذر -->
+    </div>
+
+
+    <script>
+        const pageSize = 5;
+
+        // تحميل الحسابات الأبناء من API
+        async function loadChildren(compCode, parentAcc, page = 1) {
+
+            debugger
+            const containerId = `${compCode}-${parentAcc}`;
+            const container = document.getElementById(containerId);
+
+            if (!container) return;
+
+            // عرض رسالة "جاري التحميل"
+            const loadingMsg = document.createElement('div');
+            loadingMsg.textContent = '...جاري التحميل';
+            loadingMsg.className = 'loading';
+            container.appendChild(loadingMsg);
+
+            // استدعاء API (يفترض أنك ستغير هذا بـ fetch فعلي لاحقًا)
+            const data = await mockApi(compCode, parentAcc, page);
+
+            container.removeChild(loadingMsg);
+
+            // عرض الأبناء
+            data.items.forEach(item => {
+                const li = document.createElement('li');
+                li.className = 'node';
+                li.textContent = item.ACC_DESCA;
+
+                if (item.DETAIL === 0) {
+                    // لديه أبناء
+                    const expandBtn = document.createElement('span');
+                    expandBtn.textContent = '➕';
+                    expandBtn.className = 'expand-btn';
+                    expandBtn.onclick = () => toggleNode(item.COMP_CODE, item.ACC_CODE, li);
+                    li.prepend(expandBtn);
+                }
+
+                const childUl = document.createElement('ul');
+                childUl.id = `${item.COMP_CODE}-${item.ACC_CODE}`;
+                li.appendChild(childUl);
+                container.appendChild(li);
+            });
+
+            // زر "تحميل المزيد"
+            if (data.hasMore) {
+                const moreBtn = document.createElement('button');
+                moreBtn.textContent = 'تحميل المزيد';
+                moreBtn.onclick = () => {
+                    container.removeChild(moreBtn);
+                    loadChildren(compCode, parentAcc, page + 1);
+                };
+                container.appendChild(moreBtn);
+            }
+        }
+
+        // توسيع عقدة
+        function toggleNode(compCode, accCode, nodeElement) {
+            const ul = nodeElement.querySelector('ul');
+            const expandBtn = nodeElement.querySelector('.expand-btn');
+
+            if (ul.childElementCount === 0) {
+                // أول مرة – حمّل الأبناء
+                loadChildren(compCode, accCode).then(() => {
+                    expandBtn.textContent = '➖';
+                });
+            } else {
+                if (ul.style.display === 'none') {
+                    ul.style.display = 'block';
+                    expandBtn.textContent = '➖';
+                } else {
+                    ul.style.display = 'none';
+                    expandBtn.textContent = '➕';
+                }
+            }
+        }
+
+
+        // تحميل الجذر
+        loadChildren(1, null);
+
+        // API وهمي - استبدله بـ fetch من الخادم
+        async function mockApi(compCode, parentAcc, page) {
+            debugger
+            const all = [
+                { COMP_CODE: 1, ACC_CODE: "1", ACC_DESCA: "الأصول", DETAIL: 0, PARENT_ACC: null },
+                { COMP_CODE: 1, ACC_CODE: "11", ACC_DESCA: "الاصول المتداولة", DETAIL: 0, PARENT_ACC: "1" },
+                { COMP_CODE: 1, ACC_CODE: "1101", ACC_DESCA: "الخزنه", DETAIL: 0, PARENT_ACC: "11" },
+                { COMP_CODE: 1, ACC_CODE: "110101", ACC_DESCA: "الخزينة الرئيسية", DETAIL: 1, PARENT_ACC: "1101" },
+                { COMP_CODE: 1, ACC_CODE: "1102", ACC_DESCA: "البنوك", DETAIL: 1, PARENT_ACC: "11" },
+                { COMP_CODE: 1, ACC_CODE: "1103", ACC_DESCA: "عملاء", DETAIL: 1, PARENT_ACC: "11" },
+                { COMP_CODE: 1, ACC_CODE: "1104", ACC_DESCA: "الموردين", DETAIL: 1, PARENT_ACC: "11" },
+                { COMP_CODE: 1, ACC_CODE: "1105", ACC_DESCA: "الموظفين", DETAIL: 0, PARENT_ACC: "11" },
+                { COMP_CODE: 1, ACC_CODE: "110501", ACC_DESCA: "حساب الموظفين", DETAIL: 0, PARENT_ACC: "1105" },
+                { COMP_CODE: 1, ACC_CODE: "1105010001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110501" },
+                { COMP_CODE: 1, ACC_CODE: "110502", ACC_DESCA: "عهد الموظفين", DETAIL: 0, PARENT_ACC: "1105" },
+                { COMP_CODE: 1, ACC_CODE: "1105020001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110502" },
+                { COMP_CODE: 1, ACC_CODE: "110503", ACC_DESCA: "سلف الموظفين", DETAIL: 0, PARENT_ACC: "1105" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+                { COMP_CODE: 1, ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1, PARENT_ACC: "110503" },
+            ];
+
+            const filtered = all.filter(item => item.COMP_CODE == compCode && item.PARENT_ACC == parentAcc);
+            const start = (page - 1) * pageSize;
+            const items = filtered.slice(start, start + pageSize);
+            const hasMore = start + pageSize < filtered.length;
+
+            await new Promise(resolve => setTimeout(resolve, 300)); // محاكاة التأخير
+            return { items, hasMore };
+        }
+    </script>
+
+</body>
+</html>

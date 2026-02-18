@@ -1,0 +1,95 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interface\**" />
+    <Compile Remove="obj\**" />
+    <Compile Remove="Services\**" />
+    <Content Remove="Interface\**" />
+    <Content Remove="obj\**" />
+    <Content Remove="Services\**" />
+    <EmbeddedResource Remove="Interface\**" />
+    <EmbeddedResource Remove="obj\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Interface\**" />
+    <None Remove="obj\**" />
+    <None Remove="Services\**" />
+    <TypeScriptCompile Remove="Interface\**" />
+    <TypeScriptCompile Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\ClientApp\Upload_Excel_File.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.Reporting" Version="2.1.0" />
+    <PackageReference Include="Grpc.Core" Version="2.46.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.Compiler" Version="3.1.5">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="5.3.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.19" />
+    <PackageReference Include="RestSharp" Version="112.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\ClientApp\StGrid\StyleStGrid.css" />
+    <None Include="wwwroot\ClientApp\Upload_Excel_File.js" />
+    <None Include="wwwroot\ClientApp\uploadFile.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Home\CategoryIndex.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="Views\Home\TR_SalesIndex.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+    <Content Update="wwwroot\Reports_Data\Get_Balance_TestAr.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Get_Balance_TestAr.xsd</DependentUpon>
+    </Content>
+    <Content Update="wwwroot\Reports_Data\Get_Balance_TestAr.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Get_Balance_TestAr.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\ClientApp\View_Profile\" />
+    <Folder Include="wwwroot\PDF\" />
+    <Folder Include="wwwroot\StyleProfile\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SystemA">
+      <HintPath>wwwroot\System\SystemA.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

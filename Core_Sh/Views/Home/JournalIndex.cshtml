@@ -1,0 +1,178 @@
+﻿@using Core.UI.Models
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعريف الأصناف وتعدد الوحدات</title>
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"> *@
+
+    <style>
+        ._Width {
+            width: 100% !important;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+
+        <!-- Filters Section -->
+        @*         <div class="card mb-4">
+        <div class="card-body">
+        <h5 class="card-title">الفلاتر</h5>
+        <form id="filterForm">
+        <div class="row">
+        <div class="col-md-4">
+        <label for="categoryFilter" class="form-label">الفئة</label>
+        <select id="categoryFilter" class="form-select">
+        <option value="">@Res.Choose_category</option>
+        <!-- Populate categories dynamically -->
+        </select>
+        </div>
+        <div class="col-md-4">
+        <label for="familyFilter" class="form-label">النوع</label>
+        <select id="familyFilter" class="form-select">
+        <option value="">@Res.Choose_the_type</option>
+        <!-- Populate item families dynamically -->
+        </select>
+        </div>
+        <div class="col-md-4 align-self-end">
+        <button type="button" class="btn btn-primary w-100" onclick="applyFilters()">تطبيق الفلاتر</button>
+        </div>
+        </div>
+        </form>
+        </div>
+        </div> *@
+
+        <!-- Item Definition Section -->
+        <div id="TapMaster" class="card mb-4 TapMaster">
+            <div class="card-body">
+                @* <h5 class="card-title">@Res.Journal</h5> *@
+                <form id="itemForm">
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="VOUCHER_CODE" class="form-label">Journal No</label>
+                            <input type="text" disabled id="VOUCHER_CODE" class="form-control _Clear" placeholder="Journal No">
+                        </div>
+                        <div class="col-md-6  ">
+                            <label for="REF_CODE" class="form-label">@Res.ReNo</label>
+                            <input type="text" id="REF_CODE" class="form-control _Clear" placeholder="@Res.ReNo">
+                            <input type="hidden" id="Status" class="form-control _Clear" placeholder="@Res.Status">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="VOUCHER_DATE" class="form-label">@Res.TrDate</label>
+                            <input type="date" id="VOUCHER_DATE" class="form-control _Clear" placeholder="@Res.TrDate">
+                        </div>
+                        <div class="col-md-6  ">
+                            <label for="TYPE_CODE" class="form-label">@Res.Type</label>
+                            <select id="TYPE_CODE" disabled class="form-control _IsReturnDis">
+                                <option value="2">قيد يدوي</option>
+                                <option class="_Hid" value="1">قيد الي</option>
+                                <option class="_Hid" value="0">قيد افتتاحي</option>
+                                <!-- Populate item families dynamically -->
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label for="VOUCHER_DESC" class="form-label">@Res.Remarks</label>
+                            <textarea id="VOUCHER_DESC" class="form-control _Clear" rows="3" placeholder="@Res.Remarks"></textarea>
+                        </div>
+                    </div>
+                  
+
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Units Definition Section -->
+        <div id="TapDetails" class="TapDetails card display_none">
+            <div class="card-body">
+                @* <h5 class="card-title">@Res.Detail</h5> *@
+                <!-- Units Table -->
+                <div class="mt-4" id="TableBody">
+                </div>
+
+            </div>
+        </div>
+
+
+        <div id="" class="TapDetails card mb-4 display_none">
+            <div class="card-body">
+                <div id="StGrid_Journal">
+                </div>
+            </div>
+
+            <div class="card-body">
+                <form id="itemForm">
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label for="Total Debit" class="form-label">Total Debit</label>
+                            <input type="number" disabled id="TotalDebit" class="form-control _Clear" placeholder="Total Debit">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="Total Credit" class="form-label">Total Credit</label>
+                            <input type="number" disabled id="TotalCredit" class="form-control _Clear" placeholder="Total Credit">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="Difference" class="form-label">Difference</label>
+                            <input type="number" disabled id="Difference" class="form-control _Clear" placeholder="Difference">
+                        </div>
+
+                    </div>
+
+
+                </form>
+            </div>
+        </div>
+
+        <div id="" class="card ">
+            <div class="card-body">
+                <form id="itemForm">
+                    <div class="row">
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success display_none" id="BackTap" style="width: 50%;margin-top: 7%; background-color: brown;">
+                                @Res.Back
+                            </button>
+                        </div>
+                        <div class="col-md-3">
+                            <button type="button" class="btn btn-success" id="NextTap" style="width: 50%;margin-top: 7%;">
+                                @Res.Next
+                            </button>
+                            <button type="button" class="btn btn-success display_none " id="SaveUpdate" style="width: 50%;margin-top: 7%;">  @Res.Save </button>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+
+
+    @* <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> *@
+</body>
+</html>
+
+
+
+ 
+
+<script src="~/ClientApp/Journal/Journal.js"></script> 
+

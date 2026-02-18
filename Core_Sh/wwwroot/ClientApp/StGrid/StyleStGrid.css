@@ -1,0 +1,162 @@
+﻿/* الخطوط الأساسية */
+.jsgrid {
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+    border: none !important;
+    background: #ffffff;
+}
+
+/* رأس الجدول */
+.jsgrid-header-row {
+    background-color: #f0f2f5;
+    color: #333;
+    font-weight: 600;
+    font-size: 15px;
+    border-bottom: 1px solid #dcdcdc;
+}
+
+/* خلايا البيانات */
+.jsgrid-row,
+.jsgrid-alt-row {
+    background-color: #fff;
+    transition: background-color 0.2s ease;
+}
+
+    .jsgrid-row:hover,
+    .jsgrid-alt-row:hover {
+        background-color: #f5f7fa;
+    }
+
+/* الخلايا */
+.jsgrid-cell,
+.jsgrid-header-cell {
+    padding: 10px 12px !important;
+    border: none !important;
+}
+
+/* زرار العمليات */
+.jsgrid-control-field {
+    text-align: center;
+}
+
+.jsgrid-button {
+    border: none;
+    padding: 5px 8px;
+    border-radius: 6px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.jsgrid-edit-button {
+    background-color: #4dabf7;
+    color: white;
+}
+
+    .jsgrid-edit-button:hover {
+        background-color: #339af0;
+    }
+
+.jsgrid-delete-button {
+    background-color: #fa5252;
+    color: white;
+}
+
+    .jsgrid-delete-button:hover {
+        background-color: #f03e3e;
+    }
+
+.jsgrid-insert-button {
+    background-color: #40c057;
+    color: white;
+}
+
+    .jsgrid-insert-button:hover {
+        background-color: #37b24d;
+    }
+
+/* الصف الإضافي */
+.jsgrid-insert-row input,
+.jsgrid-edit-row input {
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+    transition: border 0.2s ease;
+}
+
+    .jsgrid-insert-row input:focus,
+    .jsgrid-edit-row input:focus {
+        border-color: #339af0;
+    }
+
+/* أنيميشن */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.jsgrid {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+
+
+/******************************************/
+
+
+.st-btn {
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+    .st-btn:hover {
+        transform: scale(1.15);
+    }
+
+.st-edit {
+    background-color: #007bff;
+    color: white;
+}
+
+    .st-edit:hover {
+        background-color: #0056b3;
+    }
+
+.st-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+    .st-delete:hover {
+        background-color: #a71d2a;
+    }
+
+.st-copy {
+    background-color: #28a745;
+    color: white;
+}
+
+    .st-copy:hover {
+        background-color: #1e7e34;
+    }

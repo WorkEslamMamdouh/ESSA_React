@@ -1,0 +1,92 @@
+@using Core.UI.Models
+<section class="u-align-left u-clearfix u-section-9 " id="carousel_c35d">
+    <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-container-style u-group u-group-1">
+            @*  <div class="u-container-layout u-container-layout-1">
+                <h2 class="u-align-center u-text u-text-1">OutWorks</h2>
+            </div> *@
+        </div>
+        @************************************************Header****************************************************************@
+        <div id="Div_Header" class="u-form u-form-1">
+            <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+
+                <div class="u-form-group u-form-partition-factor-3 u-form-phone u-form-group-4">
+                    <label for="TrNo" class="u-label u-text-grey-40">@Res.TrNo</label>
+                    <input type="number" id="TrNo" disabled placeholder="@Res.TrNo" name="TrNo" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-3 u-form-phone u-form-group-4">
+                    <label for="RefNo" class="u-label u-text-grey-40">@Res.RefNo</label>
+                    <input type="number" id="RefNo" placeholder="@Res.RefNo" name="RefNo" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-date u-form-group u-form-partition-factor-3 u-form-group-3">
+                    <label for="Txt_Receive_TrData" class="u-label u-text-grey-40">@Res.Date</label>
+                    <input type="date" placeholder="MM/DD/YYYY" id="Txt_TrData" name="date" class="u-input u-input-rectangle" required="" data-date-format="mm/dd/yyyy">
+                </div>
+                <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+
+                    <div class="col-md-9 divInvoice">
+                        <label for="InvoiceID" class="  u-label u-text-grey-40">@Res.JobOrder</label>
+                        <input type="hidden" id="InvoiceID" class="form-control _Clear" placeholder="@Res.JobOrder">
+                        <input type="button" id="InvoiceNo" style="background-color : #c95b56; color:aliceblue" value="@Res.JobOrder" class="Clear_Header u-input u-input-rectangle" required="">
+
+                    </div>
+                    <div class="col-md-2 divInvoice">
+                        <label for="Delete_Filter" class=" _Cancel display_none u-label u-text-grey-40">@Res.Cancel</label>
+                        <h6 id="btnDelete_Filter" class="display_none" style="width: 20%; cursor: pointer;">❌</h6>
+                    </div>
+
+                </div>
+
+                <div class="u-form-date u-form-group u-form-partition-factor-2 u-form-group-3">
+                    <label for="BeneficiaryName" class="u-label u-text-grey-40">@Res.Beneficiary_Name</label>
+                    <input type="text" placeholder="@Res.Beneficiary_Name" disabled id="BeneficiaryName" name="BeneficiaryName" class="u-input u-input-rectangle">
+                </div>
+
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Card_Type" class="u-label u-text-grey-40">@Res.TypePay</label>
+                    <select id="Card_Type" name="select" class="u-input u-input-rectangle">
+                    </select>
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Txt_CardPrc" class="u-label u-text-grey-40">@Res.Card_Prc_</label>
+                    <input type="number" id="Txt_CardPrc" placeholder="0" name="CardPrc" disabled="disabled" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Amount" class="u-label u-text-grey-40">@Res.Amount</label>
+                    <input type="number" id="Txt_Amount" placeholder="0" name="Amount" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+                <div class="u-form-group u-form-partition-factor-2 u-form-phone u-form-group-4">
+                    <label for="Txt_NetAmount" class="u-label u-text-grey-40">@Res.Net</label>
+                    <input type="number" id="Txt_NetAmount" placeholder="0" disabled="disabled" name="Amount" class="Clear_Header u-input u-input-rectangle" required="">
+                </div>
+
+
+
+                <div class="u-form-group u-form-message u-form-group-7">
+                    <label for="Reason" class="u-label u-text-grey-40">@Res.OutWorks</label>
+                    <textarea placeholder="@Res.OutWorks" rows="2" cols="50" id="Reason" name="Reason" class="Clear_Header u-input u-input-rectangle" required=""></textarea>
+                </div>
+                <div class="u-form-group u-form-message u-form-group-7">
+                    <label for="Txt_Remarks" class="u-label u-text-grey-40">@Res.Remarks</label>
+                    <textarea placeholder="@Res.Remarks" rows="4" cols="50" id="Txt_Remarks" name="Remarks" class="Clear_Header u-input u-input-rectangle" required=""></textarea>
+                </div>
+
+
+                <div class="u-form-group u-form-group-5">
+                    <input type="button" id="btnAdd" value="@Res.Save" class="Style_Add_Item u-input u-input-rectangle" required="">
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</section>
+
+
+<script src="~/ClientApp/OutWorks/OutWorks.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>

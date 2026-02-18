@@ -1,0 +1,154 @@
+@using Core.UI.Models
+<style>
+    .tree {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+
+        .tree li {
+            margin: 0;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+            .tree li.folder {
+                background-color: aliceblue;
+                font-weight: bold;
+                border-radius: 22px;
+            }
+
+
+
+    .Acive {
+        border-radius: 22px;
+        background-color: #8de8d982 !important;
+        font-weight: bold;
+    }
+
+
+
+
+
+    .tree li.folder:before {
+        content: "\25ba";
+        padding-right: 5px;
+    }
+
+    .tree li.folder.open:before {
+        content: "\25bc";
+    }
+
+    .tree li.file {
+        background-color: #ffffff;
+    }
+
+    .tree li ul {
+        display: none;
+    }
+
+    .tree li.open > ul {
+        display: block;
+    }
+
+    .tree {
+        border-radius: 11px;
+        width: 1500px;
+        height: 500px;
+        overflow: auto;
+        border: 1px solid #ccc;
+        padding: 10px;
+        scrollbar-width: thin;
+    }
+
+        .tree::-webkit-scrollbar {
+            width: 0; /* Hide scrollbar */
+        }
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+    <div id="Div_Header" class="u-form u-form-1">
+        <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+            <div class="u-form-email u-form-group u-form-partition-factor-4">
+                <label for="txt_ACC_CODE" class="u-label u-text-grey-40">@Res.Account_No</label>
+                <input disabled type="text" placeholder="@Res.Enter_Account_Number" id="txt_ACC_CODE" name="ACC_CODE" class="Clear_Header u-input u-input-rectangle" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-3">
+                <label for="txt_NAME_A" class="u-label u-text-grey-40">@Res.Describtion_Ar</label>
+                <input type="text" placeholder="@Res.Enter_Account_Describtion" id="txt_NAME_A" name="DescA" class="Editable Clear_Header u-input u-input-rectangle" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-3">
+                <label for="txt_NAME_E" class="u-label u-text-grey-40">@Res.Describtion_En</label>
+                <input type="text" placeholder="@Res.Enter_Account_Describtion" id="txt_NAME_E" name="DescL" class=" Editable Clear_Header u-input u-input-rectangle" required="">
+            </div>
+
+            <div class="u-form-group u-form-partition-factor-4 u-form-phone u-form-group-4">
+                <label for="txt_Type" class="u-label u-text-grey-40">@Res.Account_Type</label>
+                <select  id="txt_Type" name="select" class="u-input u-input-rectangle Editable">
+                    <option value="null">@Res.Choose_Type</option>
+                </select>
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-4">
+                <label for="Acc_Parent" class="u-label u-text-grey-40">@Res.Account_Parent</label>
+                <input type="text" placeholder="" id="Acc_Parent" name="Acc_Parent" disabled class="Clear_Header u-input u-input-rectangle" required="">
+                <input type="hidden" placeholder="" id="txtACC_GROUP" name="ACC_GROUP" disabled class="Clear_Header u-input u-input-rectangle" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-5 display_none">
+                <label for="txt_CreditLimit" class="u-label u-text-grey-40">@Res.Credit_Limit</label>
+                <input type="number" placeholder="@Res.Enter_Credit_Limit" id="txt_CreditLimit" name="CreditLimit" class=" Editable Clear_Header u-input u-input-rectangle" required="">
+            </div>
+
+            <div class="u-form-email u-form-group u-form-partition-factor-5" style="margin-left: 100px;">
+                <label class="u-field-label" for="field-882d" style="font-weight: bold;font-size: xx-large;">@Res.Active</label>
+                <input id="chkeck_active" type="checkbox" class="u-field-input" checked="checked" data-calc="" style="width: 55px;height: 35px;">
+            </div>
+            <div class="u-form-group u-form-message u-form-group-7">
+                <label for="txt_note" class="u-label u-text-grey-40">@Res.Remarks</label>
+                <textarea placeholder="@Res.Enter_your_Remarks" rows="4" cols="50" id="txt_note" name="Remarks" class=" Editable Clear_Header u-input u-input-rectangle" required=""></textarea>
+            </div>
+
+          
+            <div class="u-form-email u-form-group u-form-partition-factor-6">
+                <label for="txt_Debit" class="u-label u-text-grey-40">@Res.Debit</label>
+                <input disabled type="text" id="txt_Debit" name="txt_Debit" class="Clear_Header u-input u-input-rectangle" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-6">
+                <label for="txt_DebitFC" class="u-label u-text-grey-40">@Res.Credit</label>
+                <input disabled type="text" id="txt_DebitFC" name="txt_DebitFC" class="Clear_Header u-input u-input-rectangle" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-6">
+                <label for="txt_balance" class="u-label u-text-grey-40">@Res.Balance</label>
+                <input disabled type="text" id="txt_balance" name="ACC_CODE" class="Clear_Header u-input u-input-rectangle" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-6">
+                <label for="txt_level" class="u-label u-text-grey-40">@Res.Level</label>
+                <input disabled type="text" id="txt_level" name="txt_level" class="Clear_Header u-input u-input-rectangle" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-6">
+                <label class="u-field-label" for="field-882d" style="font-weight: bold;font-size: large;">@Res.Is_Detail_</label>
+                <input disabled id="chkeck_Detailed" type="checkbox" class="u-field-input" checked="checked" data-calc="" style="width: 50px;height: 30px;">
+            </div>
+              
+            <div class="u-form-email u-form-group u-form-partition-factor-4">
+                <input type="button" id="btnDelete" value="Delete" class="Style_Add_Item u-input u-input-rectangle" style="background-color:darkred;cursor:pointer;" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-4">
+                <input type="button" id="btnAdd" value="@Res.Add" class="Style_Add_Item u-input u-input-rectangle" style="background-color:darkblue;cursor:pointer;" required="">
+            </div>
+            <div class="u-form-email u-form-group u-form-partition-factor-4">
+                <input type="button" id="btnsave" value="@Res.Save" style="cursor:pointer;" class="Style_Add_Item u-input u-input-rectangle" required="">
+            </div>
+
+            <div class="u-form-email u-form-group u-form-partition-factor-4">
+                <input type="button" id="btnback" value="@Res.Back" class="Style_Add_Item u-input u-input-rectangle" style="background-color:darkgoldenrod;cursor:pointer;" required="">
+            </div> 
+
+        </form>
+    </div>
+
+</div>
+<script>
+
+</script>
+
+
+<script src="~/ClientApp/AccountTree/EditAccountTree.js"></script>

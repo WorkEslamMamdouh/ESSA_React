@@ -1,0 +1,73 @@
+@using Core.UI.Models
+
+<style>
+
+	.u-btn {
+		margin-top: 0px !important;
+		margin-bottom: 2px !important;
+	}
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+	<form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+		<div class="u-form-email u-form-group u-form-partition-factor-9">
+		</div>
+
+		<div class="u-form-group u-form-name u-form-partition-factor-6">
+			<label for="" class="u-label u-text-grey-40">@Res.FromData</label>
+			<input type="date" placeholder="MM/DD/YYYY" id="Txt_FromTrData" name="date" class="u-input u-input-rectangle" required="" data-date-format="mm/dd/yyyy">
+		</div>
+
+		<div class="u-form-group u-form-name u-form-partition-factor-6">
+			<label for="" class="u-label u-text-grey-40">@Res.ToData</label>
+			<input type="date" placeholder="MM/DD/YYYY" id="Txt_TOTrData" name="date" class="u-input u-input-rectangle" required="" data-date-format="mm/dd/yyyy">
+		</div>
+
+		<div class="u-form-group u-form-name u-form-partition-factor-6">
+			<label for="" class="u-label u-text-grey-40">@Res.Activity</label>
+			<select id="drpActive" name="select" class="u-input u-input-rectangle">
+				<option value="null" data-calc="">@Res.All</option>
+				<option value="1" data-calc="">@Res.Active ✅</option>
+				<option value="0" data-calc="">@Res.Not_Active ❌</option>
+			</select>
+		</div>
+
+		<div class="u-form-group u-form-name u-form-partition-factor-6">
+			<label for="" class="u-label u-text-grey-40"> </label>
+			<input type="hidden" id="JobOrderIDView" class="form-control _Clear" placeholder="Search JobOrderNo">
+			<a id="BtnSearchJobOrderView" style="width: 100%;background-color : #5692c9; color:aliceblue" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.JobOrder</a>
+		</div>
+
+		<div class="u-form-group u-form-name u-form-partition-factor-6">
+			<label for="" class="u-label u-text-grey-40"> </label>
+			<input type="hidden" id="SalesManIDView" class="form-control _Clear" placeholder="Search SalesMan">
+			<a id="BtnSalesManIDView" style="width: 100%;background-color : #c95b56; color:aliceblue" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.SalesMan</a>
+
+		</div>
+
+
+		<div class="u-form-group u-form-name u-form-partition-factor-6">
+			<label for="" class="u-label u-text-grey-40"> </label>
+			<a id="Filter_View" style="width: 100%;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">@Res.Filter</a>
+
+		</div>
+		<div class="u-form-email u-form-group u-form-partition-factor-9" style="text-align: -webkit-center;">
+			<h6 id="btnDelete_Filter" class="display_none" style="width: 20%; cursor: pointer;">❌</h6>
+		</div>
+	</form>
+
+	<div class="inside-table my-4">
+
+ 
+
+		<div id="_Grid">
+		</div>
+
+
+	</div>
+</div>
+ 
+<script src="~/ClientApp/DeliveryOrder/ViewDeliveryOrder.js"></script>
+ 

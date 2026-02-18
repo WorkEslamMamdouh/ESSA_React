@@ -1,0 +1,106 @@
+using System;
+ 
+ namespace Core.UI.Repository.Models
+ {
+      public partial class IProc_Prnt_SlsInvoice
+     {
+        public  int  COMP_CODE  { get; set; }
+        public  int?  CompCode  { get; set; }
+        public  string  Comp_NameA  { get; set; }
+        public  string  Comp_NameE  { get; set; }
+        public  string  Comp_City  { get; set; }
+        public  string  Comp_Address  { get; set; }
+        public  string  IBAN_NO  { get; set; }
+        public  string  BanckAccNo  { get; set; }
+        public  string  BanckAccName  { get; set; }
+        public  string  Comp_Fax  { get; set; }
+        public  string  Comp_Tel  { get; set; }
+        public  string  Comp_Email  { get; set; }
+        public  string  Comp_VatNo  { get; set; }
+        public  string  Comp_Address_Street  { get; set; }
+        public  string  Comp_Address_Str_Additional  { get; set; }
+        public  string  Comp_Address_BuildingNo  { get; set; }
+        public  string  Comp_Address_Build_Additional  { get; set; }
+        public  string  Comp_Address_City  { get; set; }
+        public  string  Comp_Address_Postal  { get; set; }
+        public  string  Comp_Address_Province  { get; set; }
+        public  string  Comp_Address_District  { get; set; }
+        public  int?  Cus_CustomerId  { get; set; }
+        public  string  Cus_NAMEA  { get; set; }
+        public  string  Cus_CustomerCODE  { get; set; }
+        public  string  Cus_MOBILE  { get; set; }
+        public  string  Cus_NAMEE  { get; set; }
+        public  string  Cus_EMAIL  { get; set; }
+        public  string  Cus_VatNo  { get; set; }
+        public  string  Cus_Address_postal  { get; set; }
+        public  string  Cus_Address_Province  { get; set; }
+        public  string  Cus_Address_Street  { get; set; }
+        public  string  Cus_Address_Str_Additional  { get; set; }
+        public  string  Cus_Address_BuildingNo  { get; set; }
+        public  string  Cus_Address_Build_Additional  { get; set; }
+        public  string  Cus_Address_City  { get; set; }
+        public  string  Cus_Address_District  { get; set; }
+        public  bool?  Cus_IsPersonal  { get; set; }
+        public  int  HD_SaleID  { get; set; }
+        public  int?  HD_TrNo  { get; set; }
+        public  int?  HD_TrType  { get; set; }
+        public  string  HD_DoNo  { get; set; }
+        public  string  HD_ReNo  { get; set; }
+        public  bool?  HD_IsCash  { get; set; }
+        public  int?  HD_CashType  { get; set; }
+        public  DateTime?  HD_SaleDate  { get; set; }
+        public  TimeSpan?  HD_TrTime  { get; set; }
+        public  int?  HD_Status  { get; set; }
+        public  decimal?  HD_ItemsTotal  { get; set; }
+        public  decimal?  HD_Discount  { get; set; }
+        public  decimal?  HD_TotalAmount  { get; set; }
+        public  int?  HD_VatTypeID  { get; set; }
+        public  decimal?  HD_VatAmount  { get; set; }
+        public  decimal?  HD_ChargePrc  { get; set; }
+        public  decimal?  HD_NetAmount  { get; set; }
+        public  decimal?  HD_RemainAmount  { get; set; }
+        public  decimal?  HD_PaymentAmount  { get; set; }
+        public  bool?  HD_IsService  { get; set; }
+        public  string  HD_Remarks  { get; set; }
+        public  int?  HD_VoucherNo  { get; set; }
+        public  bool?  HD_IsPosted  { get; set; }
+        public  string  HD_QRCode  { get; set; }
+        public  DateTime?  HD_CreatedAt  { get; set; }
+        public  string  HD_CreatedBy  { get; set; }
+        public  DateTime?  HD_UpdatedAt  { get; set; }
+        public  string  HD_UpdatedBy  { get; set; }
+        public  int?  HD_TaxStatus  { get; set; }
+        public  string  HD_DocUUID  { get; set; }
+        public  int  DT_SaleDetailID  { get; set; }
+        public  decimal?  DT_OneHandQuantity  { get; set; }
+        public  decimal?  DT_Quantity  { get; set; }
+        public  decimal?  DT_UnitPrice  { get; set; }
+        public  decimal?  DT_DiscountPrc  { get; set; }
+        public  decimal?  DT_DiscountAmount  { get; set; }
+        public  decimal?  DT_NetUnitPrice  { get; set; }
+        public  decimal?  DT_ItemTotal  { get; set; }
+        public  decimal?  DT_VatPrc  { get; set; }
+        public  decimal?  DT_VatAmount  { get; set; }
+        public  decimal?  DT_NetAfterVat  { get; set; }
+        public  int  IT_ItemID  { get; set; }
+        public  string  IT_ItemName  { get; set; }
+        public  string  TfkeetAR  { get; set; }
+        public  string  JobOrderNo  { get; set; }
+        public  string  ShowPriceNo  { get; set; }
+        public  string  Unit_DescA  { get; set; }
+        public  decimal?  Rate  { get; set; }
+        public  string  EngineerName  { get; set; }
+        public  string  DestructionKm  { get; set; }
+        public  string  CarNo  { get; set; }
+        public  string  CarBrand  { get; set; }
+        public  string  Warrantyperiod  { get; set; }
+        public  int  SalesManID  { get; set; }
+        public  string  SalesManName  { get; set; }
+        public  string  Mobile  { get; set; }
+        public  string  cashTypeDesc  { get; set; }
+        public  string purchaseorderDesc { get; set; }
+        public  string purchaseorderCode { get; set; }
+
+     }
+
+ }

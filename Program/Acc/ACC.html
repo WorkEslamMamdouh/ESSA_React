@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>شجرة الحسابات</title>
+    <style>
+        ul {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+
+        li span {
+            cursor: pointer;
+        }
+
+        .expand-btn {
+            margin-right: 5px;
+            cursor: pointer;
+            color: blue;
+        }
+
+        .account-node:hover {
+            background: #f0f0f0;
+        }
+
+        #searchBox {
+            padding: 5px;
+            margin-bottom: 10px;
+            width: 250px;
+        }
+
+        #treeContainer {
+            font-family: 'Segoe UI', sans-serif;
+            direction: rtl;
+        }
+
+        .account-node:focus {
+            outline: 2px solid #0078D7;
+            background-color: #e0f3ff;
+        }
+
+        .highlight {
+            background-color: #fff5b5 !important;
+            transition: background-color 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="treeContainer">
+        <input type="text" id="searchBox" placeholder="بحث بالاسم أو الرقم..." />
+        <button onclick="searchAccount()">🔍 بحث</button>
+        <ul id="tree_1_null"></ul>
+    </div>
+
+    <script>
+        // بيانات تجريبية
+        const mockData = {
+            "1-null": [{ ACC_CODE: "1", ACC_DESCA: "الأصول", DETAIL: 0 }],
+            "1-1": [
+                { ACC_CODE: "11", ACC_DESCA: "الاصول المتداولة", DETAIL: 0 }
+            ],
+            "1-11": [
+                { ACC_CODE: "1101", ACC_DESCA: "الخزنه", DETAIL: 0 },
+                { ACC_CODE: "1102", ACC_DESCA: "البنوك", DETAIL: 1 },
+                { ACC_CODE: "1103", ACC_DESCA: "العملاء", DETAIL: 1 },
+                { ACC_CODE: "1104", ACC_DESCA: "الموردين", DETAIL: 1 },
+                { ACC_CODE: "1105", ACC_DESCA: "الموظفين", DETAIL: 0 }
+            ],
+            "1-1101": [
+                { ACC_CODE: "110101", ACC_DESCA: "الخزينة الرئيسية", DETAIL: 1 }
+            ],
+            "1-1105": [
+                { ACC_CODE: "110501", ACC_DESCA: "حساب الموظفين", DETAIL: 0 },
+                { ACC_CODE: "110502", ACC_DESCA: "عهد الموظفين", DETAIL: 0 },
+                { ACC_CODE: "110503", ACC_DESCA: "سلف الموظفين", DETAIL: 0 }
+            ],
+            "1-110501": [
+                { ACC_CODE: "1105010001", ACC_DESCA: "Ragab", DETAIL: 1 }
+            ],
+            "1-110502": [
+                { ACC_CODE: "1105020001", ACC_DESCA: "Ragab", DETAIL: 1 }
+            ],
+            "1-110503": [
+                { ACC_CODE: "1105030001", ACC_DESCA: "Ragab", DETAIL: 1 }
+            ]
+        };
+
+        async function fetchAccounts(compCode, parentAcc) {
+            const key = `${compCode}-${parentAcc ?? 'null'}`;
+            return mockData[key] || [];
+        }
+
+        async function loadChildren(compCode, parentAcc) {
+            const ul = document.getElementById(`tree_${compCode}_${parentAcc ?? 'null'}`);
+            if (!ul || ul.getAttribute("data-loaded") === "true") return;
+            ul.setAttribute("data-loaded", "true");
+
+            const children = await fetchAccounts(compCode, parentAcc);
+            children.forEach(child => {
+                const li = document.createElement("li");
+                li.setAttribute("data-acc-code", child.ACC_CODE);
+                li.className = "account-node";
+
+                const span = document.createElement("span");
+                span.innerHTML = child.DETAIL === 0 ? '➕' : '';
+                span.className = "expand-btn";
+                span.onclick = () => toggleChildren(compCode, child.ACC_CODE, span);
+                li.appendChild(span);
+
+                li.appendChild(document.createTextNode(` ${child.ACC_DESCA} (${child.ACC_CODE})`));
+
+                if (child.DETAIL === 0) {
+                    const childUl = document.createElement("ul");
+                    childUl.id = `tree_${compCode}_${child.ACC_CODE}`;
+                    childUl.style.display = "none";
+                    li.appendChild(childUl);
+                }
+
+                ul.appendChild(li);
+            });
+        }
+
+        async function toggleChildren(compCode, parentAcc, btn) {
+            const ul = document.getElementById(`tree_${compCode}_${parentAcc}`);
+            if (!ul) return;
+
+            if (ul.style.display === "none") {
+                await loadChildren(compCode, parentAcc);
+                ul.style.display = "block";
+                btn.textContent = "➖";
+            } else {
+                ul.style.display = "none";
+                btn.textContent = "➕";
+            }
+        }
+
+        async function searchAccount() {
+            const query = document.getElementById('searchBox').value.trim();
+            if (!query) return alert("يرجى إدخال اسم أو رقم حساب");
+
+            const path = await mockSearchApi(query);
+            if (!path || path.length === 0) {
+                alert("لم يتم العثور على الحساب");
+                return;
+            }
+
+            let parent = null;
+            for (const accCode of path) {
+                const containerId = `tree_1_${parent ?? 'null'}`;
+                const container = document.getElementById(containerId);
+
+                if (!container || !container.querySelector(`[data-acc-code="${accCode}"]`)) {
+                    await loadChildren(1, parent);
+                }
+
+                const node = container.querySelector(`[data-acc-code="${accCode}"]`);
+                if (!node) break;
+
+                const btn = node.querySelector('.expand-btn');
+                const ul = node.querySelector('ul');
+
+                if (btn && ul) {
+                    ul.style.display = 'block';
+                    btn.textContent = '➖';
+                }
+
+                // 🎯 Focus و Highlight
+                node.setAttribute("tabindex", "-1");
+                node.focus({ preventScroll: false });
+                node.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                node.classList.add("highlight");
+                setTimeout(() => node.classList.remove("highlight"), 3000);
+
+                parent = accCode;
+            }
+        }
+
+        async function mockSearchApi(query) {
+            const allAccounts = [
+                { ACC_CODE: "1", ACC_DESCA: "الأصول", PATH: ["1"] },
+                { ACC_CODE: "11", ACC_DESCA: "الاصول المتداولة", PATH: ["1", "11"] },
+                { ACC_CODE: "1101", ACC_DESCA: "الخزنه", PATH: ["1", "11", "1101"] },
+                { ACC_CODE: "110101", ACC_DESCA: "الخزينة الرئيسية", PATH: ["1", "11", "1101", "110101"] },
+                { ACC_CODE: "1102", ACC_DESCA: "البنوك", PATH: ["1", "11", "1102"] },
+                { ACC_CODE: "1103", ACC_DESCA: "العملاء", PATH: ["1", "11", "1103"] },
+                { ACC_CODE: "1104", ACC_DESCA: "الموردين", PATH: ["1", "11", "1104"] },
+                { ACC_CODE: "1105", ACC_DESCA: "الموظفين", PATH: ["1", "11", "1105"] },
+                { ACC_CODE: "110501", ACC_DESCA: "حساب الموظفين", PATH: ["1", "11", "1105", "110501"] },
+                { ACC_CODE: "1105010001", ACC_DESCA: "Ragab", PATH: ["1", "11", "1105", "110501", "1105010001"] },
+                { ACC_CODE: "110502", ACC_DESCA: "عهد الموظفين", PATH: ["1", "11", "1105", "110502"] },
+                { ACC_CODE: "1105020001", ACC_DESCA: "Ragab", PATH: ["1", "11", "1105", "110502", "1105020001"] },
+                { ACC_CODE: "110503", ACC_DESCA: "سلف الموظفين", PATH: ["1", "11", "1105", "110503"] },
+                { ACC_CODE: "1105030001", ACC_DESCA: "Ragab", PATH: ["1", "11", "1105", "110503", "1105030001"] }
+            ];
+
+            const result = allAccounts.find(acc =>
+                acc.ACC_CODE === query ||
+                acc.ACC_DESCA === query ||
+                acc.ACC_CODE.includes(query) ||
+                acc.ACC_DESCA.includes(query)
+            );
+
+            return result ? result.PATH : [];
+        }
+
+        // أول تحميل
+        loadChildren(1, null);
+
+        // دعم البحث بزر Enter
+        document.getElementById("searchBox").addEventListener("keydown", e => {
+            if (e.key === "Enter") searchAccount();
+        });
+    </script>
+</body>
+</html>

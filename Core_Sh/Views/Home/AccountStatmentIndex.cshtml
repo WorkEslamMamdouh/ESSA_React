@@ -1,0 +1,93 @@
+@using Core.UI.Models
+
+
+<style>
+
+    .u-btn {
+        margin-top: 0px !important;
+        margin-bottom: 2px !important;
+    }
+</style>
+<div class="sparkline8-graph col-xs-12" style="border-radius: 50px;">
+
+
+
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.From_Date</label>
+            <input type="date" placeholder="0" id="Txt_From_Date" class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-group u-form-name u-form-partition-factor-7">
+            <label for="" class="u-label u-text-grey-40">@Res.To_Date</label>
+            <input type="date" placeholder="0" id="Txt_To_Date" class=" u-input u-input-rectangle">
+        </div>
+        <div class="u-form-group u-form-name u-form-partition-factor-4">
+            <label for="" class="u-label u-text-grey-40"> </label>
+            <input type="button" id="btnAccountSrch" style="width: 100%; border-radius:10px 10px 10px 10px ;  background-color: rgb(103 169 204)" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle" value="@Res.Add">
+            <input type="hidden" placeholder="0" id="Acc_Code" class="">
+        </div>
+
+
+        <div class="  u-form-group u-form-partition-factor-8 u-form-phone u-form-group-8 ">
+            <label for="Create_Txt_AccCodeStartUsers" class="u-label u-text-grey-40">اخفاء الحسابات الرئيسية</label>
+            <input type="checkbox" placeholder="@Res.AccCode_Start_Users" id="IsDetail" style="width: 100%;height: 48px; name=" text" class="Clear_Header u-input u-input-rectangle">
+        </div>
+        <div class="u-form-email u-form-group u-form-partition-factor-9">
+
+            <h6 id="btnDelete_Filter" class=" " style="cursor: pointer;">❌</h6>
+        </div>
+
+
+
+    </form>
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+
+        <div class="  u-form-group u-form-partition-factor-3 u-form-phone u-form-group-2 " style="height: 348px;border-collapse: collapse;width: 64%;padding: 8px;text-align: center;background-color: #f8f9fa; /* لون خلفية الرأس */font-weight: bold;border: 1px solid #ccc; /* إطار حول الجدول بالكامل */border-radius: 10px;overflow-y: scroll;">
+            <div class="definition-table scroll-table mt-3">
+                <div class="table-responsive">
+                    <table class="table table-borderless">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%" class=" "></th>
+
+                                <th style="width: 20%">الكود</th>
+                                <th style="width: 70%">الوصف عربى </th>
+                            </tr>
+                        </thead>
+                        <tbody id="Grid"></tbody>
+
+                    </table>
+                    <div class="col-12 col-md-12">
+                        <div class="d-flex justify-content-start mr-1">
+                            <span id="btnAddRow" class="mb-3 "><i class="fas fa-plus-circle fs-2 btn-plus display_none"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <form action="https://forms.nicepagesrv.com/v2/form/process" class="u-clearfix u-form-spacing-10 u-form-vertical u-inner-form" style="padding: 10px" source="email" name="form">
+        <div class="u-form-email u-form-group u-form-partition-factor-5"></div>
+
+        <div class="u-form-group u-form-name u-form-partition-factor-5">
+            <a id="PrintPdf" style="width: 100%; border-radius:10px 10px 10px 10px ;cursor: pointer; background-color: #830202;" class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">
+                @Res.Print_Pdf  <i class="fa fa-file-pdf-o"></i>
+            </a>
+        </div>
+
+
+        <div class="u-form-group u-form-name u-form-partition-factor-5">
+            <a id="PrintExcel" style="width: 100%; border-radius:10px 10px 10px 10px ;cursor: pointer; " class="Style_Add_Item u-btn u-btn-submit u-input u-input-rectangle">
+                @Res.Print_Excel  <i class="fa fa-file-excel-o"></i>
+            </a>
+        </div>
+
+
+    </form>
+
+</div>
+
+<script src="~/ClientApp/AccountStatment/AccountStatment.js"></script>
+<script src="~/Scripts/DataTables/jquery.dataTables.min.js"></script>
